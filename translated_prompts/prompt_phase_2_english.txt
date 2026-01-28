@@ -1,0 +1,1921 @@
+### ROLE ###
+You are an expert playwright who specialized in identifying specific dramaturgical patterns within raw narrative units.
+
+### TASK ###
+You will receive a JSON representing a narrative unit:
+
+```
+{
+    "catalog_id": string,
+    "core_event": string,
+    "event_description": string,
+    "storytelling_potential": int
+}
+```
+
+Your task is to compare the core_event and event_description fields with the definitions provided in [DRAMATIC SITUATIONS] to determine the narrative unit's adherence to various dramatic situations. You must:
+1. Analyze the thematic relevance between the [Description] and the narrative unit, also referring to the [Examples];
+2. Verify the presence of [Dynamic Elements] in the narrative unit, verifying if they appear explicitly or are logically implicit;
+3. Synthesize the outcome of the previous analyses and explain the potential presence of the dramatic situation in the `reasoning` field;
+4. Map the results by specifying the `value` and `source` for each identified element;
+5. Assign an `adherence` score consistent with the analysis performed and the reasoning expressed.
+
+### RULES ###
+
+1. Dynamic Elements Analysis
+• You must look for every element listed in the [Dynamic Elements] section
+• Do not force a match: if an element is not present implicitly or explicitly, `values` must be `[]`
+• The same `value` cannot be assigned to two different `element`, unless explicitly permitted
+• If an element is present but ambiguous, choose the most likely value based on context
+• If there are multiple entities for the same element, create separate objects in the `values` list
+
+2. Source 
+The `source` field can only have two values:
+• `extracted` when it is explicitly mentioned in the text
+• `inferred` when it is deduced from the context
+
+3. Adherence Score
+• The adherence value must be:
+  - Between 0 and 100.
+  - <60 if even a single dynamic element is missing
+  - ≥60 if all dynamic elements are present and the dramatic situation is recognizable
+  - 80 if the dramatic situation is clearly recognizable and supported by explicit dynamic elements
+• Adopt a restrictive evaluation criterion and do not force interpretations, a low score is preferable to forced or speculative associations
+• It is primarily based on the presence of [Dynamic Elements]. Furthermore:
+  - Elements with an extracted `source` have a higher weight and increase the score
+  - Elements with an inferred `source` have a lower weight and do not influence the score significantly
+• It also depends on the [Description] and [Examples], there must be logical and thematic relevance to the narrative unit
+
+4. The `reasoning` field and the `value` must be in Italian
+
+### DRAMATIC SITUATIONS ###
+
+01. Supplication
+
+**Description**
+One or more persecuted figures plead for protection before an authority whose judgment remains uncertain between pity, fear and prudence. Sometimes the doubt belongs to the persecutor themselves, or the suppliant is joined by an intercessor who strengthens the appeal. The tension arises from the will of the persecutor
+
+**Dynamic Elements**
+• Persecutor: The one who threatens or oppresses the suppliant, creating the dangerous situation that necessitates the plea
+• Suppliant: The persecuted person who pleads for protection directly or through an intermediary. They are the emotional and moral center of the scene
+• Authority of undecided judgment: The figure who can save or condemn with a choice. Their doubt constitutes the moment of maximum dramatic tension
+
+**Examples**
+• Typical scenes of colonial protectorates, where subject populations implore a dominant power
+• A religiously divided family, in which a child asks an allied parent to be allowed to practice their cult freely
+• The request to have the body or remains of a relative who died far away or was executed
+• Petitions, entreaties, pleas for mercy (e.g., confessions, pleas for forgiveness)
+
+02. Deliverance/Rescue
+
+**Description**
+An unfortunate, threatened or condemned person is saved by the sudden and unexpected intervention of a rescuer acting on their own initiative. The tension does not arise from the wait for a decision, but from the unforeseen intrusion that breaks a seemingly sealed fate
+
+**Dynamic Elements**
+• Unfortunate/Troubled: The person in danger, condemned or without a way out. Their extreme condition necessitates the intrusion of an external savior
+• Threatener/Aggressor: The force or situation looming over the unfortunate: a person, a law, violence, an imminent event. It represents the danger from which they must be freed
+• Rescuer/Deliverer: The one who intervenes unexpectedly and on their own initiative to save the unfortunate. Their sudden appearance creates the dramatic reversal of the situation
+
+**Examples**
+• Legal assistance: the intervention of a lawyer, a judge or a guarantor who manages to save an innocent person from an unjust sentence or decision
+• Intervention of a stranger in a dangerous situation (e.g., a robbery or an assault) who stops the event and rescues the victim
+• The sudden arrival of help during an accident or calamity, preventing an imminent tragedy
+• A superior intervening against an injustice to save a subordinate from abuse or unlawful punishment
+
+3. Crime pursued by vengeance
+
+**Description**
+A crime remains unpunished or unresolved and a figure decides to personally pursue justice, driven by the desire for revenge. The tension arises from the hunt for the culprit and from the progressive transformation of the avenger, torn between justice and obsession
+
+**Dynamic Elements**
+• Avenger: The one who decides to hunt down the culprit of a wrong or a crime. Their identity is often marked by an emotional bond with the victim and by the determination to make them pay
+• Culprit/Criminal: The author of the crime who is sought in order to be punished. They may or may not be aware of the threat pursuing them, present or absent physically in the scene
+• Memory of the victim: The symbolic presence of the wrong suffered: the dead person, the offense, the loss. Even if invisible, it is the true force that fuels and justifies the revenge
+
+**Examples**
+• A family member of a victim who decides to investigate alone a murder or an assault that remained unpunished
+• A person who was defrauded or humiliated and devotes time and resources to publicly exposing the one who wronged them
+• A victim of bullying who grows up with the idea of “settling the score” with those who hurt them
+• Indirect revenge: striking someone through what they love (reputation, work, affections), rather than directly targeting the person
+
+4. Vengeance among blood relatives
+
+**Description**
+Revenge for a wrong or a murder is carried out within the same family: a relative punishes another relative for a crime committed against a shared loved one. The tension arises from the fact that the bond of blood turns into a battlefield, making the violence even more tragic and disturbing
+
+**Dynamic Elements**
+• Avenging relative: The family member who takes upon themselves the task of revenge. Their act is fueled by pain, a sense of duty and the memory of the wronged person
+• Guilty relative: The family member who committed the crime or the wrong and becomes the target of revenge. In this situation the bond of blood makes the punishment even more lacerating
+• Memory of the victim: The presence — real or symbolic — of the wronged or killed family member, which continues to act as the moral engine of the revenge. It is what keeps the conflict alive
+
+**Examples**
+• A brother who decides to take revenge on another brother for a very serious wrong done to a parent or a sister
+• Family conflicts that degenerate into violence due to betrayals, abuse or deep violations
+• Indirect revenge within the family, such as withdrawing affection, support or dignity from a guilty relative
+• Destruction of what a family member loves (reputation, property, relationships) as a form of punishment for a wrong against another relative
+
+5. Pursuit
+
+**Description**
+A person is forced to flee while a danger, a guilt or a threat constantly pursues them. The tension arises from the urgency of the escape and from the sense of encirclement, which makes the protagonist increasingly isolated and vulnerable
+
+**Dynamic Elements**
+• Fugitive: The person on the run, guilty or innocent, who tries to evade a threat, a punishment or an inevitable consequence. The audience tends to identify with them, sharing their fear and urgency
+• Punishment/Threat: What pursues the fugitive: it may be a person, the law, a revenge, a secret, a sense of guilt or a real danger. Sometimes it remains invisible, but its presence is constant
+
+**Examples**
+• A person who flees the consequences of a serious mistake (debts, frauds, illegal acts) and changes city or identity
+• A victim of persecution or stalking who tries to disappear in order to protect themselves
+• Someone who lives in constant fear of being discovered for a past wrongdoing
+• A migrant or a refugee fleeing political or family violence, always pursued by danger
+• News situations in which someone escapes and lives hunted, even when their pursuer is not always visible
+
+6. Disaster
+
+**Description**
+A power is overthrown by a superior force or by a sudden and unstoppable event. The situation is marked by fear, catastrophe and a radical reversal of roles: those who were strong fall, those who were weak are exalted
+
+**Dynamic Elements**
+• Vanquished power: An individual, a group or a system that is brought down, destroyed or deprived of its strength. Its fall is the tragic center of the situation
+• Victorious enemy/Messenger: The one who caused the ruin of the vanquished power or the one who announces its fall. It may be a concrete figure, an anonymous force or a voice that brings news of the disaster
+
+**Examples**
+• The sudden collapse of a company, an economic empire or a political leadership that seemed untouchable
+• The destruction of a community following a war, an invasion or a catastrophic governmental decision
+• The ruin of a powerful family due to a public scandal, a failure or a devastating revelation
+• A natural disaster (earthquake, flood, fire) that abruptly upsets social and economic balances
+
+7. Falling prey to cruelty or misfortune
+
+**Description**
+An innocent or vulnerable person is crushed by the cruelty of others or by a series of misfortunes that relentlessly strike them. The tension arises from the disproportion between the fragility of the victim and the harshness, often blind and unjust, of fate or of human beings
+
+**Dynamic Elements**
+• Victim: The one who suffers abuses, violence or repeated misfortunes. Their weakness – real or symbolic – makes them exposed and unable to adequately defend themselves
+• Cruelty/Misfortune: The force that persecutes the victim: it may be a cruel person, an oppressive system, an illness, poverty, a chain of negative events. It does not always have a precise face
+
+**Examples**
+• A fragile person (elderly, ill, poor, marginalized) who is repeatedly exploited or mistreated
+• A victim of bullying or domestic violence who cannot find protection or a way out
+• Someone struck by a series of consecutive tragic events (bereavement, job loss, illness) that completely overwhelm them
+• Situations of systemic discrimination in which an individual continues to be penalized solely for their origin, gender or body
+
+8. Revolt
+
+**Description**
+An individual or a group, oppressed by a power considered unjust, rises up against it. The tension arises from the transition from submission to action, from the moment fear is overcome and rebellion takes shape
+
+**Dynamic Elements**
+• Tyrant/Oppressive power: The dominant force that imposes its control in an unjust, violent or totalitarian manner. Its oppression is the spark that generates the revolt
+• Conspirator/Rebel: The one or those who rise up against the tyrant. They represent awareness and the refusal of submission, transforming fear into action
+
+**Examples**
+• Workers who organize against an exploitative employer and start a protest or a strike
+• Students who rebel against school rules considered discriminatory or oppressive
+• Citizens who demonstrate against a corrupt or authoritarian government
+• A person who finally breaks an abusive relationship and reports their oppressor
+• Marginalized communities that unite to claim denied rights or dignified living conditions
+
+9. Daring enterprise
+
+**Description**
+A protagonist voluntarily faces an extremely dangerous or seemingly impossible task, driven by ambition, ideals or necessity. The tension arises from the contrast between the greatness of the goal and the enormity of the risk that is accepted
+
+**Dynamic Elements**
+• Daring one/Hero: The one who decides to undertake the risky action. Their strength lies in courage, determination and often a certain recklessness in the face of danger
+• Goal: What must be conquered, reached or achieved: a person, a place, a victory, a truth, a mission. It is the reason why the enterprise is attempted
+• Adversary/Obstacle: The force that makes the enterprise almost impossible: it may be an enemy, a system, an extreme trial, nature, the law or fear itself
+
+**Examples**
+• A person who exposes a corrupt system, aware of possible retaliation against their life
+• An activist who enters a war zone or a heavily repressed area to bring aid or testimony
+• A precarious worker who challenges their company to defend a collective right
+• A person who leaves everything behind to realize a project considered “impossible” (opening a social center, a shelter, a cooperative)
+• Someone who decides to publicly tell an uncomfortable truth, putting reputation, work and safety at risk
+
+10. Abduction
+
+**Description**
+A person is forcibly or deceitfully removed from their usual environment and taken away against their will. The tension arises from the sudden violation of freedom and from the sense of loss, possession or domination that motivates the abductor
+
+**Dynamic Elements**
+• Abductor: The one who carries out the kidnapping, driven by desire, interest, revenge, control or personal utility. Their act breaks the order and inaugurates the conflict
+• Abducted/Victim: The person removed from their context, deprived of freedom and placed in a condition of extreme vulnerability. Their helplessness constitutes the dramatic center of the situation
+• Guardian/Violated protective power: The person, group or institution that should have protected the victim (family, community, law) and that is bypassed, defeated or rendered powerless by the abduction
+
+**Examples**
+• The kidnapping of a person for ransom, control or exploitation
+• Human trafficking cases, in which someone is removed from their life and transferred by force
+• The illegal removal of a minor by one of the parents
+• A relationship in which a person is progressively isolated and “abducted” from their social and emotional network
+• The symbolic seizure of freedom (e.g. forced withdrawal of documents, restriction of movement, isolation)
+
+11. Enigma
+
+**Description**
+A mystery, a hidden truth or an incomprehensible secret conditions the characters and their actions. The tension arises from the need to discover what is unknown and from the implicit danger that the solution of the enigma could be devastating
+
+**Dynamic Elements**
+• Questioner/Seeker: The one who tries to understand, clarify, unveil the mystery. They may be an investigator, a witness, a directly involved person or simply someone who cannot live with doubt
+• Secret/Mystery: What must not or cannot be easily known: a hidden truth, a concealed crime, a false identity, a repressed past. It is the true fulcrum of the tension
+• The one who knows: The one who possesses the truth or part of it and hides it, voluntarily or involuntarily. Their presence — silent or ambiguous — fuels the conflict
+
+**Examples**
+• A person who discovers strange clues about their family’s past and tries to reconstruct the truth
+• A secret kept hidden within a group (company, school, community) that slowly comes to light
+• An anonymous message or a partial revelation that destabilizes a relationship or an apparently stable situation
+• The discovery of documents or conversations that suggest a betrayal, a lie or a covered-up crime
+• A person who lives next to someone who is not who they claim to be
+
+12. Obtaining
+
+**Description**
+A character seeks to come into possession of a person, an object or an advantage that is initially denied to them. The tension arises from the conflict between the desire to obtain and the moral or material resistances that oppose the achievement of the goal
+
+**Dynamic Elements**
+• One who wants to obtain: The person who strongly desires something: a good, a role, a recognition, a person. Their need or desire is the engine of the action
+• One who prevents/Possessor: The one who holds what is requested or who opposes obtaining it. They may act out of interest, protection, fear or jealousy
+• Object of desire: What is sought: it may be concrete (money, house, job) or abstract (power, love, forgiveness, freedom)
+
+**Examples**
+• A person who struggles to obtain a job, a promotion or a scholarship that is repeatedly denied
+• A child who persistently seeks the approval or love of a distant parent
+• Someone who tries to reclaim a possession that was unjustly taken from them
+• A person who asks for forgiveness and works to regain the trust of someone they love
+• The daily struggle to obtain fundamental rights (documents, residence, healthcare, education) in a system that obstructs them
+
+13. Hatred among blood relatives
+
+**Description**
+Within the same family, a deep and persistent hatred arises among relatives, fueled by rivalries, injustices or irreconcilable differences. The tension is built on the fact that the bond of blood, instead of uniting, turns into a hostile and destructive tie
+
+**Dynamic Elements**
+• Hostile relative: The family member who harbors hatred, resentment or the desire to harm. The bond of blood makes the conflict more painful and radical
+• Hated relative: The one who becomes the target of resentment. They may be guilty or innocent, but are nonetheless loaded with symbolic or real blame
+• Motive of the conflict: The origin of the hatred: a suffered injustice, a disputed inheritance, favoritism, a family secret, an irreconcilable difference of values
+
+**Examples**
+• Brothers or sisters who no longer speak due to disputes over inheritance, money or unresolved childhood jealousy
+• Parents and children who live in a relationship of constant hostility, marked by rejection, judgment and misunderstanding
+• Family conflicts that drag on for generations, fueled by old offenses never clarified
+• Political, religious or identity divergences that definitively break bonds between relatives
+• A family divided into factions, in which every event becomes an occasion for tension and rupture
+
+14. Rivalry among blood relatives
+
+**Description**
+Two or more members of the same family enter into competition for love, power, recognition or supremacy. The tension arises from the fact that the bond of blood does not mitigate but instead intensifies the rivalry, transforming it into a deep and often destructive conflict
+
+**Dynamic Elements**
+• Rival relative: The family member who competes with another for the same goal. The desire to prevail overcomes the emotional bond
+• Competing relative: The other pole of the rivalry, who contends for the same space, role, love or recognition. Their presence fuels the ongoing conflict
+• Object of contention: What is fought over: an inheritance, a parent’s attention, the role of head of the family, the love of a person, social status
+
+**Examples**
+• Brothers or sisters who constantly compete for a parent’s approval
+• Conflicts among relatives over the management of the family business or an inheritance
+• Cousins who enter into rivalry for prestige, social success or constant comparison
+• Parents who, voluntarily or not, set their children against each other
+• A family where love or recognition become scarce and contested resources
+
+15. Murderous adultery
+
+**Description**
+An adulterous affair does not remain a private transgression, but leads to an act of extreme violence, up to murder. The tension arises from the intertwining of desire, betrayal and destruction, in which illicit love becomes the cause of death
+
+**Dynamic Elements**
+• Adulterer/Adulteress: The one who betrays their partner, driven by passion, frustration or the desire to escape. Their act is the origin of the tragic conflict
+• Lover: The person involved in the illegitimate relationship. They may be a conscious accomplice or an unaware victim of the tragic escalation
+• Betrayed spouse: The person deceived and wounded by the betrayal. Their reaction — despair, anger, revenge — is what can lead to the extreme act
+
+**Examples**
+• News cases in which one partner kills the other after discovering an affair
+• Situations in which the lover is attacked or eliminated by the betrayed spouse
+• Secret relationships that degenerate into violence due to jealousy, fear of dishonor or desire for possession
+• Femicide or crimes of passion linked to the discovery of adultery
+• Contexts in which obsession and control turn a betrayal into a death sentence
+
+16. Madness
+
+**Description**
+A character progressively loses contact with reality, sinking into a state of delirium, obsession or hallucination. The tension arises from the fracture between what is real and what the distorted mind perceives, making actions and consequences unpredictable
+
+**Dynamic Elements**
+• Madman: The one whose mind becomes altered due to trauma, pain, guilt, illness or extreme pressure. Their instability guides and disrupts the entire situation
+• Cause: The triggering event: a bereavement, violence, a loss, a secret, remorse or an unmanageable guilt. It is the deep origin of the mental crisis
+• Imagined object/Obsession: What the mad person’s mind constructs or distorts: a person, a threat, a guilt, a voice, a fixed idea. It becomes the center of their alternative reality
+
+**Examples**
+• A person who, after a traumatic event (bereavement, assault, abandonment), begins to lose contact with reality
+• Someone overwhelmed by guilt or paranoia, who sees enemies everywhere and makes extreme decisions
+• A person isolated for a long time who develops delusions or behaviors disconnected from reality
+• Untreated mental disorders that lead to dangerous behavior for oneself or others
+• Situations in which social, work or family pressure leads to a psychological breakdown
+
+17. Fatal imprudence
+
+**Description**
+A character commits an impulsive or reckless act that triggers irreversible and tragic consequences. The tension arises from the contrast between the lightness or naivety of the action and the gravity of the outcome that follows
+
+**Dynamic Elements**
+• Imprudent: The one who acts without evaluating the risks, driven by recklessness, curiosity, desire or naivety. Their seemingly trivial gesture becomes the spark of the tragedy
+• Ignored warning: The sign, advice or perceptible danger that is not heeded. Its presence makes the mistake even more dramatic and charged with responsibility
+• Fatal consequence: The irreversible outcome of the imprudence: death, loss, ruin, destruction of a bond or of a life. It is what transforms the error into tragedy
+
+**Examples**
+• A person who ignores an obvious danger (driving under the influence, entering a dangerous place) and causes a serious accident
+• Someone who reveals a sensitive secret without thinking and irreparably ruins a relationship or a life
+• An impulsive gesture during an argument that gets out of hand and has irreparable consequences
+• Trusting the wrong person, with permanent damage on a personal or professional level
+• A choice made out of vanity or challenge that leads to the loss of something fundamental
+
+18. Involuntary crimes of love
+
+**Description**
+A character, driven by love or a deep feeling, commits an act that harms or destroys the very person they love, often without intending to. The tension arises from the tragic paradox: love, instead of protecting, becomes the cause of harm
+
+**Dynamic Elements**
+• Guilty lover: The one who, moved by love, jealousy, fear of loss or the desire to protect, commits a harmful or destructive action without real criminal intent
+• Loved person/Victim: The one who suffers the harm. Precisely the emotional bond makes the wound more tragic and unbearable
+• Involuntary fatal act: The act – an error, an omission, a wrong choice, excessive protection – that produces the damage. It may seem born of good intentions, but has devastating consequences
+
+**Examples**
+• An overprotective parent who, out of “love”, severely limits a child’s freedom and development
+• A person who lies to protect their partner and instead ends up destroying the relationship
+• A jealous act that causes an accident or an irreparable breakup
+• Someone who makes a decision “for the other’s good” without listening to them and deeply harms them
+• Suffocating loves in which the need for possession causes pain, isolation or loss
+
+19. Unaware killing of a blood relative
+
+**Description**
+A person kills, seriously injures or destroys the life of a relative without knowing who they really are. The tension arises from the tragedy of recognition: when the truth emerges, the act committed becomes unbearable and devastating on a moral level
+
+**Dynamic Elements**
+• One who kills: The person who commits the harmful act, often in good faith or in self-defense, without knowing that the victim is a family member. Their tragic destiny is tied to ignorance of the other’s true identity
+• Unknown relative/Victim: The family member who is struck, who may be unknown, lost, abandoned or separated for a long time. Their hidden identity is the tragic heart of the situation
+• Revelation/Recognition: The moment in which the truth of the blood bond is discovered. This is when the past action takes on its full tragic and irreversible weight
+
+**Examples**
+• Road accidents or violent events in which, after time, it is discovered that the victim was a biological relative never known (e.g. separated sibling, absent parent, unacknowledged child)
+• Family clashes that degenerate into tragedy without the people involved truly knowing their bond (secret adoptions, broken families, children never spoken of)
+• People who, in contexts of war or family rivalries, seriously harm members of their own blood without knowing it
+• Conflicts between individuals who are related but grew up separately, discovering the bond only after destroying the relationship (or the life) of the other
+• Situations of abandonment and family secrecy in which ignorance of identity leads to irreparable damage
+
+20. Self-sacrifice for an ideal
+
+**Description**
+A character gives up their freedom, well-being or life in the name of an ideal, a principle or a cause greater than themselves. The tension arises from the contrast between the instinct for survival and the conscious choice to place the ideal above everything
+
+**Dynamic Elements**
+• One who sacrifices themselves: The one who voluntarily decides to give up something fundamental in order to remain faithful to their values. Their strength lies in coherence and radical determination
+• Ideal/Cause: What the sacrifice is made for: justice, freedom, truth, dignity, faith, rights, collective future. It is a value perceived as higher than life itself
+• Beneficiary/Community: The person, group or humanity that benefits from the sacrifice. Even if absent from the scene, it justifies and amplifies its tragic and moral weight
+
+**Examples**
+• An activist who accepts prison or persecution in order to defend a fundamental right
+• A person who leaves a secure job to expose a systemic injustice
+• Someone who puts their life at risk to save other people (defenseless, persecuted, discriminated)
+• A whistleblower who sacrifices reputation and safety to reveal a truth
+• Someone who gives up a comfortable life to dedicate themselves entirely to a social, political or humanitarian cause
+
+21. Self-sacrifice for loved ones
+
+**Description**
+A character gives up their freedom, happiness or life to save or protect a family member or a loved one. The tension arises from the conflict between the instinct for survival and the emotional bond that drives the sacrifice
+
+**Dynamic Elements**
+• One who sacrifices themselves: The one who voluntarily chooses to bear suffering or danger in place of a loved one. Their act arises from love, a sense of responsibility or family duty
+• Loved person/Relative: The one for whom the sacrifice is made: a child, a parent, a sibling, a partner. Their vulnerability is what makes the extreme gesture necessary
+• Danger/Threat: What the loved person must be saved from: illness, violence, persecution, condemnation, misery, social stigma or abuse
+
+**Examples**
+• A parent who takes the blame for a crime committed by their child to spare them prison
+• A person who gives up studying, working or self-fulfillment to care for an ill family member
+• Someone who exposes themselves to danger to protect a brother, a sister or a partner from violence
+• A child who leaves everything behind to take responsibility for a fragile or dependent parent
+• Silent sacrifices (emotional, economic, psychological) made to ensure a better future for those one loves
+
+22. Everything sacrificed for a passion
+
+**Description**
+A character sacrifices everything — reputation, affections, security, future — to pursue an all-consuming passion. The tension arises from the growth of obsession, which progressively devours everything else
+
+**Dynamic Elements**
+• One who sacrifices themselves: The person dominated by a prevailing feeling or desire (love, ambition, fanaticism, art, faith, addiction). Their loss of balance is the engine of the drama
+• Object of passion: What is pursued at all costs: a person, an idea, a vocation, a cause, a vice, an idealized future. It becomes more important than anything else
+• What is sacrificed: Affections, work, health, reputation, stability, dignity — everything that is destroyed or abandoned in the name of passion
+
+**Examples**
+• A person who loses friends and family to pursue a destructive love
+• Someone who abandons studies, work and relationships for an addiction (substances, gambling, sex, power)
+• An artist or creator who sacrifices every aspect of their social life in the name of their work
+• A person who ruins their life for a fanatical ideology or a political/spiritual obsession
+• Someone who burns every chance of stability to pursue a relationship, a dream or unattainable recognition
+
+23. Necessity of sacrificing loved ones
+
+**Description**
+A character is forced to choose between a great duty (law, morality, faith, mission) and the life or happiness of a person they love. The tension arises from the extreme conflict between an obligation perceived as superior and the emotional bond
+
+**Dynamic Elements**
+• One who must sacrifice: The person faced with an impossible choice: obey a principle or save someone they love. Their torment is the moral heart of the situation
+• Loved person: The one who must be sacrificed or let go. Their presence makes the decision unbearable and tragic
+• Law/Duty/Superior ideal: The principle that imposes the sacrifice: a law, a moral rule, a code of honor, a collective mission, a necessary choice
+
+**Examples**
+• A magistrate forced to sentence a person very dear to them because they are guilty under the law
+• A doctor who must choose between saving a family member or several unknown patients in an emergency
+• A person who reports a loved one in order to stop ongoing violence or crime
+• A parent who distances a child to protect them, knowing that this breaks the bond
+• Situations in which justice or collective security impose harming those one loves
+
+24. Rivalry between superior and subordinate
+
+**Description**
+A person in a subordinate position enters into conflict with a figure who holds power, authority or higher status. The tension arises from the clash between structural inequality and the will to assert oneself, resist or overturn the hierarchy
+
+**Dynamic Elements**
+• Superior: The person who holds a dominant role: boss, teacher, parent, authority, manager, figure of prestige. Their power is the starting point of the conflict
+• Subordinate: The one who is in a subordinate position but challenges, contests or competes with the superior. Their rebellion breaks the established hierarchical order
+• Object of rivalry: What they contend over: power, recognition, leadership, justice, dignity, freedom, respect or control
+
+**Examples**
+• An employee who publicly challenges their boss over an injustice or abuse of power
+• A student who defies the authority of a teacher considered unjust or discriminatory
+• A precarious worker who enters into conflict with a hierarchical superior for their rights
+• A child who rebels against an authoritarian parent to assert their autonomy
+• Activists, workers or citizens who clash with figures of political or social power
+
+25. Adultery
+
+**Description**
+A clandestine relationship breaks an official bond and destabilizes family, emotional and social balances. The tension arises from the contrast between desire and responsibility, between secret passion and public consequences
+
+**Dynamic Elements**
+• Unfaithful spouse: The committed person who lives a secret relationship with someone else outside marriage or the official relationship. Their betrayal ignites the conflict
+• Lover: The third person involved in the illegitimate relationship. They may be consciously complicit or unaware of the harm the relationship causes
+• Betrayed spouse: The person who suffers the betrayal. Their suffering, anger or desire for revenge amplify the dramatic tension
+
+**Examples**
+• A discovered extramarital affair that causes the breakup of a family
+• Hidden betrayals that generate suspicion, lies and a climate of constant tension
+• A partner who lives a double life between two parallel relationships
+• An affair that involves two families, friends and communities, generating divisions and sides
+• Situations in which the discovery of betrayal leads to violence, isolation or profound emotional collapse
+
+26. Crimes of love
+
+**Description**
+A criminal act is committed for love: for possession, jealousy, protection or desperation. The tension arises from the paradox between a feeling considered “noble” and a morally and legally unacceptable act
+
+**Dynamic Elements**
+• Guilty lover: The one who, driven by an extreme romantic feeling, commits an illegal or violent act. Their love becomes a subjective justification for the crime
+• Loved person: The figure for whom the crime is committed: they may be complicit, unaware or even a victim. Their emotional centrality motivates the action
+• Crime/Illegal act: The concrete action – murder, blackmail, robbery, violence, kidnapping – committed in the name of love. It is what transforms feeling into tragedy
+
+**Examples**
+• A person who attacks or kills a rival in love out of jealousy
+• Someone who commits theft, fraud or another crime to support or protect a loved one
+• Violent or illegal acts carried out to “save” a partner from a difficult situation, without their consent
+• Crimes committed to prevent a loved person from leaving or ending a relationship
+• News cases in which obsessive love turns into aggression, stalking or femicide
+
+27. Discovery of the dishonor of a loved one
+
+**Description**
+A character discovers that a loved one has committed a dishonorable, immoral or socially condemned act. The tension arises from the conflict between the love that continues to exist and the shame, disappointment or anger caused by the discovery
+
+**Dynamic Elements**
+• One who discovers: The person who becomes aware of the dishonor. Their inner world is split between affection and judgment, loyalty and rejection
+• Dishonored loved one: The one who committed the act considered shameful or unacceptable. They may feel guilt, indifference or denial
+• Dishonor/Shameful act: What comes to light: a crime, a betrayal, a public lie, a reprehensible behavior. It is the core of the emotional and moral conflict
+
+**Examples**
+• Discovering that a partner has committed a serious crime (fraud, violence, abuse)
+• Learning that a loved one has publicly lied, destroyed others’ reputations or betrayed an important trust
+• A parent who discovers illegal or deeply harmful behavior by their child
+• The revelation of a traumatic or violent past of a loved one, radically changing how they are seen
+• Discovering that a respected person lives a double life based on deception and exploitation
+
+28. Obstacles to love
+
+**Description**
+Two people love each other, but external or internal forces make it impossible or extremely difficult for them to be together. The tension arises from the clash between authentic feeling and the limits imposed by society, family, distance, laws, trauma or personal fears
+
+**Dynamic Elements**
+• Lovers: Those who feel a genuine, mutual feeling. Their desire to be together is the emotional heart of the situation
+• Obstacle: What prevents or complicates the union: social, religious, cultural, family, legal, geographical or psychological differences. It represents the wall against which love crashes
+• Environment/Society: The context that reinforces the obstacle: family, community, rules, prejudices, traditions, social expectations
+
+**Examples**
+• Two people who love each other but are divided by insurmountable cultural, religious or family differences
+• Couples who cannot be together because of discriminatory laws, legal status or migration conditions
+• Loves hindered by family violence, control, manipulation or emotional dependence
+• Relationships made impossible by extreme distance, war or political borders
+• Two people who love each other but cannot be together because of fear, past trauma or deep inner insecurities
+
+29. Beloved enemy
+
+**Description**
+A character falls in love with someone who belongs to the opposing side: a personal, family, political or social enemy. The tension arises from the irreconcilable conflict between the growing love and the hostility that separates them
+
+**Dynamic Elements**
+• One who loves: The person who feels a deep affection for someone they should hate or fight. Their inner world is divided between loyalty and desire
+• Beloved enemy: The one who belongs to the opposing camp: rival, adversary, enemy by history, ideology or social roles. They represent both attraction and danger
+• Conflict/Barrier: The set of reasons that make this love forbidden or impossible: belonging to opposing groups, family rivalries, opposing ideologies, historical enmities, incompatible roles
+
+**Examples**
+• Two people who fall in love despite belonging to families or groups in conflict with each other
+• An activist who falls in love with someone who supports ideologies opposite to their own
+• Loves born between people belonging to deeply opposed political, religious or social factions
+• A feeling that arises between two people in direct competition (colleagues, professional rivals, legal adversaries)
+• Relationships in which the other represents everything one was taught to hate or fight
+
+30. Ambition
+
+**Description**
+A character is driven by an intense desire for power, success or personal greatness, to the point of sacrificing values, relationships and moral limits. The tension arises from the conflict between what one wants to become and what one is willing to destroy to get there
+
+**Dynamic Elements**
+• Ambitious one: The person who ardently desires to rise, emerge, dominate or excel at any cost. Their drive becomes the engine of the conflict
+• Object of ambition: What is desired: power, fame, career, recognition, wealth, control, social or political success
+• Obstacle/Rival/Morality: What stands between the subject and their goal: a person, a system, ethical rules, family, one’s own conscience or reality itself
+
+**Examples**
+• A person willing to crush colleagues and friends to obtain a promotion or a position of power
+• A politician who betrays ideals and alliances to climb hierarchies
+• Someone who sets aside affections, health and relationships to pursue fame, success or recognition
+• A person who lies, manipulates or exploits others to build a winning image
+• Parents who project their own ambition onto their children, pushing them beyond their personal limits
+
+31. Conflict with a God
+
+**Description**
+A character enters into opposition with a superior, sacred or transcendent force, questioning a destiny, an order or a will perceived as divine, absolute or inevitable. The tension arises from the clash between human fragility and a power that seems infinitely greater
+
+**Dynamic Elements**
+• One who challenges: The person who dares to rebel, argue or oppose a destiny, a faith, a sacred law or a force perceived as invincible. Their challenge arises from pride, desperation, love or a sense of justice
+• Superior force: What is challenged: a deity, a destiny, a natural law, an untouchable institution, an oppressive system experienced as absolute and immutable
+• Metaphysical or moral conflict: The clash between human and superhuman, between free will and predestination, between individual will and higher order. It is the deep tragic dimension of the situation
+
+**Examples**
+• A person who rebels against a definitive diagnosis and challenges their fate with all their strength
+• Someone who questions their religion, faith or the idea of God after a great tragedy
+• An individual who fights against a system perceived as invincible (state, law, corporation, institution)
+• Situations in which a person challenges what is considered immutable (disability, illness, social origin, family destiny)
+• The inner rebellion against the idea that things have always been this way, seeking to rewrite one’s own path
+
+32. Unfounded jealousy/Misunderstanding
+
+**Description**
+A character, misled by a misunderstanding or a mistaken interpretation, convinces themselves of the infidelity or betrayal of someone they love. The tension arises from a false belief, which generates destructive actions and reactions before the truth is clarified
+
+**Dynamic Elements**
+• One who is jealous: The one who distorts an ambiguous situation. Their insecurity, fear or possessiveness fuels the conflict
+• Accused person: The one who is unjustly suspected or accused of betrayal. They are often innocent and unaware of the initial misunderstanding
+• Misunderstanding: The event, detail or ambiguous situation that generates suspicion: a gesture seen from afar, a misinterpreted message, a coincidence
+
+**Examples**
+• A partner who misreads a message on a phone and triggers a deep crisis
+• Jealousy based on unfounded rumors or gossip spread by others
+• An ambiguous situation (embrace, meeting, confidence) interpreted as betrayal
+• Unjust accusations that destroy trust and relationships before the truth emerges
+• Conflicts born from unverified suspicions, leading to breakups, violence or isolation
+
+33. Miscarriage of justice
+
+**Description**
+A person is judged, condemned or despised for something they did not do, due to an error, prejudice or incomplete information. The tension arises from the injustice suffered and from the struggle to prove the truth before the damage becomes irreversible
+
+**Dynamic Elements**
+• Accused innocent: The one who is judged guilty despite not having committed the act. Their initial helplessness and need for truth are the heart of the situation
+• Judge/Accuser: The person, group or institution that formulates the wrong judgment: a court, an employer, a community, public opinion, a family
+• Error/False evidence: What generates the injustice: a misunderstanding, a falsified document, an unreliable witness, a prejudice, a hasty decision
+
+**Examples**
+• A person unjustly accused of a crime and ostracized by the community
+• An employee fired for a mistake they did not commit
+• A student punished or expelled for an infraction they are not responsible for
+• An individual judged guilty due to prejudices (racial, social, gender-based)
+• Damage to reputation caused by a false accusation or unverified news
+
+34. Remorse
+
+**Description**
+After committing a wrong, cruel or irreparable act, a character is consumed by guilt. The tension arises from the inner conflict between the desire to atone and the impossibility of erasing what has been done
+
+**Dynamic Elements**
+• One who feels remorse: The person who committed the act and now recognizes its gravity. Their inner torment is the emotional center of the situation
+• Act committed: The wrong, unjust or violent action that caused suffering or real damage. Its irreversibility fuels the remorse
+• Conscience: The inner voice that judges and torments the character. It becomes almost a character in itself, relentless and inescapable
+
+**Examples**
+• A person who deeply regrets words or actions that destroyed an important relationship
+• Someone who seriously harmed another person and lives in constant guilt
+• A parent who feels remorse for not having protected or listened enough to a child
+• A selfish choice that harmed others and returns as a weight on the conscience
+• Someone who obsessively rethinks a past mistake that can no longer be corrected
+
+35. Recovery of the lost person
+
+**Description**
+A loved one, disappeared, estranged or lost, is finally found or recovered after a long separation. The tension arises from desire, waiting and the fear that the recovery may not happen or may come too late
+
+**Dynamic Elements**
+• One who searches: The person who does not resign themselves to the loss and continues searching. Their determination and love keep the hope of reunion alive
+• Lost person: The one who disappeared, moved away, hid or was taken away. Their absence is the center of the lack
+• Reunion/Separation: The process, physical or emotional, that leads to reunion (or the attempt at reunion). It may be complete, partial or tragically late
+
+**Examples**
+• A person found after years of separation (children, relatives, long-lost friends)
+• Reunification between parents and children separated by adoptions, migrations or wars
+• A person thought lost (missing, addicted, homeless) who returns or is finally found
+• The rebuilding of a bond with someone who had deliberately distanced themselves
+• A relationship interrupted long ago that is recovered with effort and mutual transformation
+
+36. Loss of loved ones
+
+**Description**
+A person faces the definitive loss of someone they love: through death, irreversible separation or the impossibility of reunion. The tension arises from the void left by absence and from confronting a reality now deprived of that fundamental presence
+
+**Dynamic Elements**
+• One who loses: The person who remains, forced to confront pain, grief and a sense of lack. Their emotional survival is the true stake
+• Lost person: The one who is gone: through death, definitive separation, disappearance, irrevocable choice or irreparable distancing
+• Void/Grief: The space left by absence. It is not only a feeling, but a condition that profoundly alters the identity of the one who remains
+
+**Examples**
+• The loss of a loved one due to illness, accident or violence
+• The death of a parent, a child, a partner or a close friend
+• Definitive separation following migration, estrangement or irreparable breakup
+• The symbolic loss of a person who changes drastically and is no longer who they once were (addiction, mental illness, radicalization)
+• Unprocessed grief that continues to influence relationships and future choices
+
+### OUTPUT ###
+A JSON with the following structure:
+
+```
+{
+    "Supplication": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "Persecutor",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Suppliant",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Authority of undecided judgment",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Deliverance/Rescue": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "Unfortunate/Troubled",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Threatener/Aggressor",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Rescuer/Deliverer",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Crime pursued by vengeance": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "Avenger",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Culprit/Criminal",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Memory of the victim",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Vengeance among blood relatives": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "Avenging relative",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Guilty relative",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Memory of the victim",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Pursuit": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "Fugitive",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Punishment/Threat",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Disaster": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "Vanquished power",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Victorious enemy/Messenger",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Falling prey to cruelty or misfortune": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "Victim",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Cruelty/Misfortune",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Revolt": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "Tyrant/Oppressive power",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Conspirator/Rebel",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Daring enterprise": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "Daring one/Hero",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Goal",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Adversary/Obstacle",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Abduction": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "Abductor",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Abducted/Victim",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Guardian/Violated protective power",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Enigma": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "Questioner/Seeker",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Secret/Mystery",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "The one who knows",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Obtaining": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "One who wants to obtain",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "One who prevents/Possessor",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Object of desire",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Hatred among blood relatives": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "Hostile relative", 
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Hated relative",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Motive of the conflict",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Rivalry among blood relatives": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "Rival relative",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Competing relative",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Object of contention",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Murderous adultery": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "Adulterer/Adulteress",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Lover",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Betrayed spouse",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Madness": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "Madman",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Cause",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Imagined object/Obsession",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Fatal imprudence": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "Imprudent",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Ignored warning",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Fatal consequence",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Involuntary crimes of love": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "Guilty lover",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Loved person/Victim",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Involuntary fatal act",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Unaware killing of a blood relative": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "One who kills",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Unknown relative/Victim", 
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Revelation/Recognition",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Self-sacrifice for an ideal": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "One who sacrifices themselves", 
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Ideal/Cause", 
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Beneficiary/Community",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Self-sacrifice for loved ones": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "One who sacrifices themselves",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Loved person/Relative",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Danger/Threat",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Everything sacrificed for a passion": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "One who sacrifices themselves", 
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Object of passion", 
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "What is sacrificed",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Necessity of sacrificing loved ones": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "One who must sacrifice",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Loved person",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Law/Duty/Superior ideal",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Rivalry between superior and subordinate": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "Superior", 
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Subordinate", 
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Object of rivalry",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Adultery": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "Unfaithful spouse",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Lover",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Betrayed spouse", 
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Crimes of love": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "Guilty lover",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Loved person", 
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Crime/Illegal act",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Discovery of the dishonor of a loved one": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "One who discovers",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Dishonored loved one",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Dishonor/Shameful act",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Obstacles to love": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "Lovers", 
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Obstacle", 
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Environment/Society",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Beloved enemy": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "One who loves", 
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Beloved enemy", 
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Conflict/Barrier",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Ambition": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "Ambitious one",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Object of ambition",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Obstacle/Rival/Morality",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Conflict with a God": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "One who challenges",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Superior force",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Metaphysical or moral conflict",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Unfounded jealousy/Misunderstanding": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "One who is jealous", 
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Accused person",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Misunderstanding", 
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Miscarriage of justice": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "Accused innocent", 
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Judge/Accuser",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Error/False evidence",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Remorse": { 
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "One who feels remorse",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Act committed",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Conscience",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Recovery of the lost person": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "One who searches",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Lost person", 
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Reunion/Separation", 
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    },
+    "Loss of loved ones": {
+        "reasoning": string,
+        "adherence": int,
+        "dynamic_elements": [
+            {
+                "element": "One who loses",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Lost person",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            },
+            {
+                "element": "Void/Grief",
+                "values": [
+                    {
+                        "value": string,
+                        "source": "extracted" | "inferred"
+                    },
+                    ...
+                ] | []
+            }
+        ]   
+    }
+    
+}
+```
+
+### INPUT ### 
+Below is the narrative unit to be analyzed, expressed in JSON format:
