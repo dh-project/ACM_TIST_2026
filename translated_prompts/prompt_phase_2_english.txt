@@ -261,7 +261,7 @@ Within the same family, a deep and persistent hatred arises among relatives, fue
 • Political, religious or identity divergences that definitively break bonds between relatives
 • A family divided into factions, in which every event becomes an occasion for tension and rupture
 
-14. Rivalry among blood relatives
+14. Rivalry of kin
 
 **Description**
 Two or more members of the same family enter into competition for love, power, recognition or supremacy. The tension arises from the fact that the bond of blood does not mitigate but instead intensifies the rivalry, transforming it into a deep and often destructive conflict
@@ -380,7 +380,7 @@ A character gives up their freedom, well-being or life in the name of an ideal, 
 • A whistleblower who sacrifices reputation and safety to reveal a truth
 • Someone who gives up a comfortable life to dedicate themselves entirely to a social, political or humanitarian cause
 
-21. Self-sacrifice for loved ones
+21. Self-sacrifice for kin
 
 **Description**
 A character gives up their freedom, happiness or life to save or protect a family member or a loved one. The tension arises from the conflict between the instinct for survival and the emotional bond that drives the sacrifice
@@ -431,7 +431,7 @@ A character is forced to choose between a great duty (law, morality, faith, miss
 • A parent who distances a child to protect them, knowing that this breaks the bond
 • Situations in which justice or collective security impose harming those one loves
 
-24. Rivalry between superior and subordinate
+24. Rivalry of superior vs. inferior
 
 **Description**
 A person in a subordinate position enters into conflict with a figure who holds power, authority or higher status. The tension arises from the clash between structural inequality and the will to assert oneself, resist or overturn the hierarchy
@@ -516,7 +516,7 @@ Two people love each other, but external or internal forces make it impossible o
 • Relationships made impossible by extreme distance, war or political borders
 • Two people who love each other but cannot be together because of fear, past trauma or deep inner insecurities
 
-29. Beloved enemy
+29. An enemy loved
 
 **Description**
 A character falls in love with someone who belongs to the opposing side: a personal, family, political or social enemy. The tension arises from the irreconcilable conflict between the growing love and the hostility that separates them
@@ -618,7 +618,7 @@ After committing a wrong, cruel or irreparable act, a character is consumed by g
 • A selfish choice that harmed others and returns as a weight on the conscience
 • Someone who obsessively rethinks a past mistake that can no longer be corrected
 
-35. Recovery of the lost person
+35. Recovery of a lost one
 
 **Description**
 A loved one, disappeared, estranged or lost, is finally found or recovered after a long separation. The tension arises from desire, waiting and the fear that the recovery may not happen or may come too late
@@ -1085,7 +1085,7 @@ A JSON with the following structure:
             }
         ]   
     },
-    "Rivalry among blood relatives": {
+    "Rivalry of kin": {
         "reasoning": string,
         "adherence": int,
         "dynamic_elements": [
@@ -1337,7 +1337,7 @@ A JSON with the following structure:
             }
         ]   
     },
-    "Self-sacrifice for loved ones": {
+    "Self-sacrifice for kin": {
         "reasoning": string,
         "adherence": int,
         "dynamic_elements": [
@@ -1445,7 +1445,7 @@ A JSON with the following structure:
             }
         ]   
     },
-    "Rivalry between superior and subordinate": {
+    "Rivalry of superior vs. inferior": {
         "reasoning": string,
         "adherence": int,
         "dynamic_elements": [
@@ -1625,7 +1625,7 @@ A JSON with the following structure:
             }
         ]   
     },
-    "Beloved enemy": {
+    "An enemy loved": {
         "reasoning": string,
         "adherence": int,
         "dynamic_elements": [
@@ -1841,7 +1841,7 @@ A JSON with the following structure:
             }
         ]   
     },
-    "Recovery of the lost person": {
+    "Recovery of a lost one": {
         "reasoning": string,
         "adherence": int,
         "dynamic_elements": [
