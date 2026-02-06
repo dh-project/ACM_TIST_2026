@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Visualizzatore Dati Storie (Offline Capable)</title>
+	<style>
+		/* --- CSS Styling --- */
+		:root {
+			--primary-color: #2c3e50;
+			--accent-color: #3498db;
+			--bg-light: #f8f9fa;
+			--border-color: #e9ecef;
+			--text-dark: #333;
+			--hover-color: #e2e6ea;
+		}
+
+		html {
+			font-size: 18px; 
+		}
+
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			margin: 0;
+			height: 100vh;
+			color: var(--text-dark);
+			overflow: hidden; 
+			background-color: #f4f4f5; 
+		}
+
+		/* --- Page Wrapper --- */
+		.page-wrapper {
+			display: flex;
+			width: 100%;
+			max-width: 1536px;
+			height: 100vh;
+			margin: 0 auto; 
+			box-shadow: 0 10px 30px -10px rgba(0,0,0,0.07);
+			border-left: 1px solid var(--border-color);
+			border-right: 1px solid var(--border-color);
+			background-color: #fff; 
+		}
+
+		/* --- Left Sidebar (List & Search & Controls) --- */
+		.sidebar {
+			width: 320px; /* Slightly wider to accommodate buttons */
+			background-color: var(--bg-light);
+			border-right: 1px solid var(--border-color);
+			display: flex;
+			flex-direction: column;
+			flex-shrink: 0;
+			position: relative;
+		}
+
+		.search-container {
+			padding: 15px;
+			border-bottom: 1px solid var(--border-color);
+			background: #fff;
+		}
+
+		#searchInput {
+			width: 100%;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+
+		#storyList {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			overflow-y: auto;
+			flex-grow: 1; /* Takes available space */
+		}
+
+		/* Sidebar Footer for Buttons */
+		.sidebar-footer {
+			padding: 15px;
+			border-top: 1px solid var(--border-color);
+			background-color: #fff;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
+
+		.control-btn, .file-upload-label {
+			padding: 10px;
+			border: 1px solid #ccc;
+			background-color: white;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 0.9rem;
+			font-weight: 600;
+			color: var(--primary-color);
+			transition: all 0.2s;
+			text-align: center;
+			display: block; /* For label */
+		}
+
+		.control-btn:hover, .file-upload-label:hover {
+			background-color: var(--hover-color);
+		}
+
+		.control-btn.active {
+			background-color: var(--primary-color);
+			color: white;
+			border-color: var(--primary-color);
+		}
+		
+		/* Offline Specific Styles */
+		.offline-ui {
+			display: none;
+			flex-direction: column;
+			gap: 5px;
+		}
+
+		.offline-warning {
+			font-size: 0.8rem;
+			color: #e74c3c;
+			text-align: center;
+			font-weight: bold;
+			margin-bottom: 5px;
+		}
+
+		.story-item {
+			padding: 15px;
+			border-bottom: 1px solid var(--border-color);
+			cursor: pointer;
+			transition: background 0.2s;
+		}
+
+		.story-item:hover {
+			background-color: var(--hover-color);
+		}
+
+		.story-item.active {
+			background-color: var(--accent-color);
+			color: white;
+		}
+
+		/* --- Right Panel (Content) --- */
+		.content {
+			flex-grow: 1;
+			padding: 40px;
+			overflow-y: auto;
+			background-color: #fff;
+		}
+
+		/* Hiding mechanism for Scores */
+		.content.hide-scores .score-row {
+			display: none !important;
+		}
+
+		.placeholder-text, .error-text {
+			color: #888;
+			text-align: center;
+			margin-top: 20%;
+			font-size: 1.2rem;
+			line-height: 1.6;
+		}
+		
+		.error-text {
+			color: #e74c3c;
+		}
+
+		/* --- Section Styling --- */
+		.section-block {
+			margin-bottom: 30px;
+			border: 1px solid var(--border-color);
+			border-radius: 8px;
+			overflow: hidden;
+			box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+		}
+
+		.section-header {
+			display: flex;
+			color: white;
+			font-weight: bold;
+			text-transform: uppercase;
+			font-size: 0.9rem;
+			letter-spacing: 1px;
+			padding: 0;
+		}
+
+		.header-tag {
+			width: 15%;
+			min-width: 120px;
+			padding: 10px 15px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			border-right: 1px solid rgba(255,255,255,0.1);
+		}
+
+		.header-title {
+			flex-grow: 1;
+			background-color: var(--primary-color);
+			padding: 10px 15px;
+			display: flex;
+			align-items: center;
+		}
+
+		/* Header Colors */
+		.tag-reperto { background-color: #869099; } 
+		.tag-fase1   { background-color: #8e44ad; } 
+		.tag-fase2   { background-color: #d35400; } 
+		.tag-storia  { background-color: #27ae60; } 
+		.tag-table   { background-color: #a09316; } 
+
+		.section-body {
+			padding: 15px;
+		}
+
+		.data-row {
+			display: flex;
+			margin-bottom: 8px;
+			padding-bottom: 4px;
+			align-items: baseline; /* Better alignment for text */
+		}
+		
+		.data-row:last-child {
+			border-bottom: none;
+		}
+
+		.data-label {
+			font-weight: 600;
+			width: 180px;
+			flex-shrink: 0;
+			color: #555;
+		}
+
+		.data-value {
+			flex-grow: 1;
+			color: #000;
+		}
+
+		.dynamic-element-list {
+			display: flex;
+			gap: 10px;
+			flex-wrap: wrap;
+			flex-grow: 1; /* Added to fill space next to label */
+		}
+		
+		.chip {
+			background: #e1ecf4;
+			color: #2c5e77;
+			padding: 5px 10px;
+			border-radius: 15px;
+			font-size: 0.9rem;
+			border: 1px solid #bedcf1;
+		}
+
+		.custom-table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-top: 10px;
+		}
+
+		.custom-table th, .custom-table td {
+			border: 1px solid #ddd;
+			padding: 8px;
+			text-align: left;
+		}
+
+		.custom-table th {
+			background-color: #f2f2f2;
+		}
+		
+		.scene-card {
+			background: #fafafa;
+			border-left: 4px solid var(--accent-color);
+			padding: 10px 15px;
+			margin-bottom: 10px;
+		}
+
+		/* --- MODAL STYLES --- */
+		.modal-overlay {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0,0,0,0.5);
+			z-index: 1000;
+			display: none; /* Hidden by default */
+			justify-content: center;
+			align-items: center;
+			backdrop-filter: blur(2px);
+		}
+
+		.modal-overlay.open {
+			display: flex;
+		}
+
+		.modal-content {
+			background-color: white;
+			width: 90%;
+			max-width: 700px;
+			max-height: 85vh;
+			border-radius: 8px;
+			box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+			display: flex;
+			flex-direction: column;
+			overflow: hidden;
+			animation: slideIn 0.3s ease-out;
+		}
+
+		@keyframes slideIn {
+			from { transform: translateY(20px); opacity: 0; }
+			to { transform: translateY(0); opacity: 1; }
+		}
+
+		.modal-header {
+			background-color: var(--primary-color);
+			color: white;
+			padding: 15px 20px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.modal-header h2 {
+			margin: 0;
+			font-size: 1.2rem;
+			font-weight: 600;
+		}
+
+		.modal-close-btn {
+			background: none;
+			border: none;
+			color: white;
+			font-size: 1.5rem;
+			cursor: pointer;
+			padding: 0;
+			line-height: 1;
+		}
+
+		.modal-body {
+			padding: 25px;
+			overflow-y: auto;
+		}
+
+		.modal-section {
+			margin-bottom: 20px;
+		}
+
+		.modal-section h3 {
+			margin-top: 0;
+			color: var(--accent-color);
+			font-size: 1rem;
+			border-bottom: 1px solid #eee;
+			padding-bottom: 5px;
+			margin-bottom: 10px;
+		}
+
+		.modal-list {
+			padding-left: 20px;
+			margin: 0;
+		}
+		
+		.modal-list li {
+			margin-bottom: 5px;
+		}
+
+		.info-btn {
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+			width: 20px;
+			height: 20px;
+			background-color: var(--accent-color);
+			color: white;
+			border-radius: 50%;
+			border: none;
+			font-size: 12px;
+			font-weight: bold;
+			font-family: 'Times New Roman', serif;
+			cursor: pointer;
+			margin-left: 8px;
+			vertical-align: middle;
+			transition: transform 0.2s, background-color 0.2s;
+			margin-bottom:4px;
+		}
+
+		.info-btn:hover {
+			transform: scale(1.1);
+			background-color: #2980b9;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div class="page-wrapper">
+		
+		<!-- Sidebar -->
+		<div class="sidebar">
+			<div class="search-container">
+				<input type="text" id="searchInput" placeholder="Caricamento storie...">
+			</div>
+			
+			<ul id="storyList">
+				<!-- Items injected here -->
+			</ul>
+
+			<!-- Sidebar Footer Buttons -->
+			<div class="sidebar-footer">
+				
+				<!-- Normal Mode Button (Will hide if offline) -->
+				<button id="btnSource" class="control-btn" onclick="toggleSource()">
+					📂 Fonte: Da Annotare
+				</button>
+
+				<!-- Offline Mode UI (Hidden by default) -->
+				<div id="offlineWrapper" class="offline-ui">
+					<div class="offline-warning">⚠️ Modalità Offline</div>
+					<label for="fileInput" class="file-upload-label">
+						📂 Carica JSON Storie
+					</label>
+					<input type="file" id="fileInput" accept=".json" style="display:none">
+				</div>
+
+				<button id="btnScores" class="control-btn" onclick="toggleScores()">
+					👁️ Punteggi: Nascosti
+				</button>
+			</div>
+		</div>
+
+		<!-- Main Content -->
+		<div class="content" id="contentArea">
+			<div class="placeholder-text">Seleziona una storia dalla sinistra per vederne i dettagli</div>
+		</div>
+
+	</div>
+
+	<!-- Modal Container -->
+	<div id="infoModal" class="modal-overlay" onclick="closeModal(event)">
+		<div class="modal-content" onclick="event.stopPropagation()">
+			<div class="modal-header">
+				<h2 id="modalTitle">Titolo Situazione</h2>
+				<button class="modal-close-btn" onclick="closeModal(event)">&times;</button>
+			</div>
+			<div class="modal-body" id="modalBody">
+				<!-- Content injected here -->
+			</div>
+		</div>
+	</div>
+
+	<script>
+		// --- 1. Global State ---
+		let storyData = {};
+		let storyKeys = [];
+		let dramaticSituationsMap = {}; // Lookup map for situation details
+		
+		// Defaults
+		let currentJsonSource = 'to_annotate_stories.json'; 
+		let areScoresVisible = false;
+
+		// --- 2. UI Elements ---
+		const storyListEl = document.getElementById('storyList');
+		const contentAreaEl = document.getElementById('contentArea');
+		const searchInput = document.getElementById('searchInput');
+		const btnSource = document.getElementById('btnSource');
+		const btnScores = document.getElementById('btnScores');
+		const modalOverlay = document.getElementById('infoModal');
+		const modalTitle = document.getElementById('modalTitle');
+		const modalBody = document.getElementById('modalBody');
+		
+		// Offline Elements
+		const offlineWrapper = document.getElementById('offlineWrapper');
+		const fileInput = document.getElementById('fileInput');
+
+		// --- 3. Initialization ---
+		document.addEventListener('DOMContentLoaded', () => {
+			// Auto-focus search on typing
+			document.addEventListener('keydown', (e) => {
+				const isPrintable = e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey;
+				if (isPrintable && e.key !== ' ' && document.activeElement !== searchInput) {
+					searchInput.focus();
+				}
+			});
+
+			// Close modal on Escape key
+			document.addEventListener('keydown', (e) => {
+				if (e.key === 'Escape') {
+					modalOverlay.classList.remove('open');
+				}
+			});
+
+			// Check URL param override
+			const urlParams = new URLSearchParams(window.location.search);
+			if (urlParams.get('json') === 'all_stories') {
+				currentJsonSource = 'all_stories.json';
+			}
+
+			// Apply initial visibility class
+			if (!areScoresVisible) {
+				contentAreaEl.classList.add('hide-scores');
+			}
+
+			updateButtonsUI();
+			
+			// Load both Main Data and Reference Data
+			loadDramaticSituations();
+			loadData(currentJsonSource);
+
+			// Setup File Listener for Offline Mode
+			fileInput.addEventListener('change', handleFileUpload);
+		});
+
+		// --- 4. Logic & Actions ---
+
+		async function loadDramaticSituations() {
+			try {
+				const response = await fetch('dramatic_situations.json');
+				if (!response.ok) throw new Error("File situations non trovato");
+				const data = await response.json();
+				
+				// Index by Title for O(1) lookup
+				Object.values(data).forEach(situation => {
+					if (situation.title) {
+						dramaticSituationsMap[situation.title.trim()] = situation;
+					}
+				});
+				console.log("Loaded situations reference:", Object.keys(dramaticSituationsMap).length);
+			} catch (e) {
+				console.warn("Reference data load failed (expected if offline):", e);
+				// We do not block the UI for this, but the (i) info buttons won't appear
+			}
+		}
+
+		async function loadData(filename) {
+			searchInput.placeholder = "Caricamento in corso...";
+			storyListEl.innerHTML = ''; 
+			
+			try {
+				const response = await fetch(filename);
+				if (!response.ok) {
+					throw new Error(`Errore HTTP: ${response.status}`);
+				}
+				storyData = await response.json();
+				processLoadedData(filename === 'to_annotate_stories.json' ? 'Da Annotare' : 'Tutte');
+
+			} catch (error) {
+				console.error("Fetch failed, switching to offline mode:", error);
+				enableOfflineMode();
+			}
+		}
+
+		function processLoadedData(sourceLabel) {
+			storyKeys = Object.keys(storyData);
+			searchInput.placeholder = `Cerca tra ${storyKeys.length} storie...`;
+			renderList(storyKeys);
+			
+			contentAreaEl.innerHTML = `<div class="placeholder-text">Dati caricati: <b>${sourceLabel}</b> (${storyKeys.length}).<br>Seleziona una storia dalla sinistra.</div>`;
+		}
+
+		// --- OFFLINE MODE LOGIC ---
+		function enableOfflineMode() {
+			// 1. Hide the Source Button
+			btnSource.style.display = 'none';
+			
+			// 2. Show the File Input
+			offlineWrapper.style.display = 'flex';
+			
+			// 3. Update Text Area to guide user
+			contentAreaEl.innerHTML = `
+				<div class="error-text">
+					Impossibile caricare i dati automaticamente.<br>
+					(Sei offline o stai aprendo il file direttamente)<br><br>
+					<b>Usa il pulsante "Carica JSON" nella barra laterale per selezionare il tuo file.</b>
+				</div>
+			`;
+			searchInput.placeholder = "In attesa di file...";
+		}
+
+		function handleFileUpload(e) {
+			const file = e.target.files[0];
+			if (!file) return;
+
+			const reader = new FileReader();
+			reader.onload = function(e) {
+				try {
+					const content = e.target.result;
+					storyData = JSON.parse(content);
+					processLoadedData(file.name); // Use filename as label
+				} catch (err) {
+					alert("Errore nella lettura del JSON: " + err);
+				}
+			};
+			reader.readAsText(file);
+		}
+
+		// --- END OFFLINE MODE LOGIC ---
+
+		function toggleSource() {
+			if (currentJsonSource === 'to_annotate_stories.json') {
+				currentJsonSource = 'all_stories.json';
+			} else {
+				currentJsonSource = 'to_annotate_stories.json';
+			}
+			updateButtonsUI();
+			loadData(currentJsonSource);
+		}
+
+		function toggleScores() {
+			areScoresVisible = !areScoresVisible;
+			updateButtonsUI();
+			
+			if (areScoresVisible) {
+				contentAreaEl.classList.remove('hide-scores');
+			} else {
+				contentAreaEl.classList.add('hide-scores');
+			}
+		}
+
+		function updateButtonsUI() {
+			if (currentJsonSource === 'to_annotate_stories.json') {
+				btnSource.innerHTML = "📂 Fonte: <b>Da Annotare</b>";
+			} else {
+				btnSource.innerHTML = "📂 Fonte: <b>Tutte</b>";
+			}
+
+			if (areScoresVisible) {
+				btnScores.innerHTML = "👁️ Punteggi <b>Visibili</b>";
+				btnScores.classList.add('active'); 
+			} else {
+				btnScores.innerHTML = "👁️ Punteggi <b>Nascosti</b>";
+				btnScores.classList.remove('active');
+			}
+		}
+
+		function handleSearch(e) {
+			const term = e.target.value.toLowerCase();
+			const filtered = storyKeys.filter(key => key.toLowerCase().includes(term));
+			renderList(filtered);
+		}
+		
+		searchInput.addEventListener('input', handleSearch);
+
+		// --- Modal Logic ---
+		
+		function openSituationModal(titolo) {
+			const data = dramaticSituationsMap[titolo.trim()];
+			
+			if (!data) {
+				alert("Dettagli per questa situazione non trovati.");
+				return;
+			}
+
+			// Populate Header
+			modalTitle.textContent = `${data.title}`; // Or add ID if available in data object
+
+			// Populate Body
+			let dynamicElementsHtml = '<ul class="modal-list">';
+			if (data.dynamic_elements) {
+				data.dynamic_elements.forEach(el => {
+					dynamicElementsHtml += `<li><b>${el.element}:</b> ${el.element_description}</li>`;
+				});
+			}
+			dynamicElementsHtml += '</ul>';
+
+			let examplesHtml = '<ul class="modal-list">';
+			if (data.examples) {
+				data.examples.forEach(ex => {
+					examplesHtml += `<li>${ex}</li>`;
+				});
+			}
+			examplesHtml += '</ul>';
+
+			modalBody.innerHTML = `
+				<div class="modal-section">
+					<h3>Descrizione</h3>
+					<p>${data.description}</p>
+				</div>
+				<div class="modal-section">
+					<h3>Elementi Dinamici</h3>
+					${dynamicElementsHtml}
+				</div>
+				<div class="modal-section">
+					<h3>Esempi</h3>
+					${examplesHtml}
+				</div>
+			`;
+
+			// Show Overlay
+			modalOverlay.classList.add('open');
+		}
+
+		function closeModal(event) {
+			// event triggers on overlay click or button click
+			modalOverlay.classList.remove('open');
+		}
+
+		// --- 5. Rendering Functions ---
+
+		function renderList(keys) {
+			storyListEl.innerHTML = '';
+			keys.forEach(key => {
+				const li = document.createElement('li');
+				li.className = 'story-item';
+				li.textContent = key;
+				li.onclick = () => loadStory(key, li);
+				storyListEl.appendChild(li);
+			});
+		}
+
+		function loadStory(key, clickedElement) {
+			document.querySelectorAll('.story-item').forEach(el => el.classList.remove('active'));
+			if(clickedElement) clickedElement.classList.add('active');
+
+			const data = storyData[key];
+			
+			let html = `<h1>${key}</h1>`;
+
+			// -- REPERTO --
+			if (data.reperto) {
+				html += createSection(
+					'REPERTO', 
+					'Da Catalogo', 
+					`
+					${createRow('ID Catalogo', data.reperto.id_catalogo)}
+					${createRow('Descrizione', data.reperto.descrizione)}
+					${createRow('Descrizione Curatoriale', data.reperto.descrizione_curatoriale)}
+					`,
+					'tag-reperto'
+				);
+			}
+
+			// -- FASE 1 --
+			if (data.fase_1) {
+				html += createSection(
+					'FASE 1', 
+					'Estrazione & Analisi Evento', 
+					`
+					${createRow('Evento Centrale', data.fase_1.evento_centrale)}
+					${createRow('Descrizione', data.fase_1.descrizione)}
+					${createRow('Pot. Narrativo', data.fase_1.potenziale_narrativo, 'score-row')} 
+					`,
+					'tag-fase1'
+				);
+			}
+
+			// -- FASE 2 --
+			if (data.fase_2) {
+				let dynamicChips = '';
+				if(data.fase_2.elementi_dinamici) {
+					dynamicChips = '<div class="dynamic-element-list">';
+					data.fase_2.elementi_dinamici.forEach(item => {
+						dynamicChips += `<span class="chip"><b>${item.elemento}:</b> ${item.valore}</span>`;
+					});
+					dynamicChips += '</div>';
+				}
+
+				// Create Title Row with Info Button
+				const titoloRaw = data.fase_2.titolo;
+				let titoloHtml = titoloRaw;
+				// If we have details for this title in our loaded map, add the button
+				if (dramaticSituationsMap[titoloRaw]) {
+					// We escape the string for the onclick handler
+					const safeTitle = titoloRaw.replace(/'/g, "\\'");
+					titoloHtml += `<button class="info-btn" onclick="openSituationModal('${safeTitle}')" title="Vedi dettagli situazione">i</button>`;
+				}
+
+				html += createSection(
+					'FASE 2',
+					'Assegnazione Situazione Drammatica', 
+					`
+					${createRow('Titolo', titoloHtml)}
+					${createRow('Aderenza', data.fase_2.aderenza, 'score-row')}
+					<div class="data-row" style="align-items: center;">
+						<div class="data-label">Elem. Dinamici:</div>
+						${dynamicChips}
+					</div>
+					`,
+					'tag-fase2'
+				);
+			}
+
+			// -- FASE 3 --
+			if (data.fase_3) {
+				let scenesHtml = '';
+				if (data.fase_3.scene) {
+					data.fase_3.scene.forEach(scene => {
+						scenesHtml += `
+							<div class="scene-card">
+								<h4>Scena ${scene.num}: ${scene.titolo}</h4>
+								<p>${scene.contenuto}</p>
+							</div>
+						`;
+					});
+				}
+
+				html += createSection(
+					'FASE 3',
+					'Storia Generata', 
+					`
+					${createRow('Titolo', data.fase_3.titolo)}
+					${createRow('Luogo', data.fase_3.luogo)}
+					${createRow('Tempo', data.fase_3.tempo)}
+					<hr style="border:0; border-top:1px solid #eee; margin:15px 0;">
+					<h3>Scene</h3>
+					${scenesHtml}
+					`,
+					'tag-storia'
+				);
+			}
+
+			// -- TABELLA --
+			if (data.tabella_riassunto && Array.isArray(data.tabella_riassunto)) {
+				let tableHtml = '<table class="custom-table">';
+				data.tabella_riassunto.forEach((row, index) => {
+					tableHtml += '<tr>';
+					row.forEach(cell => {
+						if (index === 0) tableHtml += `<th>${cell}</th>`;
+						else tableHtml += `<td>${cell}</td>`;
+					});
+					tableHtml += '</tr>';
+				});
+				tableHtml += '</table>';
+
+				html += createSection('', 'Tabella riassuntiva della storia', tableHtml, 'tag-table');
+			}
+
+			contentAreaEl.innerHTML = html;
+			
+			if (!areScoresVisible) {
+				contentAreaEl.classList.add('hide-scores');
+			} else {
+				contentAreaEl.classList.remove('hide-scores');
+			}
+		}
+
+		// --- Helper Functions ---
+		
+		function createSection(tag, title, content, tagClass) {
+			let tag_s = "";
+			if (tag != "") {
+				tag_s = `<div class="header-tag ${tagClass}">${tag}</div>`;
+			}
+			return `
+				<div class="section-block">
+					<div class="section-header">
+						${tag_s}
+						<div class="header-title">${title}</div>
+					</div>
+					<div class="section-body">${content}</div>
+				</div>
+			`;
+		}
+
+		function createRow(label, value, extraClass = '') {
+			if (!value) return '';
+			return `
+				<div class="data-row ${extraClass}">
+					<div class="data-label">${label}:</div>
+					<div class="data-value">${value}</div>
+				</div>
+			`;
+		}
+	</script>
+</body>
+</html>

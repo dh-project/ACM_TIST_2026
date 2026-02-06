@@ -1,0 +1,917 @@
+{
+    
+    "01": {
+        "title": "Supplica",
+        "description": "Una o più figure perseguitate implorano protezione davanti a un’autorità il cui giudizio resta incerto tra pietà, paura e prudenza. A volte il dubbio appartiene allo stesso persecutore, oppure il supplice è affiancato da un intercessore che rafforza l’appello. La tensione nasce dalla volontà del persecutore",
+        "dynamic_elements": [
+            {
+                "element": "Persecutore",
+                "element_description": "Colui che minaccia o opprime il supplice, creando la situazione di pericolo che rende necessaria la supplica"
+            },
+            {
+                "element": "Supplice",
+                "element_description": "Il perseguitato che implora protezione direttamente o attraverso un intermediario. È il centro emotivo e morale della scena"
+            },
+            {
+                "element": "Autorità dal giudizio incerto",
+                "element_description": "La figura che può salvare o condannare con una scelta. Il suo dubbio costituisce il momento di massima tensione drammatica"
+            }
+        ],
+        "examples": [
+            "Scene tipiche dei protettorati coloniali, in cui popolazioni soggette implorano una potenza dominante",
+            "Una famiglia divisa religiosamente, in cui un figlio chiede a un genitore alleato di poter praticare liberamente il proprio culto",
+            "La richiesta di riavere il corpo o le spoglie di un congiunto morto lontano o giustiziato",
+            "Petizioni, implorazioni, richieste di pietà (es. confessioni, suppliche di perdono)"
+        ]
+    },
+
+    "02": {
+        "title": "Liberazione/Salvataggio",
+        "description": "Una persona sventurata, minacciata o condannata viene salvata dall’intervento improvviso e inatteso di un soccorritore, che agisce di propria iniziativa. La tensione non nasce dall’attesa di una decisione, ma dall’irruzione imprevista che spezza una sorte ormai segnata",
+        "dynamic_elements": [
+            {
+                "element": "Sventurato/Infelice",
+                "element_description": "È la persona in pericolo, condannata o senza via d’uscita. La sua condizione estrema rende necessaria l’irruzione di un salvatore esterno"
+            },
+            {
+                "element": "Minacciante/Aggressore",
+                "element_description": "È la forza o la situazione che incombe sull’infelice: una persona, una legge, una violenza, un evento imminente. Rappresenta il pericolo da cui deve essere liberato"
+            },
+            {
+                "element": "Salvatore/Liberatore",
+                "element_description": "È colui che interviene inaspettatamente e di propria iniziativa per salvare lo sventurato. La sua comparsa improvvisa crea il rovesciamento drammatico della situazione"
+            }
+        ],
+        "examples": [
+            "Assistenza giudiziaria: l’intervento di un avvocato, di un giudice o di un garante che riesce a salvare una persona innocente da una condanna o da una decisione ingiusta",
+            "Intervento di un estraneo in una situazione di pericolo (es. una rapina o un’aggressione) che ferma l’evento e sottrae la vittima al danno",
+            "L’arrivo improvviso di un aiuto durante un incidente o una calamità, che impedisce una tragedia imminente",
+            "Un superiore che interviene contro un’ingiustizia per salvare un subordinato da un abuso o da una punizione illegittima"
+        ]
+    },
+
+    "03": {
+        "title": "Crimine perseguito dalla vendetta",
+        "description": "Un crimine resta impunito o irrisolto e una figura decide di inseguire personalmente la giustizia, spinta dal desiderio di vendetta. La tensione nasce dalla caccia al colpevole e dalla progressiva trasformazione del vendicatore, diviso tra giustizia e ossessione",
+        "dynamic_elements": [
+            {
+                "element": "Vendicatore",
+                "element_description": "È colui che decide di dare la caccia al colpevole di un torto o di un delitto. La sua identità è spesso segnata dal legame emotivo con la vittima e dalla determinazione a farla pagare"
+            },
+            {
+                "element": "Colpevole/Criminale",
+                "element_description": "È l’autore del crimine che viene cercato per essere punito. Può essere consapevole o meno della minaccia che lo insegue, presente o assente fisicamente nella scena"
+            },
+            {
+                "element": "Ricordo della vittima",
+                "element_description": "È la presenza simbolica del torto subito: il morto, l’offesa, la perdita. Anche se invisibile, è la vera forza che alimenta e giustifica la vendetta"
+            }
+        ],
+        "examples": [
+            "Un familiare di una vittima che decide di indagare da solo su un omicidio o un’aggressione rimasti impuniti",
+            "Una persona truffata o umiliata che dedica tempo e risorse a smascherare pubblicamente chi le ha fatto un torto",
+            "Una vittima di bullismo che cresce con l’idea di “regolare i conti” con chi l’ha ferita",
+            "Vendette indirette: colpire qualcuno attraverso ciò che ama (reputazione, lavoro, affetti), invece che direttamente la persona"
+        ]
+    },
+
+    "04": {
+        "title": "Vendetta tra consanguinei",
+        "description": "La vendetta per un torto o un omicidio viene compiuta all’interno della stessa famiglia: un parente punisce un altro parente per un crimine commesso contro un congiunto comune. La tensione nasce dal fatto che il legame di sangue si trasforma in campo di battaglia, rendendo la violenza ancora più tragica e disturbante",
+        "dynamic_elements": [
+            {
+                "element": "Parente vendicatore",
+                "element_description": "È il familiare che prende su di sé il compito della vendetta. Il suo gesto è alimentato dal dolore, dal senso di dovere e dalla memoria della persona offesa"
+            },
+            {
+                "element": "Parente colpevole",
+                "element_description": "È il membro della famiglia che ha commesso il crimine o il torto e che diventa il bersaglio della vendetta. In questa situazione il legame di sangue rende la punizione ancora più lacerante"
+            },
+            {
+                "element": "Ricordo della vittima",
+                "element_description": "È la presenza — reale o simbolica — del familiare offeso o ucciso, che continua ad agire come motore morale della vendetta. È ciò che mantiene vivo il conflitto"
+            }
+        ],
+        "examples": [
+            "Un fratello che decide di vendicarsi di un altro fratello per un torto gravissimo fatto a un genitore o a una sorella",
+            "Conflitti familiari che degenerano in violenza a causa di tradimenti, abusi o violazioni profonde",
+            "Vendette indirette all’interno della famiglia, come togliere affetto, sostegno o dignità a un parente colpevole",
+            "Distruzione di ciò che un familiare ama (reputazione, beni, relazioni) come forma di punizione per un torto verso un altro parente"
+        ]
+    },
+
+    "05": {
+        "title": "Inseguimento",
+        "description": "Una persona è costretta a fuggire mentre un pericolo, una colpa o una minaccia la inseguono costantemente. La tensione nasce dall’urgenza della fuga e dal senso di accerchiamento, che rende il protagonista sempre più isolato e vulnerabile",
+        "dynamic_elements": [
+            {
+                "element": "Fuggitivo",
+                "element_description": "È la persona in fuga, colpevole o innocente, che cerca di sottrarsi a una minaccia, a una punizione o a una conseguenza inevitabile. Il pubblico tende a identificarsi con lui, condividendone paura e urgenza"
+            },
+            {
+                "element": "Punizione/Minaccia",
+                "element_description": "È ciò che insegue il fuggitivo: può essere una persona, la legge, una vendetta, un segreto, il senso di colpa o un pericolo reale. A volte resta invisibile, ma la sua presenza è costante"
+            }
+        ],
+        "examples": [
+            "Una persona che scappa dalle conseguenze di un errore grave (debiti, truffe, illegalità) e cambia città o identità",
+            "Una vittima di persecuzione o stalking che cerca di sparire per proteggersi",
+            "Qualcuno che vive nel timore costante di essere scoperto per una colpa passata",
+            "Un migrante o un rifugiato in fuga da una violenza politica o familiare, sempre inseguito dal pericolo",
+            "Situazioni di cronaca in cui qualcuno evade e vive braccato, anche senza che il suo inseguitore sia sempre visibile" 
+        ]
+    },
+
+    "06": {
+        "title": "Disastro",
+        "description": "Una potenza viene rovesciata da una forza superiore o da un evento improvviso e inarrestabile. La situazione è segnata da paura, catastrofe e da un radicale capovolgimento dei ruoli: chi era forte cade, chi era debole viene esaltato",
+        "dynamic_elements": [
+            {
+                "element": "Potere sconfitto",
+                "element_description": "È un individuo, un gruppo o un sistema che viene abbattuto, distrutto o privato della sua forza. La sua caduta è il centro tragico della situazione"
+            },
+            {
+                "element": "Nemico vittorioso/Messaggero",
+                "element_description": "È colui che ha causato la rovina del potere sconfitto o colui che ne annuncia la caduta. Può essere una figura concreta, una forza anonima o una voce che porta la notizia del disastro"
+            }
+        ],
+        "examples": [
+            "Il crollo improvviso di un’azienda, di un impero economico o di un leadership politica che sembrava inattaccabile",
+            "La distruzione di una comunità in seguito a una guerra, un’invasione o una decisione governativa catastrofica",
+            "La rovina di una famiglia potente per uno scandalo pubblico, un fallimento o una rivelazione devastante",
+            "Una calamità naturale (terremoto, alluvione, incendio) che sconvolge bruscamente equilibri sociali ed economici"
+        ]
+    },
+
+    "07": {
+        "title": "Cadere preda della crudeltà o della sventura",
+        "description": "Una persona innocente o vulnerabile viene schiacciata dalla crudeltà altrui o da una serie di sventure che si accaniscono su di lei. La tensione nasce dalla sproporzione tra la fragilità della vittima e la durezza, spesso cieca e ingiusta, del destino o degli uomini",
+        "dynamic_elements": [
+            {
+                "element": "Vittima",
+                "element_description": "È colui o colei che subisce soprusi, violenze o sventure ripetute. La sua debolezza – reale o simbolica – la rende esposta e incapace di difendersi adeguatamente"
+            },
+            {
+                "element": "Durofoscenza/Sventura",
+                "element_description": "È la forza che si accanisce sulla vittima: può essere una persona crudele, un sistema oppressivo, una malattia, la povertà, una catena di eventi negativi. Non sempre ha un volto preciso"
+            }
+        ],
+        "examples": [
+            "Una persona fragile (anziana, malata, povera, emarginata) che viene ripetutamente sfruttata o maltrattata",
+            "Una vittima di bullismo o violenza domestica che non riesce a trovare protezione o via d’uscita",
+            "Qualcuno colpito da una serie di eventi tragici consecutivi (lutto, perdita del lavoro, malattia) che lo travolgono completamente",
+            "Situazioni di discriminazione sistemica in cui un individuo continua a essere penalizzato solo per la sua origine, il suo genere o il suo corpo"
+        ]
+    },
+
+    "08": {
+        "title": "Rivolta",
+        "description": "Un individuo o un gruppo, oppresso da un potere ritenuto ingiusto, si solleva contro di esso. La tensione nasce dal passaggio dalla sottomissione all’azione, dal momento in cui la paura viene vinta e la ribellione prende forma",
+        "dynamic_elements": [
+            {
+                "element": "Tiranno/Potere oppressivo",
+                "element_description": "È la forza dominante che impone il proprio controllo in modo ingiusto, violento o totalitario. La sua oppressione è la scintilla che genera la rivolta"
+            },
+            {
+                "element": "Cospiratore/Ribelle",
+                "element_description": "È colui o coloro che si sollevano contro il tiranno. Rappresenta la presa di coscienza e il rifiuto della sottomissione, trasformando la paura in azione"
+            }
+        ],
+        "examples": [
+            "Lavoratori che si organizzano contro un datore di lavoro sfruttatore e avviano una protesta o uno sciopero",
+            "Studenti che si ribellano a regole scolastiche ritenute discriminatorie o oppressive",
+            "Cittadini che manifestano contro un governo corrotto o autoritario",
+            "Una persona che rompe finalmente una relazione abusiva e denuncia chi la opprime",
+            "Comunità marginalizzate che si uniscono per rivendicare diritti negati o condizioni di vita dignitose" 
+        ]
+    },
+
+    "09": {
+        "title": "Impresa temeraria",
+        "description": "Un protagonista affronta volontariamente un compito estremamente pericoloso o apparentemente impossibile, spinto da ambizione, ideali o necessità. La tensione nasce dal contrasto tra la grandezza dell’obiettivo e l’enormità del rischio che viene accettato",
+        "dynamic_elements": [
+            {
+                "element": "Audace/Eroe",
+                "element_description": "È colui che decide di intraprendere l’azione rischiosa. La sua forza sta nel coraggio, nella determinazione e spesso in una certa incoscienza rispetto al pericolo"
+            },
+            {
+                "element": "Obiettivo",
+                "element_description": "È ciò che deve essere conquistato, raggiunto o realizzato: una persona, un luogo, una vittoria, una verità, una missione. È il motivo per cui l’impresa viene tentata"
+            },
+            {
+                "element": "Avversario/Ostacolo",
+                "element_description": "È la forza che rende l’impresa quasi impossibile: può essere un nemico, un sistema, una prova estrema, la natura, la legge o la paura stessa"
+            }
+        ],
+        "examples": [
+            "Una persona che denuncia un sistema corrotto, consapevole delle possibili ritorsioni sulla propria vita",
+            "Un attivista che entra in una zona di guerra o fortemente repressa per portare aiuti o testimonianze",
+            "Un lavoratore precario che sfida la propria azienda per difendere un diritto collettivo",
+            "Una persona che lascia tutto per realizzare un progetto considerato “impossibile” (aprire un centro sociale, un rifugio, una cooperativa)",
+            "Chi decide di raccontare pubblicamente una verità scomoda, mettendo a rischio reputazione, lavoro e sicurezza"   
+        ]
+    },
+
+    "10": {
+        "title": "Rapimento",
+        "description": "Una persona viene sottratta con la forza o con l’inganno al suo ambiente abituale ed è portata via contro la propria volontà. La tensione nasce dalla violazione improvvisa della libertà e dal senso di perdita, possesso o dominio che motiva il rapitore",
+        "dynamic_elements": [
+            {
+                "element": "Rapitore",
+                "element_description": "È colui che compie il sequestro, spinto da desiderio, interesse, vendetta, controllo o utilità personale. Il suo atto rompe l’ordine e inaugura il conflitto"
+            },
+            {
+                "element": "Rapito/Vittima",
+                "element_description": "È la persona sottratta al proprio contesto, privata della libertà e messa in una condizione di estrema vulnerabilità. La sua impotenza costituisce il centro drammatico della situazione"
+            },
+            {
+                "element": "Custode/Potere di protezione violato",
+                "element_description": "È la persona, il gruppo o l’istituzione che avrebbe dovuto proteggere la vittima (famiglia, comunità, legge) e che viene aggirata, sconfitta o resa impotente dal rapimento"
+            }
+        ],
+        "examples": [
+            "Il rapimento di una persona per motivi di riscatto, controllo o sfruttamento",
+            "I casi di tratta di esseri umani, in cui qualcuno viene sottratto alla propria vita e trasferito con la forza",
+            "La sottrazione illegale di un minore da parte di uno dei genitori",
+            "Una relazione in cui una persona viene progressivamente isolata e “rapita” dalla propria rete sociale e affettiva",
+            "Il sequestro simbolico della libertà (es. ritiro forzato dei documenti, limitazione dei movimenti, isolamento)"
+        ]
+    },
+
+    "11": {
+        "title": "Enigma",
+        "description": "Un mistero, una verità nascosta o un segreto incomprensibile condizionano i personaggi e le loro azioni. La tensione nasce dalla necessità di scoprire ciò che è ignoto e dal pericolo implicito nel fatto che la soluzione dell’enigma potrebbe essere devastante",
+        "dynamic_elements": [
+            {
+                "element": "Interrogante/Ricercatore",
+                "element_description": "È colui che cerca di capire, chiarire, svelare il mistero. Può essere un investigatore, un testimone, una persona direttamente coinvolta o semplicemente qualcuno che non riesce a convivere con il dubbio"
+            },
+            {
+                "element": "Segreto/Mistero",
+                "element_description": "È ciò che non deve o non può essere conosciuto facilmente: una verità nascosta, un crimine occultato, un’identità falsa, un passato rimosso. È il vero fulcro della tensione"
+            },
+            {
+                "element": "Colui che sa",
+                "element_description": "È chi possiede la verità o una parte di essa e la nasconde, volontariamente o involontariamente. La sua presenza — silenziosa o ambigua — alimenta il conflitto"
+            }
+        ],
+        "examples": [
+            "Una persona che scopre indizi strani sul passato della propria famiglia e cerca di ricostruire la verità",
+            "Un segreto tenuto nascosto in un gruppo (azienda, scuola, comunità) che lentamente viene a galla",
+            "Un messaggio anonimo o una rivelazione parziale che mette in crisi una relazione o una situazione apparentemente stabile",
+            "La scoperta di documenti o conversazioni che fanno intuire un tradimento, una menzogna o un crimine coperto",
+            "Una persona che vive accanto a qualcuno che non è ciò che dice di essere"
+        ]
+    },
+
+    "12": {
+        "title": "Ottenere",
+        "description": "Un personaggio cerca di entrare in possesso di una persona, di un oggetto o di un vantaggio che gli è inizialmente negato. La tensione nasce dal conflitto tra il desiderio di ottenere e le resistenze, morali o materiali, che si oppongono al raggiungimento dell’obiettivo",
+        "dynamic_elements": [
+            {
+                "element": "Colui che vuole ottenere",
+                "element_description": "È la persona che desidera qualcosa con forza: un bene, un ruolo, un riconoscimento, una persona. Il suo bisogno o desiderio è il motore dell’azione"
+            },
+            {
+                "element": "Colui che impedisce/Possessore",
+                "element_description": "È chi detiene ciò che viene richiesto o chi si oppone all’ottenimento. Può agire per interesse, protezione, paura o gelosia"
+            },
+            {
+                "element": "Oggetto del desiderio",
+                "element_description": "È ciò che viene cercato: può essere concreto (denaro, casa, lavoro) o astratto (potere, amore, perdono, libertà)"
+            }
+        ],
+        "examples": [
+            "Una persona che lotta per ottenere un posto di lavoro, una promozione o una borsa di studio che le viene ripetutamente negata",
+            "Un figlio che cerca con insistenza l’approvazione o l’amore di un genitore distante",
+            "Qualcuno che tenta di riappropriarsi di un bene che gli è stato tolto ingiustamente",
+            "Una persona che chiede perdono e lavora per riconquistare la fiducia di qualcuno che ama",
+            "La lotta quotidiana per ottenere diritti fondamentali (documenti, residenza, cure, istruzione) in un sistema che li ostacola"
+        ]
+    },
+
+    "13": {
+        "title": "Odio tra consanguinei",
+        "description": "All’interno della stessa famiglia nasce un odio profondo e persistente tra parenti, alimentato da rivalità, ingiustizie o differenze insanabili. La tensione si costruisce sul fatto che il legame di sangue, invece di unire, si trasforma in un vincolo ostile e distruttivo",
+        "dynamic_elements": [
+            {
+                "element": "Parente ostile",
+                "element_description": "È il membro della famiglia che nutre l’odio, il rancore o il desiderio di nuocere. Il vincolo di sangue rende il conflitto più doloroso e radicale"
+            },
+            {
+                "element": "Parente odiato",
+                "element_description": "È colui che diventa bersaglio del risentimento. Può essere colpevole o innocente, ma viene comunque caricato di colpe simboliche o reali"
+            },
+            {
+                "element": "Motivo del conflitto",
+                "element_description": "È l’origine dell’odio: un’ingiustizia subita, un’eredità contesa, un favoritismo, un segreto familiare, una differenza di valori inconciliabile"
+            }
+        ],
+        "examples": [
+            "Fratelli o sorelle che non si parlano più per dispute legate a eredità, denaro o gelosie infantili mai risolte",
+            "Genitori e figli che vivono un rapporto di ostilità continua, segnato da rifiuto, giudizio e incomprensione",
+            "Conflitti familiari che si trascinano per generazioni, alimentati da vecchie offese mai chiarite",
+            "Divergenze politiche, religiose o identitarie che rompono definitivamente i legami tra parenti",
+            "Una famiglia divisa in fazioni, in cui ogni evento diventa occasione di tensione e rottura"
+        ]
+    },
+
+    "14": {
+        "title": "Rivalità tra consanguinei",
+        "description": "Due o più membri della stessa famiglia entrano in competizione per amore, potere, riconoscimento o supremazia. La tensione nasce dal fatto che il legame di sangue non attenua, ma anzi intensifica la rivalità, trasformandola in un conflitto profondo e spesso distruttivo",
+        "dynamic_elements": [
+            {
+                "element": "Parente rivale",
+                "element_description": "È il membro della famiglia che entra in competizione con un altro per uno stesso obiettivo. Il desiderio di prevalere supera il legame affettivo"
+            },
+            {
+                "element": "Parente rivaleggiante",
+                "element_description": "L’altro polo della rivalità, che contende lo stesso spazio, ruolo, amore o riconoscimento. La sua presenza alimenta il conflitto continuo"
+            },
+            {
+                "element": "Oggetto della contesa",
+                "element_description": "È ciò per cui si combatte: un’eredità, l’attenzione di un genitore, il ruolo di capo famiglia, l’amore di una persona, lo status sociale"
+            }
+        ],
+        "examples": [
+            "Fratelli o sorelle che competono costantemente per l’approvazione di un genitore",
+            "Conflitti tra parenti per la gestione dell’azienda di famiglia o per un’eredità",
+            "Cugini che entrano in rivalità per prestigio, successo sociale o confronto continuo",
+            "Genitori che mettono, volontariamente o meno, i figli l’uno contro l’altro",
+            "Una famiglia dove l’amore o il riconoscimento diventano risorse scarse e contese"
+        ]
+    },
+
+    "15": {
+        "title": "Adulterio omicida",
+        "description": "Un adulterio non resta soltanto una trasgressione privata, ma conduce a un atto di violenza estrema, fino all’omicidio. La tensione nasce dall’intreccio tra desiderio, tradimento e distruzione, in cui l’amore illecito diventa causa di morte",
+        "dynamic_elements": [
+            {
+                "element": "Adultero/Adultera",
+                "element_description": "È colui o colei che tradisce il partner, spinto da passione, frustrazione o desiderio di fuga. Il suo gesto è l’origine del conflitto tragico"
+            },
+            {
+                "element": "Amante",
+                "element_description": "È la persona coinvolta nella relazione illegittima. Può essere complice consapevole o vittima inconsapevole dell’escalation tragica"
+            },
+            {
+                "element": "Coniuge tradito",
+                "element_description": "È la persona ingannata e ferita dal tradimento. La sua reazione — disperazione, rabbia, vendetta — è ciò che può condurre all’atto estremo"
+            }
+        ],
+        "examples": [
+            "Casi di cronaca in cui un partner uccide l’altro dopo aver scoperto un tradimento",
+            "Situazioni in cui l’amante viene aggredito o eliminato dal coniuge tradito",
+            "Relazioni segrete che degenerano in violenza per gelosia, paura del disonore o desiderio di possesso",
+            "Femminicidi o omicidi passionali legati alla scoperta di un adulterio",
+            "Contesti in cui l’ossessione e il controllo trasformano un tradimento in una condanna a morte"
+        ]
+    },
+
+    "16": {
+        "title": "Follia",
+        "description": "Un personaggio perde progressivamente il contatto con la realtà, sprofondando in uno stato di delirio, ossessione o allucinazione. La tensione nasce dalla frattura tra ciò che è reale e ciò che la mente distorta percepisce, rendendo imprevedibili azioni e conseguenze",
+        "dynamic_elements": [
+            {
+                "element": "Folle",
+                "element_description": "È la persona la cui mente si altera, a causa di trauma, dolore, senso di colpa, malattia o pressione estrema. La sua instabilità guida e sconvolge l’intera situazione"
+            },
+            {
+                "element": "Causa",
+                "element_description": "È l’evento scatenante: un lutto, una violenza, una perdita, un segreto, un rimorso o una colpa impossibile da gestire. È l’origine profonda della crisi mentale"
+            },
+            {
+                "element": "Oggetto immaginato/Ossessione",
+                "element_description": "È ciò che la mente del folle costruisce o deforma: una persona, una minaccia, una colpa, una voce, un’idea fissa. Diventa il centro della sua realtà alternativa"
+            }
+        ],
+        "examples": [
+            "Una persona che, dopo un evento traumatico (lutto, aggressione, abbandono), inizia a perdere il contatto con la realtà",
+            "Qualcuno sopraffatto dal senso di colpa o dalla paranoia, che vede nemici ovunque e prende decisioni estreme",
+            "Una persona isolata per lungo tempo che sviluppa deliri o comportamenti disconnessi dalla realtà",
+            "Disturbi mentali non curati che portano a comportamenti pericolosi per sé o per gli altri",
+            "Situazioni in cui la pressione sociale, lavorativa o familiare porta a una rottura psichica"
+        ]
+    },
+
+    "17": {
+        "title": "Imprudenza fatale",
+        "description": "Un personaggio commette un gesto impulsivo o sconsiderato che scatena conseguenze irreversibili e tragiche. La tensione nasce dal contrasto tra la leggerezza o l’ingenuità dell’azione e la gravità dell’esito che ne deriva",
+        "dynamic_elements": [
+            {
+                "element": "Imprudente",
+                "element_description": "È colui o colei che agisce senza valutare i rischi, spinto da incoscienza, curiosità, desiderio o ingenuità. Il suo gesto, apparentemente banale, diventa la scintilla della tragedia"
+            },
+            {
+                "element": "Avvertimento ignorato",
+                "element_description": "È il segnale, il consiglio o il pericolo percepibile che non viene ascoltato. La sua presenza rende l’errore ancora più drammatico e carico di responsabilità"
+            },
+            {
+                "element": "Conseguenza fatale",
+                "element_description": "È l’esito irreversibile dell’imprudenza: morte, perdita, rovina, distruzione di un legame o di una vita. È ciò che trasforma l’errore in tragedia"
+            }
+        ],
+        "examples": [
+            "Una persona che ignora un pericolo evidente (guidare in stato di ebbrezza, entrare in un luogo pericoloso) e provoca un incidente grave",
+            "Qualcuno che rivela un segreto sensibile senza pensarci e rovina irrimediabilmente una relazione o una vita",
+            "Un gesto impulsivo durante una lite che sfugge di mano e ha conseguenze irreparabili",
+            "L’atto di fidarsi della persona sbagliata, con danni permanenti sul piano personale o professionale",
+            "Una scelta fatta per vanità o sfida che porta alla perdita di qualcosa di fondamentale"
+        ]
+    },
+
+    "18": {
+        "title": "Crimini d’amore involontari",
+        "description": "Un personaggio, spinto dall’amore o da un sentimento profondo, commette un atto che danneggia o distrugge proprio la persona amata, spesso senza volerlo. La tensione nasce dal paradosso tragico: l’amore, invece di proteggere, diventa causa del male",
+        "dynamic_elements": [
+            {
+                "element": "Amante colpevole",
+                "element_description": "È colui o colei che, mosso da amore, gelosia, paura di perdere o desiderio di proteggere, compie un’azione dannosa o distruttiva senza reale intenzione criminale"
+            },
+            {
+                "element": "Persona amata/Vittima",
+                "element_description": "È colui o colei che subisce il danno. Proprio il legame affettivo rende la ferita più tragica e insopportabile"
+            },
+            {
+                "element": "Atto fatale involontario",
+                "element_description": "È il gesto – un errore, un’omissione, una scelta sbagliata, una protezione eccessiva – che produce il danno. Può sembrare nato da buone intenzioni, ma ha conseguenze devastanti"
+            }
+        ],
+        "examples": [
+            "Un genitore iperprotettivo che, per “amore”, limita gravemente la libertà e lo sviluppo di un figlio",
+            "Una persona che mente per proteggere il partner e finisce invece per distruggere il rapporto",
+            "Un gesto di gelosia che provoca un incidente o una rottura irreparabile",
+            "Qualcuno che prende una decisione “per il bene dell’altro” senza ascoltarlo e lo danneggia profondamente",
+            "Amori soffocanti in cui il bisogno di possesso causa dolore, isolamento o perdita"
+        ]
+    },
+
+    "19": {
+        "title": "Uccisione inconsapevole di un consanguineo",
+        "description": "Una persona uccide, ferisce gravemente o distrugge la vita di un parente senza sapere chi sia realmente. La tensione nasce dalla tragedia del riconoscimento: quando la verità emerge, il gesto compiuto diventa insostenibile e devastante sul piano morale",
+        "dynamic_elements": [
+            {
+                "element": "Colui che uccide",
+                "element_description": "È la persona che compie l’atto dannoso, spesso in buona fede o per difesa, senza sapere che la vittima è un familiare. Il suo destino tragico è legato all’ignoranza della vera identità dell’altro"
+            },
+            {
+                "element": "Parente ignoto/Vittima",
+                "element_description": "È il familiare colpito, che può essere sconosciuto, perduto, abbandonato o separato da tempo. La sua identità nascosta è il cuore tragico della situazione"
+            },
+            {
+                "element": "Rivelazione/Riconoscimento",
+                "element_description": "È il momento in cui viene scoperta la verità del legame di sangue. È qui che l’azione passata assume tutto il suo peso tragico e irreversibile"
+            }
+        ],
+        "examples": [
+            "Incidenti stradali o eventi violenti in cui, a distanza di tempo, si scopre che la vittima era un parente biologico mai conosciuto (es. fratello separato, padre assente, figlio non riconosciuto)",
+            "Scontri familiari degenerati in tragedia senza che le persone coinvolte conoscano davvero il loro legame (adozioni segrete, famiglie spezzate, figli mai raccontati)",
+            "Persone che, in contesti di guerra o rivalità tra famiglie, danneggiano gravemente membri del proprio stesso sangue senza saperlo",
+            "Conflitti tra individui imparentati ma cresciuti separatamente, che scoprono il legame solo dopo aver distrutto la relazione (o la vita) dell’altro",
+            "Situazioni di abbandono e segreto familiare in cui l’ignoranza dell’identità porta a danni irreparabili"
+        ]
+    },
+
+    "20": {
+        "title": "Sacrificio di sé per un ideale",
+        "description": "Un personaggio rinuncia alla propria libertà, al proprio benessere o alla propria vita in nome di un ideale, un principio o una causa più grande di sé. La tensione nasce dal contrasto tra l’istinto di sopravvivenza e la scelta consapevole di mettere l’ideale al di sopra di tutto",
+        "dynamic_elements": [
+            {
+                "element": "Colui che si sacrifica",
+                "element_description": "È chi decide volontariamente di rinunciare a qualcosa di fondamentale per restare fedele ai propri valori. La sua forza sta nella coerenza e nella determinazione radicale"
+            },
+            {
+                "element": "Ideale/Causa",
+                "element_description": "È ciò per cui avviene il sacrificio: giustizia, libertà, verità, dignità, fede, diritti, futuro collettivo. È un valore percepito come superiore alla vita stessa"
+            },
+            {
+                "element": "Beneficiario/Comunità",
+                "element_description": "È la persona, il gruppo o l’umanità che trae beneficio dal sacrificio. Anche se assente in scena, ne giustifica e amplifica il peso tragico e morale"
+            }
+        ],
+        "examples": [
+            "Un attivista che accetta il carcere o la persecuzione pur di difendere un diritto fondamentale",
+            "Una persona che lascia un lavoro sicuro per denunciare un’ingiustizia sistemica",
+            "Chi mette a rischio la propria vita per salvare altre persone (inermi, perseguitate, discriminate)",
+            "Un denunciante (whistleblower) che sacrifica reputazione e sicurezza per rivelare una verità",
+            "Chi rinuncia a una vita comoda per dedicarsi interamente a una causa sociale, politica o umanitaria"
+        ]
+    },
+
+    "21": {
+        "title": "Sacrificio di sé per i propri cari",
+        "description": "Un personaggio rinuncia alla propria libertà, felicità o vita per salvare o proteggere un familiare o una persona amata. La tensione nasce dal conflitto tra l’istinto di sopravvivenza e il legame affettivo che spinge al sacrificio",
+        "dynamic_elements": [
+            {
+                "element": "Colui che si sacrifica",
+                "element_description": "È chi sceglie volontariamente di farsi carico della sofferenza o del pericolo al posto di una persona cara. Il suo gesto nasce dall’amore, dal senso di responsabilità o dal dovere familiare"
+            },
+            {
+                "element": "Persona amata/Parente",
+                "element_description": "È colui o colei per cui avviene il sacrificio: un figlio, un genitore, un fratello, un partner. La sua vulnerabilità è ciò che rende necessario il gesto estremo"
+            },
+            {
+                "element": "Pericolo/Minaccia",
+                "element_description": "È ciò da cui la persona amata deve essere salvata: malattia, violenza, persecuzione, condanna, miseria, stigma sociale o abuso"
+            }
+        ],
+        "examples": [
+            "Un genitore che si prende la colpa di un reato commesso dal figlio per evitargli il carcere",
+            "Una persona che rinuncia a studiare, lavorare o realizzarsi per assistere un familiare malato",
+            "Chi si espone al pericolo per proteggere un fratello, una sorella o un partner da una violenza",
+            "Un figlio che lascia tutto per farsi carico di un genitore fragile o dipendente",
+            "Sacrifici silenziosi (affettivi, economici, emotivi) compiuti per garantire un futuro migliore a chi si ama"
+        ]
+    },
+
+    "22": {
+        "title": "Tutto sacrificato per una passione",
+        "description": "Un personaggio sacrifica ogni cosa — reputazione, affetti, sicurezza, futuro — per inseguire una passione totalizzante. La tensione nasce dal crescere dell’ossessione, che divora progressivamente tutto il resto",
+        "dynamic_elements": [
+            {
+                "element": "Colui che si sacrifica",
+                "element_description": "È la persona dominata da un sentimento o desiderio dominante (amore, ambizione, fanatismo, arte, fede, dipendenza). La sua perdita di equilibrio è il motore del dramma"
+            },
+            {
+                "element": "Oggetto della passione",
+                "element_description": "È ciò che viene inseguito a ogni costo: una persona, un’idea, una vocazione, una causa, un vizio, un idealizzato futuro. Diventa più importante di qualunque altra cosa"
+            },
+            {
+                "element": "Ciò che viene sacrificato",
+                "element_description": "Sono gli affetti, il lavoro, la salute, la reputazione, la stabilità, la dignità — tutto ciò che viene distrutto o abbandonato nel nome della passione"
+            }
+        ],
+        "examples": [
+            "Una persona che perde amici e famiglia per inseguire un amore distruttivo",
+            "Qualcuno che abbandona studi, lavoro e relazioni per una dipendenza (sostanze, gioco, sesso, potere)",
+            "Un artista o un creatore che sacrifica ogni aspetto della propria vita sociale in nome della propria opera",
+            "Una persona che rovina la propria vita per un’ideologia fanatica o un’ossessione politica/spirituale",
+            "Chi brucia ogni possibilità di stabilità per inseguire una relazione, un sogno o un riconoscimento irraggiungibile"
+        ]
+    },
+
+    "23": {
+        "title": "Necessità di sacrificare le persone amate",
+        "description": "Un personaggio è costretto a scegliere tra un grande dovere (legge, morale, fede, missione) e la vita o la felicità di una persona che ama. La tensione nasce dal conflitto estremo tra l’obbligo percepito come superiore e il legame affettivo",
+        "dynamic_elements": [
+            {
+                "element": "Colui che deve sacrificare",
+                "element_description": "È la persona posta di fronte a una scelta impossibile: obbedire a un principio o salvare chi ama. Il suo tormento è il cuore morale della situazione"
+            },
+            {
+                "element": "Persona amata",
+                "element_description": "È colui o colei che deve essere sacrificato o lasciato andare. La sua presenza rende la decisione insopportabile e tragica"
+            },
+            {
+                "element": "Legge/Dovere/Ideale superiore",
+                "element_description": "È il principio che impone il sacrificio: una legge, una regola morale, un codice d’onore, una missione collettiva, una scelta necessaria"
+            }
+        ],
+        "examples": [
+            "Un magistrato costretto a condannare una persona a lui molto cara perché colpevole secondo la legge",
+            "Un medico che deve scegliere tra salvare un familiare o più pazienti sconosciuti in emergenza",
+            "Una persona che denuncia un proprio caro per fermare una violenza o un crimine continuo",
+            "Un genitore che allontana un figlio per proteggerlo, pur sapendo che ciò spezza il legame",
+            "Situazioni in cui la giustizia o la sicurezza collettiva impongono di danneggiare chi si ama"
+        ]
+    },
+
+    "24": {
+        "title": "Rivalità tra superiore e inferiore",
+        "description": "Una persona in posizione subordinata entra in conflitto con una figura che detiene un potere, un’autorità o uno status superiore. La tensione nasce dallo scontro tra disuguaglianza strutturale e volontà di affermarsi, resistere o ribaltare la gerarchia",
+        "dynamic_elements": [
+            {
+                "element": "Superiore",
+                "element_description": " È la persona che detiene un ruolo dominante: capo, insegnante, genitore, autorità, dirigente, figura di prestigio. Il suo potere è il punto di partenza del conflitto"
+            },
+            {
+                "element": "Inferiore",
+                "element_description": "È colui o colei che si trova in una posizione subordinata ma che sfida, contesta o compete con il superiore. La sua ribellione rompe l’ordine gerarchico stabilito"
+            },
+            {
+                "element": "Oggetto della rivalità",
+                "element_description": "È ciò che si contendono: potere, riconoscimento, leadership, giustizia, dignità, libertà, rispetto o controllo"
+            }
+        ],
+        "examples": [
+            "Un dipendente che contesta pubblicamente il proprio capo per un’ingiustizia o un abuso di potere",
+            "Uno studente che sfida l’autorità di un insegnante ritenuto ingiusto o discriminatorio",
+            "Una persona precaria che entra in conflitto con un superiore gerarchico per i propri diritti",
+            "Un figlio che si ribella a un genitore autoritario per affermare la propria autonomia",
+            "Attivisti, lavoratori o cittadini che si scontrano con figure di potere politico o sociale"
+        ]
+    },
+
+    "25": {
+        "title": "Adulterio",
+        "description": "Una relazione clandestina rompe un legame ufficiale e destabilizza equilibri familiari, affettivi e sociali. La tensione nasce dal contrasto tra desiderio e responsabilità, tra passione segreta e conseguenze pubbliche",
+        "dynamic_elements": [
+            {
+                "element": "Coniuge infedele",
+                "element_description": "È la persona impegnata che vive una relazione segreta con qualcun alt* al di fuori del matrimonio o della relazione ufficiale. Il suo tradimento accende il conflitto"
+            },
+            {
+                "element": "Amante",
+                "element_description": "È la terza persona, coinvolta nella relazione illegittima. Può essere complice consapevole o inconsapevole del danno che la relazione provoca"
+            },
+            {
+                "element": "Coniuge tradito",
+                "element_description": "È la persona che subisce il tradimento. La sua sofferenza, rabbia o desiderio di vendetta amplificano la tensione drammatica"
+            }
+        ],
+        "examples": [
+            "Una relazione extraconiugale scoperta che provoca la rottura di una famiglia",
+            "Tradimenti nascosti che generano sospetti, bugie e un clima di costante tensione",
+            "Un partner che vive una doppia vita tra due relazioni parallele",
+            "Un adulterio che coinvolge due famiglie, amici e comunità, generando divisioni e schieramenti",
+            "Situazioni in cui la scoperta del tradimento porta a violenza, isolamento o crolli emotivi profondi"
+        ]
+    },
+
+    "26": {
+        "title": "Delitti d’amore",
+        "description": "Un’azione criminale viene compiuta per amore: per possesso, per gelosia, per protezione o per disperazione. La tensione nasce dal paradosso tra un sentimento considerato “nobile” e un atto moralmente e legalmente inaccettabile",
+        "dynamic_elements": [
+            {
+                "element": "Amante colpevole",
+                "element_description": "È colui o colei che, spinto da un sentimento amoroso estremo, compie un gesto illegale o violento. Il suo amore diventa giustificazione soggettiva del crimine"
+            },
+            {
+                "element": "Persona amata",
+                "element_description": "È la figura per cui il delitto viene compiuto: può essere complice, ignara o addirittura vittima. La sua centralità affettiva motiva l’azione"
+            },
+            {
+                "element": "Crimine/Atto illecito",
+                "element_description": "È l’azione concreta – omicidio, ricatto, rapina, violenza, sequestro – compiuta in nome dell’amore. È ciò che trasforma il sentimento in tragedia"
+            }
+        ],
+        "examples": [
+            "Una persona che aggredisce o uccide il rivale in amore per gelosia",
+            "Qualcuno che commette un furto, una truffa o un reato per mantenere o proteggere la persona amata",
+            "Atti violenti o illegali compiuti per “salvare” un partner da una situazione difficile, senza il suo consenso",
+            "Reati commessi per impedire a una persona amata di andarsene o di terminare una relazione",
+            "Situazioni di cronaca in cui l’amore ossessivo si trasforma in aggressione, stalking o femminicidio"
+        ]
+    },
+
+    "27": {
+        "title": "Scoperta del disonore di una persona amata",
+        "description": "Un personaggio scopre che una persona amata ha compiuto un atto disonorevole, immorale o socialmente condannato. La tensione nasce dal conflitto tra l’amore che continua a esistere e la vergogna, la delusione o la rabbia provocate dalla scoperta",
+        "dynamic_elements": [
+            {
+                "element": "Chi scopre",
+                "element_description": "È la persona che viene a conoscenza del disonore. La sua interiorità è spaccata tra affetto e giudizio, lealtà e rifiuto"
+            },
+            {
+                "element": "Persona amata disonorata",
+                "element_description": "È colui o colei che ha compiuto l’azione ritenuta vergognosa o inaccettabile. Può provare colpa, indifferenza o negazione"
+            },
+            {
+                "element": "Disonore/Atto vergognoso",
+                "element_description": "È ciò che viene alla luce: un crimine, un tradimento, una menzogna pubblica, un comportamento riprovevole. È il nucleo del conflitto emotivo e morale"
+            }
+        ],
+        "examples": [
+            "Scoprire che il/la partner ha commesso un reato grave (truffa, violenza, abuso)",
+            "Venire a sapere che una persona amata ha mentito pubblicamente, distrutto la reputazione di altri o tradito una fiducia importante",
+            "Un genitore che scopre comportamenti illegali o profondamente dannosi del figlio",
+            "La rivelazione di un passato traumatico o violento di una persona amata, che cambia radicalmente lo sguardo su di lei",
+            "Scoprire che una persona stimata vive una doppia vita fondata su inganno e sfruttamento"
+        ]
+    },
+
+    "28": {
+        "title": "Ostacoli all’amore",
+        "description": "Due persone si amano, ma forze esterne o interne rendono impossibile o estremamente difficile il loro stare insieme. La tensione nasce dallo scontro fra il sentimento autentico e i limiti imposti da società, famiglia, distanza, leggi, trauma o paure personali",
+        "dynamic_elements": [
+            {
+                "element": "Persone innamorate",
+                "element_description": "Sono coloro che provano un sentimento reciproco e genuino. Il loro desiderio di stare insieme è il cuore emotivo della situazione"
+            },
+            {
+                "element": "Ostacolo",
+                "element_description": "È ciò che impedisce o complica l’unione: differenze sociali, religiose, culturali, familiari, legali, geografiche o psicologiche. Rappresenta il muro contro cui l’amore si scontra"
+            },
+            {
+                "element": "Ambiente/Società",
+                "element_description": "È il contesto che rafforza l’ostacolo: la famiglia, la comunità, le regole, i pregiudizi, le tradizioni, le aspettative sociali"
+            }
+        ],
+        "examples": [
+            "Due persone che si amano ma sono divise da differenze culturali, religiose o familiari insormontabili",
+            "Coppie che non possono stare insieme per leggi discriminatorie, status legale o condizioni di migrazione",
+            "Amori ostacolati da violenza familiare, controllo, manipolazione o dipendenza emotiva",
+            "Relazioni rese impossibili dalla distanza estrema, dalla guerra o da confini politici",
+            "Due persone che si amano ma non riescono a stare insieme per paura, traumi passati o profonde insicurezze interiore"
+        ]
+    },
+
+    "29": {
+        "title": "Nemico amato",
+        "description": "Un personaggio si innamora di qualcuno che appartiene alla parte avversa: un nemico personale, familiare, politico o sociale. La tensione nasce dal conflitto insanabile tra l’amore che cresce e l’ostilità che separa",
+        "dynamic_elements": [
+            {
+                "element": "Chi ama",
+                "element_description": "È la persona che prova un sentimento profondo verso qualcuno che dovrebbe odiare o combattere. La sua interiorità è divisa tra fedeltà e desiderio"
+            },
+            {
+                "element": "Nemico amato",
+                "element_description": "È colui o colei che appartiene al campo opposto: rivale, avversario, nemico per storia, ideologia o ruoli sociali. Rappresenta insieme attrazione e pericolo"
+            },
+            {
+                "element": "Conflitto/Barriera",
+                "element_description": "È l’insieme di ragioni che rendono questo amore proibito o impossibile: appartenenza a gruppi opposti, rivalità familiari, ideologie opposte, inimicizie storiche, ruoli incompatibili"
+            }
+        ],
+        "examples": [
+            "Due persone che si innamorano pur appartenendo a famiglie o gruppi in conflitto tra loro",
+            "Un attivista che si innamora di una persona che sostiene ideologie opposte alle sue",
+            "Amori nati tra persone appartenenti a fazioni politiche, religiose o sociali profondamente contrapposte",
+            "Un sentimento che nasce tra due persone in competizione diretta (colleghi, rivali professionali, avversari legali)",
+            "Relazioni in cui l’altro rappresenta tutto ciò che è stato insegnato a odiare o combattere"
+        ]
+    },
+
+    "30": {
+        "title": "Ambizione",
+        "description": "Un personaggio è spinto da un desiderio intenso di potere, successo o grandezza personale, fino a sacrificare valori, relazioni e limiti morali. La tensione nasce dal conflitto tra ciò che si vuole diventare e ciò che si è disposti a distruggere per arrivarci",
+        "dynamic_elements": [
+            {
+                "element": "Ambizioso/Ambiziosa",
+                "element_description": "È colui o colei che desidera ardentemente salire, emergere, dominare o eccellere a ogni costo. La sua spinta diventa il motore del conflitto"
+            },
+            {
+                "element": "Oggetto dell’ambizione",
+                "element_description": "È ciò che viene desiderato: potere, fama, carriera, riconoscimento, ricchezza, controllo, successo sociale o politico"
+            },
+            {
+                "element": "Ostacolo/Rivale/Morale",
+                "element_description": "È ciò che si frappone tra il soggetto e il suo obiettivo: una persona, un sistema, regole etiche, la famiglia, la propria coscienza o la realtà dei fatti"
+            }
+        ],
+        "examples": [
+            "Una persona disposta a schiacciare colleghi e amici pur di ottenere una promozione o una posizione di potere",
+            "Un politico che tradisce ideali e alleanze per scalare gerarchie",
+            "Qualcuno che mette da parte affetti, salute e relazioni per inseguire fama, successo o riconoscimento",
+            "Una persona che mente, manipola o sfrutta gli altri per costruirsi un’immagine vincente",
+            "Genitori che proiettano la propria ambizione sui figli, spingendoli oltre i loro limiti personali"
+        ]
+    },
+
+    "31": {
+        "title": "Conflitto con un Dio",
+        "description": "Un personaggio entra in opposizione a una forza superiore, sacra o trascendente, mettendo in discussione un destino, un ordine o una volontà percepita come divina, assoluta o inevitabile. La tensione nasce dallo scontro tra la fragilità umana e un potere che sembra infinitamente più grande",
+        "dynamic_elements": [
+            {
+                "element": "Colui/Colei che sfida",
+                "element_description": "È la persona che osa ribellarsi, discutere o opporsi a un destino, a una fede, a una legge sacra o a una forza percepita come invincibile. La sua sfida nasce da orgoglio, disperazione, amore o senso di giustizia"
+            },
+            {
+                "element": "Forza superiore",
+                "element_description": "È ciò che viene sfidato: una divinità, un destino, una legge naturale, un’istituzione intoccabile, un sistema oppressivo vissuto come assoluto e immutabile"
+            },
+            {
+                "element": "Conflitto metafisico o morale",
+                "element_description": "È lo scontro tra umano e sovrumano, tra libero arbitrio e predestinazione, tra volontà individuale e ordine superiore. È la dimensione tragica profonda della situazione"
+            }
+        ],
+        "examples": [
+            "Una persona che si ribella contro una diagnosi definitiva e sfida il proprio destino con tutte le forze",
+            "Qualcuno che mette in discussione la propria religione, la propria fede o l’idea di Dio dopo una grande tragedia",
+            "Un individuo che combatte contro un sistema percepito come invincibile (stato, legge, corporazione, istituzione)",
+            "Situazioni in cui una persona sfida ciò che viene considerato immutabile (disabilità, malattia, origine sociale, destino familiare)",
+            "La ribellione interiore contro l’idea che le cose sono sempre state così, cercando di riscrivere il proprio percorso"
+        ]
+    },
+
+    "32": {
+        "title": "Gelosia infondata/Equivoco",
+        "description": "Un personaggio, ingannato da un equivoco o da un’interpretazione sbagliata, si convince dell’infedeltà o del tradimento di qualcuno che ama. La tensione nasce da una convinzione falsa, che genera azioni e reazioni distruttive prima che la verità venga chiarita",
+        "dynamic_elements": [
+            {
+                "element": "Chi è geloso",
+                "element_description": "È colui o colei che interpreta in modo distorto una situazione ambigua. La sua insicurezza, paura o possessività alimenta il conflitto"
+            },
+            {
+                "element": "Persona accusata",
+                "element_description": "È colui o colei che viene ingiustamente sospettato o accusato di tradimento. Spesso è innocente e ignaro del fraintendimento iniziale"
+            },
+            {
+                "element": "Equivoco/Malinteso",
+                "element_description": "È l’evento, il dettaglio o la situazione ambigua che genera il sospetto: un gesto visto da lontano, un messaggio mal interpretato, una coincidenza"
+            }
+        ],
+        "examples": [
+            "Un partner che fraintende un messaggio sul telefono e scatena una crisi profonda",
+            "Gelosia basata su voci o pettegolezzi infondati diffusi da terzi",
+            "Una situazione ambigua (abbraccio, incontro, confidenza) interpretata come tradimento",
+            "Accuse ingiuste che distruggono fiducia e relazioni prima che la verità emerga",
+            "Conflitti nati da sospetti non verificati, che portano a rotture, violenza o isolamento"
+        ]
+    },
+
+    "33": {
+        "title": "Errore giudiziario",
+        "description": "Una persona viene giudicata, condannata o disprezzata per qualcosa che non ha fatto, a causa di un errore, di un pregiudizio o di informazioni incomplete. La tensione nasce dall’ingiustizia subita e dalla lotta per dimostrare la verità prima che il danno diventi irreversibile",
+        "dynamic_elements": [
+            {
+                "element": "Innocente accusato",
+                "element_description": "È colui o colei che viene giudicato colpevole pur non avendo commesso il fatto. La sua impotenza iniziale e il suo bisogno di verità sono il cuore della situazione"
+            },
+            {
+                "element": "Chi giudica/Accusa",
+                "element_description": "È la persona, il gruppo o l’istituzione che formula il giudizio sbagliato: un tribunale, un datore di lavoro, una comunità, un’opinione pubblica, una famiglia"
+            },
+            {
+                "element": "Errore/Falsa prova",
+                "element_description": "È ciò che genera l’ingiustizia: un malinteso, un documento falsificato, un testimone inattendibile, un pregiudizio, una decisione affrettata"
+            }
+        ],
+        "examples": [
+            "Una persona accusata ingiustamente di un reato e ostracizzata dalla comunità",
+            "Un dipendente licenziato per un errore che non ha commesso",
+            "Uno studente punito o espulso per un’infrazione di cui non è responsabile",
+            "Un individuo giudicato colpevole a causa di pregiudizi (razziali, sociali, di genere)",
+            "Danni alla reputazione provocati da una falsa accusa o da una notizia non verificata"
+        ]
+    },
+
+    "34": {
+        "title": "Rimorso",
+        "description": "Dopo aver commesso un atto sbagliato, crudele o irreparabile, un personaggio è divorato dal senso di colpa. La tensione nasce dal conflitto interiore tra il desiderio di espiare e l’impossibilità di cancellare ciò che è stato fatto",
+        "dynamic_elements": [
+            {
+                "element": "Colui/colei che prova rimorso",
+                "element_description": "È la persona che ha commesso l’atto e ora ne riconosce la gravità. Il suo tormento interiore è il centro emotivo della situazione"
+            },
+            {
+                "element": "Gesto compiuto",
+                "element_description": "È l’azione sbagliata, ingiusta o violenta che ha provocato sofferenza o danni reali. La sua irreversibilità alimenta il rimorso"
+            },
+            {
+                "element": "Coscienza",
+                "element_description": "È la voce interiore che giudica e tormenta il personaggio. Diventa quasi un personaggio a sé, incessante e ineludibile"
+            }
+        ],
+        "examples": [
+            "Una persona che rimpiange profondamente parole o gesti che hanno distrutto una relazione importante",
+            "Qualcuno che ha ferito gravemente un’altra persona e vive nel senso di colpa costante",
+            "Un genitore che prova rimorso per non aver protetto o ascoltato abbastanza un figlio",
+            "Una scelta egoista che ha danneggiato altri e che torna come peso nella coscienza",
+            "Chi ripensa ossessivamente a un errore passato che non può più essere corretto"
+        ]
+    },
+
+    "35": {
+        "title": "Recupero della persona perduta",
+        "description": "Una persona amata, scomparsa, allontanata o perduta viene finalmente ritrovata o recuperata dopo una lunga separazione. La tensione nasce dal desiderio, dall’attesa e dalla paura che il recupero possa non avvenire o arrivare troppo tardi",
+        "dynamic_elements": [
+            {
+                "element": "Colui/Colei che cerca",
+                "element_description": "È la persona che non si rassegna alla perdita e continua a cercare. La sua determinazione e il suo amore tengono viva la speranza del ritrovamento"
+            },
+            {
+                "element": "Persona perduta",
+                "element_description": "È colui o colei che è scomparso, si è allontanato, si è nascosto o è stato portato via. La sua assenza è il centro della mancanza"
+            },
+            {
+                "element": "Ritrovamento/Separazione",
+                "element_description": "È il processo, fisico o emotivo, che porta al ricongiungimento (o al tentativo di ricongiungimento). Può essere completo, parziale o tragicamente tardivo"
+            }
+        ],
+        "examples": [
+            "Una persona ritrovata dopo anni di separazione (figli, familiari, amici perduti di vista)",
+            "Il ricongiungimento tra genitori e figli separati da adozioni, migrazioni o guerre",
+            "Una persona data per persa (scomparsa, dipendente, senzatetto) che torna o viene finalmente trovata",
+            "La ricostruzione di un legame con qualcuno che si era volutamente allontanato",
+            "Una relazione interrotta da tempo che viene recuperata con fatica e trasformazione reciproca"
+        ]
+    },
+
+    "36": {
+        "title": "Perdita delle persone amate",
+        "description": "Una persona affronta la perdita definitiva di qualcuno che ama: per morte, distacco irreversibile o impossibilità di ricongiungimento. La tensione nasce dal vuoto lasciato dall’assenza e dal confronto con una realtà ormai priva di quella presenza fondamentale",
+        "dynamic_elements": [
+            {
+                "element": "Chi perde",
+                "element_description": "È la persona che resta, costretta a confrontarsi con il dolore, il lutto e il senso di mancanza. La sua sopravvivenza emotiva è la vera posta in gioco"
+            },
+            {
+                "element": "Persona perduta",
+                "element_description": "È colui o colei che viene a mancare: per morte, separazione definitiva, scomparsa, scelta irrevocabile o allontanamento irreparabile"
+            },
+            {
+                "element": "Vuoto/Lutto",
+                "element_description": "È lo spazio lasciato dall’assenza. Non è solo un sentimento, ma una condizione che modifica profondamente l’identità di chi resta"
+            }
+        ],
+        "examples": [
+            "La perdita di una persona amata per malattia, incidente o violenza",
+            "La morte di un genitore, un figlio, un partner o un amico stretto",
+            "La separazione definitiva in seguito a migrazione, estraneità, rottura irreparabile",
+            "La perdita simbolica di una persona che cambia drasticamente e non è più quella di prima (dipendenza, malattia mentale, radicalizzazione)",
+            "Il lutto non elaborato che continua a influenzare le relazioni e le scelte future"
+        ]
+    }
+
+}

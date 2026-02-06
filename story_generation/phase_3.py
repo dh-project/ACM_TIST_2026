@@ -224,15 +224,15 @@ def main():
     print(f'{Y}PHASE 3{R}\nCreation of curatorial stories from the assessed narrative events, following the dramatic situation with the highest adherence\n')
 
     # Folders:
-    source_folder =  path.join('results', model['model_name'], 'phase_2', 'processed_results')
-    raw_folder = path.join('results', model['model_name'], 'phase_3', 'raw_results')
-    processed_folder = path.join('results', model['model_name'], 'phase_3', 'processed_results')
+    source_folder =  path.join('story_generation', 'results', model['model_name'], 'phase_2', 'processed_results')
+    raw_folder = path.join('story_generation', 'results', model['model_name'], 'phase_3', 'raw_results')
+    processed_folder = path.join('story_generation', 'results', model['model_name'], 'phase_3', 'processed_results')
     
     # Files:
-    prompt_file = path.join('resources', 'prompts', 'prompt_phase_3.txt')
-    costs_file = path.join('results', model['model_name'], 'phase_3', 'Phase 3 - API Costs Detail.txt')
-    final_cost_file = path.join('results', model['model_name'], 'phase_3', 'Phase 3 - API Cost Final.txt')
-    catalog_file = path.join('resources', 'catalog', 'filtered', 'filtered_catalog.json')
+    prompt_file = path.join('story_generation', 'resources', 'prompts', 'prompt_phase_3.txt')
+    costs_file = path.join('story_generation', 'results', model['model_name'], 'phase_3', 'Phase 3 - API Costs Detail.txt')
+    final_cost_file = path.join('story_generation', 'results', model['model_name'], 'phase_3', 'Phase 3 - API Cost Final.txt')
+    catalog_file = path.join('story_generation', 'resources', 'catalog', 'filtered', 'filtered_catalog.json')
 
     third_phase(model, source_folder, raw_folder, processed_folder, prompt_file, costs_file, final_cost_file, catalog_file)
 

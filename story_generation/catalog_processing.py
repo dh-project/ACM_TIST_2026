@@ -150,9 +150,9 @@ def catalog_ids(dataframe, filtered_folder):
 def main():
     
     sheet_name = 'Estraz_ITA'
-    original_catalog = path.join('resources', 'catalog', 'original', 'Catalogo Egizio.xlsx')
-    filtered_folder = path.join('resources', 'catalog', 'filtered')
-    processed_folder = path.join('resources', 'catalog', 'processed')
+    original_catalog = path.join('story_generation', 'resources', 'catalog', 'original', 'Catalogo Egizio.xlsx')
+    filtered_folder = path.join('story_generation', 'resources', 'catalog', 'filtered')
+    processed_folder = path.join('story_generation', 'resources', 'catalog', 'processed')
     
     tokens_per_file = 5000    
     processed_name = f'Catalogo Egizio ITA - Max {tokens_per_file} Tokens'

@@ -188,14 +188,14 @@ def main():
     print(f'{Y}PHASE 1{R}\nIdentification and extraction of events with narrative potential from the catalog\n')
 
     # Folders:
-    source_folder = path.join('resources', 'catalog', 'processed', data_source)
-    raw_folder = path.join('results', model['model_name'], 'phase_1', 'raw_results')
-    processed_folder = path.join('results', model['model_name'], 'phase_1', 'processed_results')
+    source_folder = path.join('story_generation', 'resources', 'catalog', 'processed', data_source)
+    raw_folder = path.join('story_generation', 'results', model['model_name'], 'phase_1', 'raw_results')
+    processed_folder = path.join('story_generation', 'results', model['model_name'], 'phase_1', 'processed_results')
 
     # Files:
-    prompt_file = path.join('resources', 'prompts', 'prompt_phase_1.txt')
-    costs_file = path.join('results', model['model_name'], 'phase_1', 'Phase 1 - API Costs Detail.txt')
-    final_cost_file = path.join('results', model['model_name'], 'phase_1', 'Phase 1 - API Cost Final.txt')
+    prompt_file = path.join('story_generation', 'resources', 'prompts', 'prompt_phase_1.txt')
+    costs_file = path.join('story_generation', 'results', model['model_name'], 'phase_1', 'Phase 1 - API Costs Detail.txt')
+    final_cost_file = path.join('story_generation', 'results', model['model_name'], 'phase_1', 'Phase 1 - API Cost Final.txt')
 
     files_to_process = select_percentage(source_folder)
     first_phase(model, files_to_process, source_folder, raw_folder, processed_folder, prompt_file, costs_file, final_cost_file)
