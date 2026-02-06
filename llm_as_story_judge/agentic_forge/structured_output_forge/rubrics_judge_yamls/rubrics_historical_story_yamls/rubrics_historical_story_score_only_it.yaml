@@ -1,0 +1,52 @@
+model_name: RubricHistoricalStoryScoreOnly
+fields:
+  - name: historical_events
+    label: Eventi storici
+    kind: enum
+    choices: [1, 2, 3]
+    description: >
+      Valore intero [1–3] che misura la plausibilità degli eventi principali
+      descritti nella storia rispetto al materiale in <original_event>.
+      In generale: 1 = bassa/plausibilità scarsa, 2 = plausibile con qualche
+      imprecisione, 3 = plausibilità alta e coerenza complessiva.
+      I criteri dettagliati sono descritti nella sezione #Scala_livelli_storici
+      del prompt.
+
+  - name: historical_characters
+    label: Personaggi storici
+    kind: enum
+    choices: [1, 2, 3]
+    description: >
+      Valore intero [1–3] che valuta la plausibilità storica dei personaggi
+      (reali o ispirati a figure storiche) e dei loro comportamenti rispetto
+      a <original_event>.
+      In generale: 1 = comportamento poco plausibile o anacronistico,
+      2 = generalmente plausibile, 3 = coerente e ben allineato al contesto.
+      I criteri operativi sono descritti in #Scala_livelli_storici.
+
+  - name: historical_places_settings
+    label: Luoghi e ambientazioni
+    kind: enum
+    choices: [1, 2, 3]
+    description: >
+      Valore intero [1–3] che valuta la plausibilità storica di luoghi,
+      ambientazioni e dettagli materiali rispetto al contesto descritto
+      in <original_event>.
+      In generale: 1 = molti elementi poco plausibili o generici, 2 = quadro
+      nel complesso plausibile con alcune imprecisioni, 3 = ambientazione
+      coerente e ben compatibile con il periodo e il luogo.
+      Per i dettagli vedi #Scala_livelli_storici nel prompt.
+
+  - name: adherence_original_event
+    label: Aderenza all'evento originale
+    kind: enum
+    choices: [1, 2, 3]
+    description: >
+      Valore intero [1–3] che misura il grado di fedeltà della storia
+      all’evento storico documentato in <original_event>, tenendo conto che
+      si tratta comunque di un racconto di finzione.
+      In generale: 1 = scarsa aderanza (deviazioni forti o numerose),
+      2 = moderata (licenze presenti ma compatibili con il quadro generale),
+      3 = elevata (la storia resta in gran parte entro i limiti di quanto
+      descritto).
+      I criteri per distinguere 1/2/3 sono specificati in #Scala_livelli_storici.

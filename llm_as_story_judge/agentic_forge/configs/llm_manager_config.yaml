@@ -1,0 +1,164 @@
+providers:
+  default_openrouter:
+    type: openrouter
+    config:
+      base_url: https://openrouter.ai/api/v1
+      api_key_file: ./agentic_forge/configs/providers_api_key.yaml
+      site_url: "https://your-domain.example"
+      app_name: "PLACEHOLDER"
+      models:
+
+        moonshotai/kimi-k2-thinking:
+          type: chat
+          config:
+            name: moonshotai/kimi-k2-thinking
+            max_tokens: 40000
+            temperature: 0.0
+            top_p: 0.0
+            # campi che prima mancavano (mettiamo i default esplicitamente)
+            support_tools_parallel: false
+            support_tool_choice: false
+            tool_choice: false
+            support_reasoning:
+              controllable: true
+              api_param: "reasoning"
+              schema:
+                type: object
+                properties:
+                  enabled:
+                    type: boolean
+                required: ["enabled"]
+            support_structured_output: weak
+
+        anthropic/claude-3.7-sonnet:thinking:
+          type: chat
+          config:
+            name: anthropic/claude-3.7-sonnet:thinking
+            max_tokens: 40000
+            temperature: 0.0
+            top_p: 0.0
+            support_tools_parallel: false
+            support_tool_choice: false
+            tool_choice: false
+            support_reasoning:
+              controllable: false
+            support_structured_output: false
+
+        anthropic/claude-sonnet-4.5:
+          type: chat
+          config:
+            name: anthropic/claude-sonnet-4.5
+            max_tokens: 40000
+            temperature: 0.0
+            top_p: 0.0
+            support_tools_parallel: false
+            support_tool_choice: false
+            tool_choice: false
+            support_structured_output: strong
+
+        anthropic/claude-3.5-sonnet:
+          type: chat
+          config:
+            name: anthropic/claude-3.5-sonnet
+            max_tokens: 40000
+            temperature: 0.0
+            top_p: 0.0
+            support_tools_parallel: false
+            support_tool_choice: false
+            tool_choice: false
+            support_structured_output: strong
+
+        openai/gpt-4.1-mini:
+          type: chat
+          config:
+            name: openai/gpt-4.1-mini
+            max_tokens: 40000
+            temperature: 0.0
+            top_p: 0.0
+            support_tools_parallel: false
+            support_tool_choice: false
+            tool_choice: false
+            support_structured_output: strong
+
+  hpc_ollama:
+    type: ollama
+    config:
+      base_url: http://localhost:11435
+      keep_alive: "10m"
+      models:
+
+        deepseek-r1:70b:
+          type: chat
+          config:
+            name: deepseek-r1:70b
+            max_tokens: 40000
+            temperature: 0.0
+            top_p: 0.0
+            support_tools_parallel: false
+            support_tool_choice: false
+            tool_choice: false
+            support_reasoning:
+              controllable: true
+              api_param: "reasoning"
+              schema:
+                type: boolean
+            support_structured_output: strong
+
+        gpt-oss:120b:
+          type: chat
+          config:
+            name: gpt-oss:120b
+            max_tokens: 40000
+            temperature: 0.0
+            top_p: 0.0
+            support_tools_parallel: false
+            support_tool_choice: false
+            tool_choice: false
+            support_reasoning:
+              controllable: true
+              api_param: "reasoning"
+              schema:
+                type: string
+                enum: ["low", "medium", "high"]
+            support_structured_output: strong
+
+        gemma3:latest:
+          type: chat
+          config:
+            name: gemma3:latest
+            max_tokens: 40000
+            temperature: 0.0
+            top_p: 0.0
+            support_tools_parallel: false
+            support_tool_choice: false
+            tool_choice: false
+            support_structured_output: weak
+
+        qwen3-vl:32b:
+          type: chat
+          config:
+            name: qwen3-vl:32b
+            max_tokens: 40000
+            temperature: 0.0
+            top_p: 0.0
+            support_tools_parallel: false
+            support_tool_choice: false
+            tool_choice: false
+            support_reasoning:
+              controllable: true
+              api_param: "reasoning"
+              schema:
+                type: boolean
+            support_structured_output: "n/d"
+
+        qwen3-vl:30b-a3b-instruct-bf16:
+          type: chat
+          config:
+            name: qwen3-vl:30b-a3b-instruct-bf16
+            max_tokens: 40000
+            temperature: 0.0
+            top_p: 0.0
+            support_tools_parallel: false
+            support_tool_choice: false
+            tool_choice: false
+            support_structured_output: "n/d"

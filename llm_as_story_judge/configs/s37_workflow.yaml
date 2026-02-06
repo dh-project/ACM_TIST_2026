@@ -1,0 +1,16 @@
+workflow:
+  exp_name: baseline
+  logical_model_key: "s37"
+
+  dataset_path: "judge_data/dataset60.json"
+  schemas_path: "baseline_assets/schemas/"
+  prompts_path: "baseline_assets/prompts/"
+
+  run_name: null
+  batch_size: 30
+  max_retries: 5
+
+  reasoning_enabled: true
+  verbose_llm: false
+
+  base_output_dir: "experiments"

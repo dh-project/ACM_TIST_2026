@@ -1,0 +1,133 @@
+model_name: RubricHistoricalStoryRateExplain
+fields:
+  - name: historical_events
+    label: Historical events evaluation
+    kind: object
+    description: >
+      Evaluation of the historical plausibility of the narrated events
+      with respect to the description in <original_event>, plus a short explanation.
+    fields:
+      - name: score
+        label: Historical events score
+        kind: enum
+        choices: [1, 2, 3]
+        description: >
+          Integer value [1–3] measuring the plausibility of the main events
+          described in the story with respect to the material in <original_event>.
+          In general: 1 = low/poor plausibility, 2 = plausible with some
+          inaccuracies, 3 = high plausibility and overall coherence.
+          Detailed criteria for choosing 1/2/3 are given in section
+          #Historical_level_scale of the prompt.
+      - name: analysis
+        label: Historical events analysis
+        kind: text
+        description: >
+          Short explanation (possibly using bullet points) of the reasons behind
+          the assigned score, explicitly referring both to the story and to
+          <original_event>. You may consider, for instance:
+          - consistency of the events with the historical context (dates, places, actors);
+          - presence/absence of obvious anachronisms;
+          - plausibility of causes and consequences;
+          - correct use of documented key events.
+          Narrative guidelines are detailed in section #Historical_analysis_guidelines.
+
+  - name: historical_characters
+    label: Historical characters evaluation
+    kind: object
+    description: >
+      Evaluation of the historical plausibility of characters (real or inspired
+      by historical figures) and their behaviour, with a short explanation.
+    fields:
+      - name: score
+        label: Historical characters score
+        kind: enum
+        choices: [1, 2, 3]
+        description: >
+          Integer value [1–3] measuring the historical plausibility of the
+          characters and their behaviour with respect to <original_event>.
+          In general:
+          - 1 = behaviour largely implausible or anachronistic;
+          - 2 = generally plausible but with some forcing;
+          - 3 = coherent and well aligned with the historical and social context.
+          Operational criteria for 1/2/3 are specified in #Historical_level_scale.
+      - name: analysis
+        label: Historical characters analysis
+        kind: text
+        description: >
+          Short explanation (possibly with bullet points) of the reasons behind
+          the score, referring to both the story and <original_event>.
+          You may consider, for example:
+          - whether mentality, values and prejudices fit the period;
+          - plausibility of actions given social role and status;
+          - realism of relationships between characters;
+          - any psychological or cultural anachronisms.
+          Further guidance is given in #Historical_analysis_guidelines.
+
+  - name: historical_places_settings
+    label: Places and settings evaluation
+    kind: object
+    description: >
+      Evaluation of the historical plausibility of places, settings and material
+      details with respect to the context described in <original_event>, plus explanation.
+    fields:
+      - name: score
+        label: Places and settings score
+        kind: enum
+        choices: [1, 2, 3]
+        description: >
+          Integer value [1–3] measuring the historical plausibility of places,
+          settings and material details.
+          In general:
+          - 1 = many elements implausible or overly generic;
+          - 2 = overall plausible picture with some inaccuracies;
+          - 3 = setting coherent and well compatible with period and place.
+          Detailed criteria are given in #Historical_level_scale.
+      - name: analysis
+        label: Places and settings analysis
+        kind: text
+        description: >
+          Short explanation (possibly using bullet points) of the reasons behind
+          the score, referring to both the story and <original_event>.
+          You may consider, for instance:
+          - consistency with geography, urban layout and political context;
+          - plausibility of buildings, objects and technologies;
+          - accuracy of everyday-life details;
+          - presence of material or environmental anachronisms.
+          Operational instructions are described in #Historical_analysis_guidelines.
+
+  - name: adherence_original_event
+    label: Adherence to the original event
+    kind: object
+    description: >
+      Evaluation of how faithful the story remains to the historical event
+      documented in <original_event>, while still being a fictional narrative.
+    fields:
+      - name: score
+        label: Adherence score
+        kind: enum
+        choices: [1, 2, 3]
+        description: >
+          Integer value [1–3] measuring the degree of faithfulness of the story
+          to the documented historical event in <original_event>.
+          In general:
+          - 1 = low adherence (numerous strong deviations, reinterpretations that
+            significantly alter the overall meaning);
+          - 2 = moderate adherence (fictional licences are present but compatible
+            with the general picture);
+          - 3 = high adherence (the story mostly stays within the bounds of what
+            is described, with minor or clearly recognizable fictional changes).
+          Criteria for distinguishing 1/2/3 are specified in
+          #Historical_level_scale in the prompt.
+      - name: analysis
+        label: Adherence analysis
+        kind: text
+        description: >
+          Short explanation (possibly using bullet points) of the reasons behind
+          the score, explicitly comparing key elements of <original_event> with
+          those in the story. You may consider:
+          - which parts of the story follow the documented event closely;
+          - which parts deviate and how large the deviation is;
+          - the role of fictional components in shaping historical understanding;
+          - whether the changes introduced distort or preserve the core meaning
+            of the event.
+          Detailed guidelines are defined in #Historical_analysis_guidelines.

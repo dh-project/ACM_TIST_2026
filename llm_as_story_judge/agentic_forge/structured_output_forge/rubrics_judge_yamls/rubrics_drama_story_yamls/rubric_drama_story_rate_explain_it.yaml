@@ -1,0 +1,242 @@
+# ======================================
+# ITALIAN VERSION — RubricDramaRateExplain
+# ======================================
+model_name: RubricDramaRateExplain
+fields:
+  - name: storytelling_potential
+    label: Potenziale di storytelling
+    kind: object
+    description: >
+      Analisi e valutazione del potenziale narrativo dell’evento di base
+      su cui si fonda la storia, secondo i criteri della sezione
+      #Scala_livelli_globali del prompt.
+    fields:
+      - name: score
+        label: Punteggio potenziale di storytelling
+        kind: enum
+        choices: [1, 2, 3]
+        description: >
+          Valore intero [1–3] che misura quanto l'evento narrativo di base
+          ha il potenziale di generare una storia interessante e sviluppabile.
+          In generale: 1 = scarso, 2 = medio, 3 = buono/alto.
+          I criteri dettagliati per distinguere 1/2/3 sono descritti in
+          #Scala_livelli_globali.
+      - name: analysis
+        label: Analisi potenziale di storytelling
+        kind: text
+        description: >
+          Breve spiegazione (anche in bullet points) delle ragioni del punteggio
+          assegnato al potenziale di storytelling.
+          Puoi considerare, ad esempio:
+          - rilevanza e forza dell’evento di base;
+          - potenziale di sviluppo del conflitto e della posta in gioco;
+          - impatto sui personaggi e sulle loro possibili trasformazioni;
+          - chiarezza e forza dell’innesco narrativo nella struttura complessiva.
+          L’analisi deve essere coerente con la scala descritta in
+          #Scala_livelli_globali.
+
+  - name: dramatic_situation
+    label: Situazione drammatica
+    kind: object
+    description: >
+      Analisi e valutazione della forza e adeguatezza della situazione drammatica
+      di partenza (conflitto, posta in gioco, relazioni tra personaggi),
+      secondo i criteri della sezione #Scala_livelli_globali.
+    fields:
+      - name: score
+        label: Punteggio situazione drammatica
+        kind: enum
+        choices: [1, 2, 3]
+        description: >
+          Valore intero [1–3] che valuta la forza e l'adeguatezza della situazione
+          drammatica di partenza.
+          In generale: 1 = poco adeguata, 2 = adeguata, 3 = molto adeguata.
+          I criteri precisi sono descritti nella sezione #Scala_livelli_globali.
+      - name: analysis
+        label: Analisi situazione drammatica
+        kind: text
+        description: >
+          Breve spiegazione (anche in bullet points) delle ragioni del punteggio
+          assegnato alla situazione drammatica.
+          Puoi considerare:
+          - chiarezza del conflitto principale;
+          - definizione della posta in gioco e delle conseguenze;
+          - ruolo e posizione dei personaggi nel conflitto;
+          - potenziale di evoluzione della situazione lungo le scene.
+          L’analisi deve mantenere coerenza con la scala descritta in
+          #Scala_livelli_globali.
+
+  - name: dynamic_elements_realization
+    label: Realizzazione elementi dinamici
+    kind: object
+    description: >
+      Analisi e valutazione di come il testo realizza sviluppo del conflitto,
+      progressione degli eventi e trasformazioni dei personaggi, secondo i criteri
+      della sezione #Scala_livelli_globali.
+    fields:
+      - name: score
+        label: Punteggio realizzazione elementi dinamici
+        kind: enum
+        choices: [1, 2, 3]
+        description: >
+          Valore intero [1–3] che valuta la realizzazione degli elementi dinamici
+          (sviluppo del conflitto, progressione, cambiamento dei personaggi).
+          In generale: 1 = realizzazione debole, 2 = sufficiente/accettabile,
+          3 = solida/forte.
+          I dettagli operativi per 1–3 sono specificati in #Scala_livelli_globali.
+      - name: analysis
+        label: Analisi elementi dinamici
+        kind: text
+        description: >
+          Breve spiegazione (anche in bullet points) delle ragioni del punteggio.
+          Puoi considerare:
+          - chiarezza della progressione del conflitto;
+          - presenza di svolte narrative riconoscibili;
+          - coerenza delle motivazioni dei personaggi;
+          - qualità delle trasformazioni emotive o di status dei personaggi.
+          L’analisi deve giustificare il livello (1/2/3) in relazione a
+          #Scala_livelli_globali.
+
+  - name: inciting
+    label: Evento scatenante (Inciting incident)
+    kind: object
+    description: >
+      Analisi e valutazione dello stato dell'evento scatenante iniziale
+      (innesco del conflitto principale), come definito nella sezione
+      #Punti_di_svolta del prompt.
+      Le regole logiche tra present, ordered e scene sono descritte in
+      #Regole_logiche_output.
+    fields:
+      - name: present
+        label: Presenza
+        kind: bool
+        description: >
+          True se è identificabile un evento scatenante specifico; False se non
+          c'è un punto chiaro in cui la storia viene innescata.
+          Regola logica: se present = False, allora ordered deve essere False
+          e scene deve essere "n/a".
+          Vedi #Punti_di_svolta e #Regole_logiche_output per esempi.
+      - name: ordered
+        label: Ordine narrativo
+        kind: bool
+        description: >
+          True se l'evento scatenante avviene prima del climax e della risoluzione
+          in una sequenza narrativa coerente; False altrimenti
+          (evento assente, confuso o collocato in modo incoerente).
+          Regola logica: se present = False, ordered deve essere False.
+          Le condizioni di corretto ordinamento sono descritte in #Punti_di_svolta.
+      - name: scene
+        label: Scena evento scatenante
+        kind: enum
+        choices: ["1", "2", "3", "4", "5", "6", "7", "8", "n/a"]
+        description: >
+          Stringa che indica il numero di scena (da "1" a "8") in cui ha inizio
+          l'evento scatenante.
+          Usa "n/a" se non è identificabile alcun evento scatenante
+          (cioè quando present = False).
+          Regola logica: se scene è "n/a" ci si aspetta present = False.
+          Vedi #Punti_di_svolta per esempi e chiarimenti.
+      - name: analysis
+        label: Analisi evento scatenante
+        kind: text
+        description: >
+          Breve analisi (anche in bullet points) della scelta su present, ordered
+          e scene.
+          Puoi spiegare:
+          - dove e come si manifesta l’innesco del conflitto;
+          - se la sua collocazione temporale è coerente con climax e risoluzione;
+          - perché la scena indicata è (o non è) la più appropriata;
+          - eventuali ambiguità o mancanza di un vero inciting.
+          L’analisi deve essere coerente con le definizioni in #Punti_di_svolta.
+
+  - name: climax
+    label: Climax
+    kind: object
+    description: >
+      Analisi e valutazione dello stato del climax narrativo, il momento di massima
+      tensione del conflitto principale. Definizioni e criteri in #Punti_di_svolta.
+    fields:
+      - name: present
+        label: Presenza
+        kind: bool
+        description: >
+          True se è identificabile un momento di picco del conflitto; False se
+          non esiste un vero climax.
+          Regola logica: se present = False, allora ordered deve essere False
+          e scene deve essere "n/a".
+      - name: ordered
+        label: Ordine narrativo
+        kind: bool
+        description: >
+          True se il climax avviene dopo l'inciting e prima della risoluzione;
+          False se è assente o collocato in modo incoerente rispetto agli altri
+          punti di svolta.
+          Regola logica: se present = False, ordered deve essere False.
+      - name: scene
+        label: Scena climax
+        kind: enum
+        choices: ["1", "2", "3", "4", "5", "6", "7", "8", "n/a"]
+        description: >
+          Stringa che indica il numero di scena (da "1" a "8") in cui ha inizio
+          il climax.
+          Usa "n/a" se non è identificabile un vero climax (present = False).
+          Regola logica: scene = "n/a" implica generalmente present = False.
+          Vedi #Punti_di_svolta per la definizione di climax.
+      - name: analysis
+        label: Analisi climax
+        kind: text
+        description: >
+          Breve analisi (anche in bullet points) delle scelte su present, ordered
+          e scene per il climax.
+          Puoi discutere:
+          - perché una certa scena è il vero picco di tensione;
+          - se esistono più possibili climax e quale è stato selezionato;
+          - se la collocazione del climax è coerente con inciting e risoluzione;
+          - eventuale assenza o debolezza del momento di picco.
+          L’analisi deve rifarsi alle regole di #Punti_di_svolta.
+
+  - name: resolution
+    label: Risoluzione
+    kind: object
+    description: >
+      Analisi e valutazione dello stato della risoluzione finale del conflitto
+      principale. Definizioni e criteri in #Punti_di_svolta.
+    fields:
+      - name: present
+        label: Presenza
+        kind: bool
+        description: >
+          True se la storia porta a uno stato finale riconoscibile in rapporto
+          al conflitto principale; False se non c'è una vera conclusione.
+          Regola logica: se present = False, allora ordered deve essere False
+          e scene deve essere "n/a".
+      - name: ordered
+        label: Ordine narrativo
+        kind: bool
+        description: >
+          True se la risoluzione avviene dopo il climax e chiude l'arco narrativo
+          principale; False se è assente o collocata in modo incoerente.
+          Regola logica: se present = False, ordered deve essere False.
+      - name: scene
+        label: Scena risoluzione
+        kind: enum
+        choices: ["1", "2", "3", "4", "5", "6", "7", "8", "n/a"]
+        description: >
+          Stringa che indica il numero di scena (da "1" a "8") in cui ha inizio
+          la risoluzione.
+          Usa "n/a" se non esiste una vera risoluzione (present = False).
+          Le regole di coerenza tra present, ordered e scene sono riassunte
+          in #Regole_logiche_output del prompt.
+      - name: analysis
+        label: Analisi risoluzione
+        kind: text
+        description: >
+          Breve analisi (anche in bullet points) delle scelte su present, ordered
+          e scene per la risoluzione.
+          Puoi discutere:
+          - se e come il conflitto principale viene effettivamente chiuso;
+          - se la scena indicata come risoluzione è coerente con il climax;
+          - eventuali finali aperti o interrotti e il loro impatto sul giudizio;
+          - ragioni per cui non esiste una vera risoluzione (se present = False).
+          Fai riferimento a #Punti_di_svolta e #Regole_logiche_output per la logica
+          dei punti di svolta.

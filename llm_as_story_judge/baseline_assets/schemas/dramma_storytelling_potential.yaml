@@ -1,0 +1,16 @@
+model_name: storytelling
+spec_name: storytelling
+fields:
+  - name: potenziale_storytelling
+    label: Potenziale di storytelling
+    kind: enum
+    type: categorical_ordinal
+    choices: [1, 2, 3]
+    description: |
+      Valore intero **[1–3]** che valuta il potenziale di storytelling
+      dell’evento narrativo di base.
+
+      La valutazione deve essere effettuata secondo quanto definito nelle sezioni:
+      - **Metodo di valutazione**;
+      - **Scala dei livelli**;
+      - **Vincoli di valutazione**.

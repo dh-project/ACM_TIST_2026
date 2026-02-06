@@ -1,0 +1,27 @@
+model_name: dramatic_situation
+spec_name: dramatic_situation
+fields:
+  - name: situazione_drammatica
+    label: Situazione drammatica (appropriatezza)
+    kind: enum
+    type: categorical_ordinal
+    choices: [1, 2, 3]
+    description: |
+      Valore intero **[1–3]** che valuta quanto la situazione drammatica scelta
+      sia appropriata rispetto
+      all’Evento centrale e alla sua Descrizione.
+
+      La valutazione deve essere effettuata secondo quanto definito nelle sezioni:
+      - **Scala dei livelli per la valutazione della situazione drammatica**
+
+  - name: realizzazione_elementi_dinamici
+    label: Realizzazione degli elementi dinamici
+    kind: enum
+    type: categorical_ordinal
+    choices: [1, 2, 3]
+    description: |
+      Valore intero **[1–3]** che valuta quanto efficacemente la storia realizza
+      gli elementi descritti negli **Elementi dinamici scelti per realizzare l'evento**.
+
+      La valutazione deve essere effettuata secondo quanto definito nelle sezioni:
+      - **Scala dei livelli per la valutazione degli elementi dinamici**

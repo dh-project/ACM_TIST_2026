@@ -1,0 +1,240 @@
+# ================================
+# ENGLISH VERSION (analyze + rate)
+# ================================
+model_name: RubricDramaAnalyzeRate
+fields:
+  - name: storytelling_potential
+    label: Storytelling potential
+    kind: object
+    description: >
+      Analysis and rating of the narrative potential of the core event
+      on which the story is built, according to the criteria in
+      #Global_level_scale of the prompt.
+    fields:
+      - name: analysis
+        label: Storytelling potential analysis
+        kind: text
+        description: >
+          Short analysis (possibly using bullet points) of the reasons for
+          the assigned score.
+          You may consider, for example:
+          - relevance and strength of the underlying event with respect to the theme;
+          - potential to develop conflict and stakes;
+          - impact on characters and their possible transformations;
+          - clarity and strength of the narrative trigger in the overall structure.
+          The analysis should be consistent with the scale described in
+          #Global_level_scale.
+      - name: score
+        label: Storytelling potential score
+        kind: enum
+        choices: [1, 2, 3]
+        description: >
+          Integer value [1–3] measuring how much the core narrative event
+          can generate an interesting and developable story.
+          In general: 1 = low, 2 = medium, 3 = good/high potential.
+          Detailed criteria for 1/2/3 are defined in #Global_level_scale.
+
+  - name: dramatic_situation
+    label: Dramatic situation
+    kind: object
+    description: >
+      Analysis and rating of the strength and adequacy of the initial dramatic
+      situation (conflict, stakes, relationships between characters),
+      following the criteria in #Global_level_scale.
+    fields:
+      - name: analysis
+        label: Dramatic situation analysis
+        kind: text
+        description: >
+          Short analysis (possibly with bullet points) of the reasons for
+          the assigned score.
+          You may consider:
+          - clarity of the main conflict;
+          - definition of stakes and consequences;
+          - roles and positions of characters within the conflict;
+          - potential for the situation to evolve across the scenes.
+          The analysis must remain consistent with #Global_level_scale.
+      - name: score
+        label: Dramatic situation score
+        kind: enum
+        choices: [1, 2, 3]
+        description: >
+          Integer value [1–3] evaluating the strength and adequacy of the
+          starting dramatic situation.
+          In general: 1 = weak/poorly adequate, 2 = adequate, 3 = very strong/adequate.
+          Exact criteria are described in #Global_level_scale.
+
+  - name: dynamic_elements_realization
+    label: Realization of dynamic elements
+    kind: object
+    description: >
+      Analysis and rating of how the text realizes conflict development,
+      event progression and character transformations, according to
+      #Global_level_scale.
+    fields:
+      - name: analysis
+        label: Dynamic elements analysis
+        kind: text
+        description: >
+          Short analysis (possibly using bullet points) of the reasons for
+          the assigned score.
+          You may consider:
+          - clarity of conflict escalation;
+          - presence of recognizable turning points;
+          - coherence of character motivations;
+          - quality of emotional or status transformations of the characters.
+          The analysis must justify the chosen level (1/2/3) in relation to
+          #Global_level_scale.
+      - name: score
+        label: Dynamic elements realization score
+        kind: enum
+        choices: [1, 2, 3]
+        description: >
+          Integer value [1–3] evaluating the realization of dynamic elements
+          (conflict development, progression, character change).
+          In general: 1 = weak realization, 2 = acceptable/sufficient,
+          3 = solid/strong realization.
+          Operational details for 1–3 are given in #Global_level_scale.
+
+  - name: inciting
+    label: Inciting incident
+    kind: object
+    description: >
+      Analysis and evaluation of the initial inciting incident (the trigger
+      of the main conflict), as defined in #Turning_points of the prompt.
+      Logical rules linking present, ordered and scene are specified in
+      #Output_logic_rules.
+    fields:
+      - name: analysis
+        label: Inciting incident analysis
+        kind: text
+        description: >
+          Short analysis (possibly using bullet points) of the choices for
+          present, ordered and scene.
+          You may address:
+          - where and how the conflict trigger appears;
+          - whether its temporal placement is coherent with climax and resolution;
+          - why the chosen scene is (or is not) the most appropriate;
+          - any ambiguity or lack of a genuine inciting incident.
+          The analysis should be consistent with #Turning_points.
+      - name: present
+        label: Presence
+        kind: bool
+        description: >
+          True if a specific inciting incident can be identified; False if there
+          is no clear point where the story is triggered.
+          Logic rule: if present = False, then ordered must be False and
+          scene must be "n/a".
+          See #Turning_points and #Output_logic_rules for examples.
+      - name: ordered
+        label: Narrative order
+        kind: bool
+        description: >
+          True if the inciting incident occurs before the climax and the
+          resolution in a coherent narrative sequence; False otherwise
+          (absent, confused or incoherently placed event).
+          Logic rule: if present = False, ordered must be False.
+          The conditions for correct ordering are described in #Turning_points.
+      - name: scene
+        label: Inciting scene
+        kind: enum
+        choices: ["1", "2", "3", "4", "5", "6", "7", "8", "n/a"]
+        description: >
+          String indicating the scene number ("1"–"8") where the inciting incident
+          begins.
+          Use "n/a" if no inciting incident can be identified (i.e., when present = False).
+          Logic rule: if scene = "n/a", present is generally expected to be False.
+          See #Turning_points for examples and clarifications.
+
+  - name: climax
+    label: Climax
+    kind: object
+    description: >
+      Analysis and evaluation of the narrative climax, the moment of highest
+      tension of the main conflict. Definitions and criteria are given in
+      #Turning_points.
+    fields:
+      - name: analysis
+        label: Climax analysis
+        kind: text
+        description: >
+          Short analysis (possibly using bullet points) of the choices for
+          present, ordered and scene.
+          You may discuss:
+          - why a given scene is the true peak of tension;
+          - whether multiple potential climaxes exist and which one was chosen;
+          - whether the placement of the climax is coherent with inciting
+            incident and resolution;
+          - possible absence or weakness of a real climax.
+          The analysis should follow the rules in #Turning_points.
+      - name: present
+        label: Presence
+        kind: bool
+        description: >
+          True if a clear peak moment of the conflict can be identified;
+          False if there is no real climax.
+          Logic rule: if present = False, then ordered must be False and
+          scene must be "n/a".
+      - name: ordered
+        label: Narrative order
+        kind: bool
+        description: >
+          True if the climax occurs after the inciting incident and before
+          the resolution; False if it is absent or incoherently placed relative
+          to the other turning points.
+          Logic rule: if present = False, ordered must be False.
+      - name: scene
+        label: Climax scene
+        kind: enum
+        choices: ["1", "2", "3", "4", "5", "6", "7", "8", "n/a"]
+        description: >
+          String indicating the scene number ("1"–"8") where the climax begins.
+          Use "n/a" if no real climax can be identified (present = False).
+          Logic rule: scene = "n/a" generally implies present = False.
+          See #Turning_points for the definition of climax.
+
+  - name: resolution
+    label: Resolution
+    kind: object
+    description: >
+      Analysis and evaluation of the final resolution of the main conflict.
+      Definitions and criteria are given in #Turning_points.
+    fields:
+      - name: analysis
+        label: Resolution analysis
+        kind: text
+        description: >
+          Short analysis (possibly using bullet points) of the choices for
+          present, ordered and scene regarding the resolution.
+          You may discuss:
+          - whether and how the main conflict is actually closed;
+          - whether the scene selected as resolution is coherent with the climax;
+          - the impact of open or interrupted endings on the judgment;
+          - reasons why no real resolution exists (if present = False).
+          Refer to #Turning_points and #Output_logic_rules for the logic
+          of the turning points.
+      - name: present
+        label: Presence
+        kind: bool
+        description: >
+          True if the story reaches a recognizable final state in relation to
+          the main conflict; False if there is no real conclusion.
+          Logic rule: if present = False, then ordered must be False and
+          scene must be "n/a".
+      - name: ordered
+        label: Narrative order
+        kind: bool
+        description: >
+          True if the resolution occurs after the climax and closes the main
+          narrative arc; False if it is absent or incoherently placed.
+          Logic rule: if present = False, ordered must be False.
+      - name: scene
+        label: Resolution scene
+        kind: enum
+        choices: ["1", "2", "3", "4", "5", "6", "7", "8", "n/a"]
+        description: >
+          String indicating the scene number ("1"–"8") where the resolution
+          begins.
+          Use "n/a" if there is no real resolution (present = False).
+          Logical consistency rules linking present, ordered and scene are
+          summarized in #Output_logic_rules.

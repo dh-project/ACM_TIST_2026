@@ -1,0 +1,134 @@
+model_name: RubricHistoricalStoryRateExplain
+fields:
+  - name: historical_events
+    label: Valutazione eventi storici
+    kind: object
+    description: >
+      Valutazione della plausibilità storica degli eventi narrati
+      rispetto alla descrizione dell'evento originale, con breve spiegazione.
+    fields:
+      - name: score
+        label: Punteggio eventi storici
+        kind: enum
+        choices: [1, 2, 3]
+        description: >
+          Valore intero [1–3] che misura la plausibilità degli eventi principali
+          descritti nella storia rispetto al materiale in <original_event>.
+          In generale: 1 = bassa/plausibilità scarsa, 2 = plausibile con qualche
+          imprecisione, 3 = plausibilità alta e coerenza complessiva.
+          I criteri dettagliati per distinguere 1/2/3 sono descritti nella sezione
+          #Scala_livelli_storici del prompt.
+      - name: analysis
+        label: Analisi eventi storici
+        kind: text
+        description: >
+          Breve spiegazione (anche in bullet points) delle ragioni del punteggio,
+          facendo riferimento sia alla storia sia al materiale in <original_event>.
+          Puoi considerare, ad esempio:
+          - coerenza degli eventi con il contesto storico (date, luoghi, attori);
+          - presenza/assenza di anacronismi evidenti;
+          - plausibilità delle cause e delle conseguenze;
+          - uso corretto di eventi chiave documentati.
+          Le linee guida narrative dettagliate sono descritte nella sezione
+          #Linee_guida_analisi_storica del prompt.
+
+  - name: historical_characters
+    label: Valutazione personaggi storici
+    kind: object
+    description: >
+      Valutazione della plausibilità storica dei personaggi (reali o ispirati
+      a figure storiche) e dei loro comportamenti, con breve spiegazione.
+    fields:
+      - name: score
+        label: Punteggio personaggi storici
+        kind: enum
+        choices: [1, 2, 3]
+        description: >
+          Valore intero [1–3] che valuta la plausibilità storica dei personaggi
+          e dei loro comportamenti rispetto a <original_event>.
+          In generale: 1 = comportamento poco plausibile o anacronistico,
+          2 = generalmente plausibile ma con alcune forzature,
+          3 = coerente e ben allineato al contesto storico e sociale.
+          I criteri operativi per la distinzione 1/2/3 sono descritti in
+          #Scala_livelli_storici nel prompt.
+      - name: analysis
+        label: Analisi personaggi storici
+        kind: text
+        description: >
+          Breve spiegazione (anche in bullet points) delle ragioni del punteggio,
+          riferendoti sia alla storia sia a <original_event>.
+          Puoi considerare, ad esempio:
+          - mentalità, valori e pregiudizi compatibili con il periodo;
+          - plausibilità delle azioni rispetto a ruolo sociale e status;
+          - realismo delle relazioni tra personaggi;
+          - eventuali anacronismi psicologici o di costume.
+          Per ulteriori indicazioni, vedi la sezione #Linee_guida_analisi_storica.
+
+  - name: historical_places_settings
+    label: Valutazione luoghi e ambientazioni
+    kind: object
+    description: >
+      Valutazione della plausibilità storica di luoghi, ambientazioni e dettagli
+      materiali rispetto al contesto descritto in <original_event>, con breve spiegazione.
+    fields:
+      - name: score
+        label: Punteggio luoghi e ambientazioni
+        kind: enum
+        choices: [1, 2, 3]
+        description: >
+          Valore intero [1–3] che valuta la plausibilità storica di luoghi,
+          ambientazioni e dettagli materiali.
+          In generale:
+          - 1 = molti elementi poco plausibili o eccessivamente generici,
+          - 2 = quadro complessivamente plausibile con alcune imprecisioni,
+          - 3 = ambientazione coerente e ben compatibile con periodo e luogo.
+          I criteri di dettaglio sono specificati in #Scala_livelli_storici.
+      - name: analysis
+        label: Analisi luoghi e ambientazioni
+        kind: text
+        description: >
+          Breve spiegazione (anche in bullet points) delle ragioni del punteggio,
+          riferendoti alla storia e al materiale di <original_event>.
+          Puoi considerare, ad esempio:
+          - coerenza con geografia, assetto urbano e contesto politico;
+          - plausibilità di edifici, oggetti e tecnologie;
+          - accuratezza dei dettagli di vita quotidiana;
+          - presenza di anacronismi materiali o ambientali.
+          Le istruzioni operative sono riportate in #Linee_guida_analisi_storica.
+
+  - name: adherence_original_event
+    label: Aderenza all'evento originale
+    kind: object
+    description: >
+      Valutazione del grado di fedeltà della storia all’evento storico documentato
+      in <original_event>, tenendo conto che si tratta di un racconto di finzione.
+    fields:
+      - name: score
+        label: Punteggio aderenza all'evento originale
+        kind: enum
+        choices: [1, 2, 3]
+        description: >
+          Valore intero [1–3] che misura il grado di fedeltà della storia
+          all’evento storico documentato in <original_event>.
+          In generale:
+          - 1 = scarsa aderenza (numerose deviazioni forti, reinterpretazioni che
+            alterano il significato complessivo);
+          - 2 = aderenza moderata (licenze di finzione presenti ma compatibili con
+            il quadro generale);
+          - 3 = elevata aderenza (la storia resta per lo più entro i limiti di quanto
+            descritto, con variazioni minori o chiaramente riconoscibili come finzione).
+          I criteri per distinguere 1/2/3 sono specificati nella sezione
+          #Scala_livelli_storici del prompt.
+      - name: analysis
+        label: Analisi aderenza all'evento originale
+        kind: text
+        description: >
+          Breve spiegazione (anche in bullet points) delle ragioni del punteggio,
+          confrontando in modo esplicito gli elementi chiave di <original_event>
+          con quelli della storia.
+          Puoi considerare, ad esempio:
+          - quali parti della storia seguono fedelmente l’evento documentato;
+          - quali parti se ne discostano e quanto è grande lo scostamento;
+          - il ruolo delle componenti di finzione sulla comprensione storica;
+          - se le modifiche introdotte distorcono o meno il senso dell’evento.
+          Le linee guida dettagliate sono definite in #Linee_guida_analisi_storica.

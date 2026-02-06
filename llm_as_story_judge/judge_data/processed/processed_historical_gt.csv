@@ -1,0 +1,61 @@
+id,generator,judge,historical_plausibilita__EventiStorici,historical_plausibilita__PersonaggiStorici,historical_plausibilita__LuoghiAmbientazioni,historical_aderenzaEventoOriginale,noteUmane
+ds_0003,ds,humanHistorical,2.0,3.0,3.0,2.0,"Interessante riferimento alle statuette in cera. ""assaggista"" :D"
+ds_0004,ds,humanHistorical,2.0,2.0,2.0,2.0,
+ds_0006,ds,humanHistorical,2.0,2.0,2.0,1.0,interessante sul piano narrativo ma del tutto lontano dalla cultura egizia delle immagini.
+ds_0009,ds,humanHistorical,2.0,3.0,3.0,2.0,"""Le dita del faraone stringono con forza il bracciale del ureo"" possibile tic narrativo visto anche in Ds_0003. Qui però l'oggetto è ibrido incomprensibile."
+ds_0011,ds,humanHistorical,2.0,2.0,2.0,2.0,
+ds_0022,ds,humanHistorical,1.0,2.0,1.0,1.0,
+ds_0033,ds,humanHistorical,1.0,2.0,2.0,1.0,"ruoli invertiti per ambiguità della descrizione curatoriale. Nel papiro Hermias è il denunciante, Horus e i Coachiti difendono possesso casa."
+ds_0042,ds,humanHistorical,1.0,1.0,1.0,2.0,"Deir el-Medina non ha quartieri o botteghe. Calcare di Tura impensabile. ""I segni della sua antica prosperità sono gone"" :D"
+ds_0043,ds,humanHistorical,2.0,2.0,2.0,2.0,"""esperti traccianti"""
+ds_0044,ds,humanHistorical,2.0,2.0,1.0,2.0,Si pensa che la stele venga da Gebelein non da Deir el-Medina
+ds_0047,ds,humanHistorical,1.0,1.0,1.0,1.0,
+ds_0050,ds,humanHistorical,2.0,2.0,1.0,1.0,Si ritiene che la vicenda si svolga nella tebaide non a Crocodilopolis. Datazione dovrebbe essere I sec. a.C.
+ds_0053,ds,humanHistorical,3.0,2.0,3.0,2.0,
+ds_0054,ds,humanHistorical,2.0,3.0,3.0,3.0,piuttosto attinente salvo sbavature varie
+ds_0056,ds,humanHistorical,1.0,1.0,1.0,1.0,La scena è tipica rappresentazione della forza del sovrano che abbatte i nemici.
+ds_0064,ds,humanHistorical,2.0,2.0,2.0,2.0,"""gridi autoritari"". ""Avanzano a ventaglio""... sono in due. ""Nefer e Khamudi, due bovari al servizio del tempio di Amon"", in realtà sono al massimo del generale Iti dalla tomba del quale arriva pittura. "
+ds_0069,ds,humanHistorical,1.0,2.0,2.0,1.0,
+ds_0070,ds,humanHistorical,2.0,2.0,2.0,2.0,
+ds_0079,ds,humanHistorical,1.0,1.0,1.0,1.0,"datazione e circostanza completamente inventata. Non c'erano i dati necessari,"
+ds_0092,ds,humanHistorical,2.0,1.0,1.0,1.0,
+gem_0001,gem,humanHistorical,1.0,2.0,2.0,2.0,
+gem_0002,gem,humanHistorical,3.0,3.0,3.0,3.0,
+gem_0004,gem,humanHistorical,2.0,3.0,2.0,2.0,
+gem_0005,gem,humanHistorical,2.0,3.0,1.0,2.0,
+gem_0011,gem,humanHistorical,2.0,2.0,2.0,2.0,
+gem_0016,gem,humanHistorical,3.0,3.0,3.0,3.0,
+gem_0018,gem,humanHistorical,2.0,2.0,2.0,1.0,stessa situazione di ruoli invertiti osservata in ds 33.
+gem_0022,gem,humanHistorical,2.0,3.0,3.0,2.0,
+gem_0026,gem,humanHistorical,2.0,3.0,2.0,2.0,
+gem_0031,gem,humanHistorical,3.0,3.0,3.0,3.0,
+gem_0032,gem,humanHistorical,1.0,1.0,2.0,1.0,"il Faraone Thutmosi III, il 'Napoleone d'Egitto', sta marciando verso nord; Le macchine d'assedio egizie,"
+gem_0042,gem,humanHistorical,2.0,3.0,2.0,2.0,
+gem_0051,gem,humanHistorical,3.0,3.0,3.0,2.0,
+gem_0059,gem,humanHistorical,2.0,3.0,2.0,2.0,
+gem_0063,gem,humanHistorical,3.0,3.0,3.0,2.0,
+gem_0064,gem,humanHistorical,2.0,3.0,3.0,2.0,scena ouroboros non corretta
+gem_0076,gem,humanHistorical,1.0,2.0,2.0,2.0,
+gem_0077,gem,humanHistorical,3.0,3.0,3.0,2.0,
+gem_0094,gem,humanHistorical,2.0,2.0,2.0,2.0,
+gem_0096,gem,humanHistorical,2.0,3.0,3.0,2.0,
+gpt_0001,gpt,humanHistorical,1.0,1.0,1.0,1.0,
+gpt_0002,gpt,humanHistorical,1.0,1.0,2.0,1.0,"Come per gli altri 2 LLM, è frainteso chi accusa chi."
+gpt_0005,gpt,humanHistorical,1.0,1.0,2.0,1.0,
+gpt_0008,gpt,humanHistorical,1.0,1.0,1.0,1.0,
+gpt_0009,gpt,humanHistorical,1.0,1.0,1.0,1.0,
+gpt_0011,gpt,humanHistorical,1.0,1.0,1.0,1.0,
+gpt_0020,gpt,humanHistorical,1.0,1.0,1.0,1.0,
+gpt_0026,gpt,humanHistorical,1.0,2.0,1.0,1.0,
+gpt_0027,gpt,humanHistorical,1.0,1.0,1.0,1.0,Schiaparelli e il curatore Drovetti
+gpt_0054,gpt,humanHistorical,1.0,1.0,1.0,1.0,inchiostro di seppia
+gpt_0055,gpt,humanHistorical,1.0,1.0,1.0,1.0,
+gpt_0057,gpt,humanHistorical,1.0,1.0,1.0,1.0,
+gpt_0060,gpt,humanHistorical,1.0,1.0,1.0,1.0,"""Regione di Maasai, Kenya"""
+gpt_0064,gpt,humanHistorical,1.0,1.0,1.0,1.0,
+gpt_0068,gpt,humanHistorical,1.0,1.0,1.0,1.0,La priestessa
+gpt_0091,gpt,humanHistorical,1.0,1.0,1.0,1.0,Parco Nazionale del Serengeti
+gpt_0092,gpt,humanHistorical,1.0,1.0,1.0,1.0,"Kha, forse un barbiere di corte"
+gpt_0093,gpt,humanHistorical,1.0,1.0,1.0,1.0,
+gpt_0096,gpt,humanHistorical,2.0,2.0,2.0,2.0,
+gpt_0098,gpt,humanHistorical,1.0,2.0,2.0,1.0,macchine d’assedio robuste

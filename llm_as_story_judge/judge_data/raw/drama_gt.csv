@@ -1,0 +1,61 @@
+id,dramatic_potenzialeStorytelling,dramatic_situazioneDrammatica,dramatic_realizzazioneElementiDinamici,dramatic_turningPoints__eventoScatenantePresente,dramatic_turningPoints__eventoScatenanteOrdinato,dramatic_turningPoints__eventoScatenanteScena,dramatic_turningPoints__climaxPresente,dramatic_turningPoints__climaxOrdinato,dramatic_turningPoints__climaxScena,dramatic_turningPoints__risoluzionePresente,dramatic_turningPoints__risoluzioneOrdinato,dramatic_turningPoints__risoluzioneScena
+ds_0003,3 - Alto Potenziale,3 - Molto Appropriata,3 - Ottima,Presente,Corretto,1,Presente,Corretto,4,Presente,Corretto,8
+ds_0004,2 - Potenziale Medio,3 - Molto Appropriata,3 - Ottima,Presente,Corretto,1,Presente,Corretto,5,Presente,Corretto,7
+ds_0006,2 - Potenziale Medio,2 - Appropriata,1 - Pessima,Presente,Corretto,3,Presente,Corretto,6,Presente,Corretto,7
+ds_0009,3 - Alto Potenziale,3 - Molto Appropriata,2 - Sufficiente,Presente,Corretto,3,Presente,Corretto,7,Presente,Corretto,8
+ds_0011,2 - Potenziale Medio,2 - Appropriata,2 - Sufficiente,Assente,,,Presente,Corretto,6,Assente,,
+ds_0022,2 - Potenziale Medio,2 - Appropriata,2 - Sufficiente,Presente,Corretto,2,Presente,Corretto,5,Presente,Corretto,7
+ds_0033,2 - Potenziale Medio,3 - Molto Appropriata,3 - Ottima,Presente,Corretto,2,Presente,Corretto,7,Presente,Corretto,8
+ds_0042,2 - Potenziale Medio,3 - Molto Appropriata,2 - Sufficiente,Presente,Corretto,2,Assente,,,Presente,Corretto,8
+ds_0043,3 - Alto Potenziale,3 - Molto Appropriata,2 - Sufficiente,Presente,Corretto,2,Presente,Corretto,6,Presente,Corretto,8
+ds_0044,1 - Nessun Potenziale,1 - Inappropriata,1 - Pessima,Assente,,,Assente,,,Assente,,
+ds_0047,1 - Nessun Potenziale,1 - Inappropriata,1 - Pessima,Assente,,,Assente,,,Assente,,
+ds_0050,2 - Potenziale Medio,2 - Appropriata,2 - Sufficiente,Presente,Corretto,1,Presente,Corretto,6,Presente,Corretto,7
+ds_0053,2 - Potenziale Medio,3 - Molto Appropriata,3 - Ottima,Presente,Corretto,2,Assente,,,Assente,,
+ds_0054,1 - Nessun Potenziale,3 - Molto Appropriata,2 - Sufficiente,Assente,,,Assente,,,Assente,,
+ds_0056,1 - Nessun Potenziale,1 - Inappropriata,1 - Pessima,Assente,,,Assente,,,Assente,,
+ds_0064,1 - Nessun Potenziale,1 - Inappropriata,1 - Pessima,Presente,Corretto,1,Presente,Corretto,5,Presente,Corretto,8
+ds_0069,1 - Nessun Potenziale,2 - Appropriata,1 - Pessima,Presente,Corretto,1,Presente,Corretto,6,Presente,Corretto,7
+ds_0070,1 - Nessun Potenziale,1 - Inappropriata,1 - Pessima,Assente,,,Assente,,,Assente,,
+ds_0079,1 - Nessun Potenziale,2 - Appropriata,1 - Pessima,Presente,Corretto,2,Presente,Corretto,7,Presente,Corretto,8
+ds_0092,1 - Nessun Potenziale,1 - Inappropriata,1 - Pessima,Assente,,,Presente,Corretto,5,Presente,Corretto,7
+gem_0001,1 - Nessun Potenziale,1 - Inappropriata,1 - Pessima,Presente,Corretto,1,Presente,Corretto,6,Presente,Corretto,7
+gem_0002,2 - Potenziale Medio,2 - Appropriata,2 - Sufficiente,Presente,Corretto,2,Presente,Corretto,7,Presente,Corretto,8
+gem_0004,1 - Nessun Potenziale,2 - Appropriata,1 - Pessima,Presente,Corretto,2,Presente,Corretto,6,Presente,Corretto,8
+gem_0005,2 - Potenziale Medio,2 - Appropriata,2 - Sufficiente,Presente,Corretto,2,Assente,,,Presente,Corretto,8
+gem_0011,3 - Alto Potenziale,1 - Inappropriata,1 - Pessima,Presente,Corretto,2,Presente,Corretto,5,Presente,Corretto,7
+gem_0016,2 - Potenziale Medio,2 - Appropriata,2 - Sufficiente,Assente,,,Presente,Corretto,6,Presente,Corretto,8
+gem_0018,2 - Potenziale Medio,3 - Molto Appropriata,3 - Ottima,Assente,,,Assente,,,Presente,Corretto,8
+gem_0022,1 - Nessun Potenziale,2 - Appropriata,1 - Pessima,Presente,Corretto,1,Assente,,,Assente,,
+gem_0026,1 - Nessun Potenziale,1 - Inappropriata,1 - Pessima,Assente,,,Assente,,,Assente,,
+gem_0031,1 - Nessun Potenziale,1 - Inappropriata,1 - Pessima,Assente,,,Presente,Corretto,6,Presente,Corretto,7
+gem_0032,3 - Alto Potenziale,2 - Appropriata,2 - Sufficiente,Presente,Corretto,2,Presente,Corretto,5,Presente,Corretto,7
+gem_0042,3 - Alto Potenziale,1 - Inappropriata,1 - Pessima,Assente,,,Assente,,,Presente,Corretto,7
+gem_0051,2 - Potenziale Medio,1 - Inappropriata,1 - Pessima,Assente,,,Presente,Corretto,5,Presente,Corretto,6
+gem_0059,1 - Nessun Potenziale,1 - Inappropriata,1 - Pessima,Assente,,,Assente,,,Assente,,
+gem_0063,1 - Nessun Potenziale,1 - Inappropriata,1 - Pessima,Presente,Corretto,2,Assente,,,Presente,Corretto,7
+gem_0064,2 - Potenziale Medio,1 - Inappropriata,1 - Pessima,Presente,Corretto,1,Assente,,,Presente,Corretto,7
+gem_0076,1 - Nessun Potenziale,1 - Inappropriata,1 - Pessima,Presente,Corretto,2,Assente,,,Presente,Corretto,7
+gem_0077,2 - Potenziale Medio,2 - Appropriata,2 - Sufficiente,Presente,Corretto,1,Assente,,,Presente,Corretto,7
+gem_0094,2 - Potenziale Medio,2 - Appropriata,2 - Sufficiente,Presente,Corretto,2,Presente,Corretto,5,Presente,Corretto,6
+gem_0096,1 - Nessun Potenziale,1 - Inappropriata,1 - Pessima,Assente,,,Assente,,,Assente,,
+gpt_0001,3 - Alto Potenziale,1 - Inappropriata,1 - Pessima,Presente,Corretto,1,Assente,,,Presente,Corretto,7
+gpt_0002,2 - Potenziale Medio,3 - Molto Appropriata,3 - Ottima,Presente,Corretto,1,Assente,,,Presente,Corretto,7
+gpt_0005,3 - Alto Potenziale,2 - Appropriata,2 - Sufficiente,Presente,Corretto,1,Presente,Corretto,5,Presente,Corretto,6
+gpt_0008,1 - Nessun Potenziale,2 - Appropriata,1 - Pessima,Assente,,,Assente,,,Assente,,
+gpt_0009,1 - Nessun Potenziale,1 - Inappropriata,1 - Pessima,Presente,Corretto,2,Presente,Corretto,4,Assente,,
+gpt_0011,2 - Potenziale Medio,1 - Inappropriata,1 - Pessima,Assente,,,Assente,,,Presente,Corretto,7
+gpt_0020,2 - Potenziale Medio,2 - Appropriata,1 - Pessima,Assente,,,Assente,,,Presente,Corretto,7
+gpt_0026,1 - Nessun Potenziale,2 - Appropriata,2 - Sufficiente,Assente,,,Assente,,,Assente,,
+gpt_0027,2 - Potenziale Medio,2 - Appropriata,2 - Sufficiente,Presente,Corretto,1,Presente,Corretto,5,Assente,,
+gpt_0054,2 - Potenziale Medio,1 - Inappropriata,1 - Pessima,Assente,,,Presente,Corretto,5,Assente,,
+gpt_0055,1 - Nessun Potenziale,2 - Appropriata,2 - Sufficiente,Assente,,,Assente,,,Assente,,
+gpt_0057,1 - Nessun Potenziale,1 - Inappropriata,1 - Pessima,Assente,,,Assente,,,Assente,,
+gpt_0060,2 - Potenziale Medio,2 - Appropriata,2 - Sufficiente,Presente,Corretto,2,Assente,,,Presente,Corretto,7
+gpt_0064,1 - Nessun Potenziale,1 - Inappropriata,1 - Pessima,Assente,,,Assente,,,Assente,,
+gpt_0068,1 - Nessun Potenziale,1 - Inappropriata,1 - Pessima,Presente,Corretto,2,Presente,Corretto,4,Presente,Corretto,7
+gpt_0091,2 - Potenziale Medio,1 - Inappropriata,1 - Pessima,Presente,Corretto,2,Presente,Corretto,3,Presente,Corretto,6
+gpt_0092,2 - Potenziale Medio,2 - Appropriata,1 - Pessima,Presente,Incorretto,5,Assente,,,Presente,Corretto,7
+gpt_0093,1 - Nessun Potenziale,1 - Inappropriata,1 - Pessima,Assente,,,Assente,,,Assente,,
+gpt_0096,2 - Potenziale Medio,1 - Inappropriata,1 - Pessima,Presente,Corretto,2,Presente,Corretto,5,Presente,Corretto,7
+gpt_0098,3 - Alto Potenziale,2 - Appropriata,2 - Sufficiente,Presente,Corretto,1,Presente,Corretto,6,Presente,Corretto,7

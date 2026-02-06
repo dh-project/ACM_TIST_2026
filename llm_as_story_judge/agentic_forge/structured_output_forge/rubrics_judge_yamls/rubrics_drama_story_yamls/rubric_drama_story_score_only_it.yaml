@@ -1,0 +1,147 @@
+model_name: RubricDramaScoreOnly
+fields:
+  - name: storytelling_potential
+    label: Potenziale di storytelling
+    kind: enum
+    choices: [1, 2, 3]
+    description: >
+      Valore intero [1–3] che misura quanto l'evento narrativo di base
+      ha il potenziale di generare una storia interessante e sviluppabile.
+      In generale: 1 = scarso, 2 = medio, 3 = buono/alto.
+      Per i criteri dettagliati dei livelli vedi sezione #Scala_livelli_globali
+      del prompt.
+
+  - name: dramatic_situation
+    label: Situazione drammatica
+    kind: enum
+    choices: [1, 2, 3]
+    description: >
+      Valore intero [1–3] che valuta la forza e l'adeguatezza della situazione
+      drammatica di partenza (conflitto, posta in gioco, relazioni tra personaggi).
+      In generale: 1 = poco adeguata, 2 = adeguata, 3 = molto adeguata.
+      I criteri precisi sono descritti nella sezione #Scala_livelli_globali
+      del prompt.
+
+  - name: dynamic_elements_realization
+    label: Realizzazione elementi dinamici
+    kind: enum
+    choices: [1, 2, 3]
+    description: >
+      Valore intero [1–3] che valuta come il testo realizza sviluppo del conflitto,
+      progressione degli eventi e trasformazioni dei personaggi.
+      In generale: 1 = realizzazione debole, 2 = sufficiente/accettabile,
+      3 = solida/forte.
+      I dettagli operativi per 1–3 sono specificati nella sezione
+      #Scala_livelli_globali del prompt.
+
+  - name: inciting
+    label: Evento scatenante (Inciting incident)
+    kind: object
+    description: >
+      Stato dell'evento scatenante iniziale (innesco del conflitto principale),
+      come definito nella sezione #Punti_di_svolta del prompt.
+      Le regole logiche tra present, ordered e scene sono descritte anche in
+      #Regole_logiche_output.
+    fields:
+      - name: present
+        label: Presenza
+        kind: bool
+        description: >
+          True se è identificabile un evento scatenante specifico; False se non
+          c'è un punto chiaro in cui la storia viene innescata.
+          Regola logica: se present = False, allora ordered deve essere False
+          e scene deve essere "n/a". Vedi #Punti_di_svolta e
+          #Regole_logiche_output per maggiori dettagli.
+
+      - name: ordered
+        label: Ordine narrativo
+        kind: bool
+        description: >
+          True se l'evento scatenante avviene prima del climax e della
+          risoluzione in una sequenza narrativa coerente; False altrimenti
+          (evento assente, confuso o collocato in modo incoerente).
+          Regola logica: se present = False, ordered deve essere False.
+          I criteri narrativi sono descritti in #Punti_di_svolta.
+
+      - name: scene
+        label: Scena evento scatenante
+        kind: enum
+        choices: ["1", "2", "3", "4", "5", "6", "7", "8", "n/a"]
+        description: >
+          Stringa che indica il numero di scena (da "1" a "8") in cui ha inizio
+          l'evento scatenante.
+          Usa "n/a" se non è identificabile alcun evento scatenante (cioè quando
+          present = False).
+          Regola logica: se scene è "n/a" ci si aspetta present = False.
+          Vedi #Punti_di_svolta per esempi e chiarimenti.
+
+  - name: climax
+    label: Climax
+    kind: object
+    description: >
+      Stato del climax narrativo, il momento di massima tensione del conflitto
+      principale. Definizioni e criteri in #Punti_di_svolta.
+    fields:
+      - name: present
+        label: Presenza
+        kind: bool
+        description: >
+          True se è identificabile un momento di picco del conflitto; False se
+          non esiste un vero climax.
+          Regola logica: se present = False, allora ordered deve essere False
+          e scene deve essere "n/a".
+
+      - name: ordered
+        label: Ordine narrativo
+        kind: bool
+        description: >
+          True se il climax avviene dopo l'inciting e prima della risoluzione;
+          False se è assente o collocato in modo incoerente.
+          Regola logica: se present = False, ordered deve essere False.
+
+      - name: scene
+        label: Scena climax
+        kind: enum
+        choices: ["1", "2", "3", "4", "5", "6", "7", "8", "n/a"]
+        description: >
+          Stringa che indica il numero di scena (da "1" a "8") in cui ha inizio
+          il climax.
+          Usa "n/a" se non è identificabile un vero climax (present = False).
+          Regola logica: scene = "n/a" implica generalmente present = False.
+          Vedi #Punti_di_svolta per la definizione di climax.
+
+  - name: resolution
+    label: Risoluzione
+    kind: object
+    description: >
+      Stato della risoluzione finale del conflitto principale. Definizioni e
+      criteri in #Punti_di_svolta.
+    fields:
+      - name: present
+        label: Presenza
+        kind: bool
+        description: >
+          True se la storia porta a uno stato finale riconoscibile in rapporto
+          al conflitto; False se non c'è una vera conclusione.
+          Regola logica: se present = False, allora ordered deve essere False
+          e scene deve essere "n/a".
+
+      - name: ordered
+        label: Ordine narrativo
+        kind: bool
+        description: >
+          True se la risoluzione avviene dopo il climax e chiude l'arco
+          narrativo principale; False se è assente o collocata in modo
+          incoerente.
+          Regola logica: se present = False, ordered deve essere False.
+
+      - name: scene
+        label: Scena risoluzione
+        kind: enum
+        choices: ["1", "2", "3", "4", "5", "6", "7", "8", "n/a"]
+        description: >
+          Stringa che indica il numero di scena (da "1" a "8") in cui ha inizio
+          la risoluzione.
+          Usa "n/a" se non esiste una vera risoluzione (present = False).
+          Le regole di coerenza tra present, ordered e scene sono riassunte
+          in #Regole_logiche_output del prompt.

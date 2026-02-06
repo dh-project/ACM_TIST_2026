@@ -1,0 +1,35 @@
+model_name: ClassificationOutput
+
+fields:
+  - name: class_label
+    label: Predicted Class
+    kind: enum
+    choices: ["positive", "negative", "neutral"]
+    description: >
+      The predicted category for the input.
+
+  - name: confidence
+    label: Confidence Score
+    kind: float
+    min: 0.0
+    max: 1.0
+    description: >
+      A probability score between 0.0 and 1.0.
+
+  - name: metadata
+    label: Metadata
+    kind: object
+    description: >
+      Additional information about the prediction.
+    fields:
+      - name: model_version
+        label: Model Version
+        kind: text
+        description: >
+          Identifier of the model used for the prediction.
+
+      - name: timestamp
+        label: Timestamp
+        kind: text
+        description: >
+          When the prediction was generated.

@@ -1,0 +1,32 @@
+spec_name: historical
+model_name: historical
+fields:
+  - name: plausibilita_eventi_storici
+    label: Plausibilità degli eventi storici
+    kind: enum
+    type: categorical_ordinal
+    choices: [1, 2, 3]
+    description: |
+      Valore intero **[1–3]** che valuta la plausibilità storica degli eventi narrati,
+      secondo quanto definito nelle sezioni **“Cosa intendiamo per plausibilità storica”**
+      e **“Scala dei livelli”**.
+
+  - name: plausibilita_personaggi_storici
+    label: Plausibilità dei personaggi storici
+    kind: enum
+    type: categorical_ordinal
+    choices: [1, 2, 3]
+    description: |
+      Valore intero **[1–3]** che valuta la plausibilità storica dei personaggi e dei
+      loro comportamenti, secondo quanto definito nelle sezioni
+      **“Cosa intendiamo per plausibilità storica”** e **“Scala dei livelli”**.
+
+  - name: plausibilita_luoghi_ambientazioni
+    label: Plausibilità di luoghi e ambientazioni
+    kind: enum
+    type: categorical_ordinal
+    choices: [1, 2, 3]
+    description: |
+      Valore intero **[1–3]** che valuta la plausibilità storica di luoghi,
+      ambientazioni e dettagli materiali, secondo quanto definito nelle sezioni
+      **“Cosa intendiamo per plausibilità storica”** e **“Scala dei livelli”**.

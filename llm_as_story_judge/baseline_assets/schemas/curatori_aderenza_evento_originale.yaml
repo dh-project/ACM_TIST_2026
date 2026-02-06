@@ -1,0 +1,17 @@
+spec_name: adherence
+model_name: adherence
+fields:
+  - name: aderenza_evento_originale
+    label: Aderenza all'evento originale
+    kind: enum
+    type: categorical_ordinal
+    choices: [1, 2, 3]
+    description: >
+      Valore intero **[1–3]** che esprime il grado di aderenza della storia di finzione all’evento originale.
+
+      La valutazione deve essere effettuata secondo quanto definito nelle sezioni:
+      - **“Cosa intendiamo per aderenza all’evento originale”**;
+      - **“Scala dei livelli”**,
+
+      sulla base del confronto tra **Descrizione del reperto**, **Descrizione curatoriale** (se presente) e **Scene della storia**.
+

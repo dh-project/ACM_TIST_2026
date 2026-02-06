@@ -1,0 +1,110 @@
+model_name: turning_points
+spec_name: turning_points
+fields:
+  - name: evento_scatenante
+    label: Evento scatenante
+    kind: object
+    description: |
+      Stato dell’evento scatenante, ovvero l’innesco del conflitto principale,
+      così come emerge dalle **Scene della storia**.
+    fields:
+      - name: presente
+        label: Presenza
+        kind: enum
+        type: categorical_nominal
+        choices: ["True", "False"]
+        description: |
+          Indica se l’evento scatenante è identificabile.
+          Se "False", i campi `ordinato` e `scena` devono essere
+          "non applicabile".
+
+      - name: ordinato
+        label: Ordine narrativo
+        kind: enum
+        type: categorical_nominal
+        choices: ["True", "False", "non applicabile"]
+        type: categorical_nominal
+        description: |
+          Indica se l’evento scatenante è collocato in modo coerente
+          rispetto a climax e risoluzione.
+          Deve essere "non applicabile" se `presente` è "False".
+
+      - name: scena
+        label: Scena evento scatenante
+        kind: enum
+        type: categorical_nominal
+        choices: ["1", "2", "3", "4", "5", "6", "7", "8", "non applicabile"]
+        description: |
+          Numero della scena in cui ha inizio l’evento scatenante.
+          Usa "non applicabile" se `presente` è "False".
+
+  - name: climax
+    label: Climax
+    kind: object
+    description: |
+      Stato del climax narrativo, ovvero il momento di massima tensione
+      del conflitto principale.
+    fields:
+      - name: presente
+        label: Presenza
+        kind: enum
+        type: categorical_nominal
+        choices: ["True", "False"]
+        description: |
+          Indica se è identificabile un climax.
+          Se "False", i campi `ordinato` e `scena` devono essere
+          "non applicabile".
+
+      - name: ordinato
+        label: Ordine narrativo
+        kind: enum
+        type: categorical_nominal
+        choices: ["True", "False", "non applicabile"]
+        description: |
+          Indica se il climax è collocato in modo coerente
+          tra evento scatenante e risoluzione.
+          Deve essere "non applicabile" se `presente` è "False".
+
+      - name: scena
+        label: Scena climax
+        kind: enum
+        type: categorical_nominal
+        choices: ["1", "2", "3", "4", "5", "6", "7", "8", "non applicabile"]
+        description: |
+          Numero della scena in cui ha inizio il climax.
+          Usa "non applicabile" se `presente` è "False".
+
+  - name: risoluzione
+    label: Risoluzione
+    kind: object
+    description: |
+      Stato della risoluzione del conflitto principale, ovvero la fase
+      finale in cui emerge un nuovo equilibrio narrativo.
+    fields:
+      - name: presente
+        label: Presenza
+        kind: enum
+        type: categorical_nominal
+        choices: ["True", "False"]
+        description: |
+          Indica se è identificabile una risoluzione.
+          Se "False", i campi `ordinato` e `scena` devono essere
+          "non applicabile".
+
+      - name: ordinato
+        label: Ordine narrativo
+        kind: enum
+        type: categorical_nominal
+        choices: ["True", "False", "non applicabile"]
+        description: |
+          Indica se la risoluzione segue in modo coerente il climax.
+          Deve essere "non applicabile" se `presente` è "False".
+
+      - name: scena
+        label: Scena risoluzione
+        kind: enum
+        type: categorical_nominal
+        choices: ["1", "2", "3", "4", "5", "6", "7", "8", "non applicabile"]
+        description: |
+          Numero della scena in cui ha inizio la risoluzione.
+          Usa "non applicabile" se `presente` è "False".

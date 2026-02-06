@@ -1,0 +1,147 @@
+model_name: RubricDramaScoreOnly
+fields:
+  - name: storytelling_potential
+    label: Storytelling potential
+    kind: enum
+    choices: [1, 2, 3]
+    description: >
+      Integer value [1–3] measuring how strongly the core narrative event
+      can support an interesting, developable story.
+      Roughly: 1 = poor, 2 = medium, 3 = good/high.
+      For detailed criteria for levels 1–3, see section #Global_level_scale
+      in the prompt.
+
+  - name: dramatic_situation
+    label: Dramatic situation
+    kind: enum
+    choices: [1, 2, 3]
+    description: >
+      Integer value [1–3] evaluating the strength and adequacy of the initial
+      dramatic situation (central conflict, stakes, relationships between
+      characters).
+      Roughly: 1 = weak/inadequate, 2 = adequate, 3 = strong/highly adequate.
+      Detailed criteria are described in section #Global_level_scale
+      of the prompt.
+
+  - name: dynamic_elements_realization
+    label: Realization of dynamic elements
+    kind: enum
+    choices: [1, 2, 3]
+    description: >
+      Integer value [1–3] evaluating how the text realizes conflict
+      development, event progression and character transformation.
+      Roughly: 1 = weak, 2 = sufficient/acceptable, 3 = solid/strong.
+      Operational definitions for levels 1–3 are specified in section
+      #Global_level_scale of the prompt.
+
+  - name: inciting
+    label: Inciting incident
+    kind: object
+    description: >
+      Status of the initial inciting incident (the trigger that starts
+      the main conflict), as defined in section #Turning_points of the prompt.
+      Logical rules between present, ordered and scene are also described
+      in #Output_logical_rules.
+    fields:
+      - name: present
+        label: Presence
+        kind: bool
+        description: >
+          True if a specific inciting incident can be identified; False if
+          there is no clear point where the story is "triggered".
+          Logical rule: if present = False, then ordered must be False and
+          scene must be "n/a". See #Turning_points and #Output_logical_rules
+          for more details.
+
+      - name: ordered
+        label: Narrative order
+        kind: bool
+        description: >
+          True if the inciting incident occurs before the climax and the
+          resolution in a coherent narrative sequence; False otherwise
+          (event absent, too diffuse, or located incoherently).
+          Logical rule: if present = False, ordered must be False.
+          Narrative criteria are described in #Turning_points.
+
+      - name: scene
+        label: Inciting scene
+        kind: enum
+        choices: ["1", "2", "3", "4", "5", "6", "7", "8", "n/a"]
+        description: >
+          String indicating the scene number ("1" to "8") where the
+          inciting incident starts.
+          Use "n/a" if no inciting incident can be identified (i.e. when
+          present = False).
+          Logical rule: if scene is "n/a", present is generally expected
+          to be False. See #Turning_points for examples and clarification.
+
+  - name: climax
+    label: Climax
+    kind: object
+    description: >
+      Status of the narrative climax, the peak moment of the main conflict.
+      Definitions and criteria are given in #Turning_points.
+    fields:
+      - name: present
+        label: Presence
+        kind: bool
+        description: >
+          True if a recognizable peak of the main conflict exists; False if
+          there is no real climax.
+          Logical rule: if present = False, then ordered must be False and
+          scene must be "n/a".
+
+      - name: ordered
+        label: Narrative order
+        kind: bool
+        description: >
+          True if the climax occurs after the inciting incident and before
+          the resolution; False if it is absent or incoherently placed with
+          respect to the other turning points.
+          Logical rule: if present = False, ordered must be False.
+
+      - name: scene
+        label: Climax scene
+        kind: enum
+        choices: ["1", "2", "3", "4", "5", "6", "7", "8", "n/a"]
+        description: >
+          String indicating the scene number ("1" to "8") where the climax
+          starts.
+          Use "n/a" if no true climax can be identified (present = False).
+          Logical rule: scene = "n/a" generally implies present = False.
+          See #Turning_points for the definition of climax.
+
+  - name: resolution
+    label: Resolution
+    kind: object
+    description: >
+      Status of the final resolution of the main conflict. Definitions and
+      criteria are given in #Turning_points.
+    fields:
+      - name: present
+        label: Presence
+        kind: bool
+        description: >
+          True if the story reaches a recognizable final state in relation
+          to the main conflict; False if there is no real conclusion.
+          Logical rule: if present = False, then ordered must be False
+          and scene must be "n/a".
+
+      - name: ordered
+        label: Narrative order
+        kind: bool
+        description: >
+          True if the resolution occurs after the climax and actually closes
+          the main narrative arc; False if it is absent or incoherently placed.
+          Logical rule: if present = False, ordered must be False.
+
+      - name: scene
+        label: Resolution scene
+        kind: enum
+        choices: ["1", "2", "3", "4", "5", "6", "7", "8", "n/a"]
+        description: >
+          String indicating the scene number ("1" to "8") where the resolution
+          starts.
+          Use "n/a" if there is no true resolution (present = False).
+          Logical consistency rules between present, ordered and scene are
+          summarized in #Output_logical_rules in the prompt.

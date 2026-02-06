@@ -1,0 +1,15 @@
+s45:
+  provider: default_openrouter
+  model: anthropic/claude-sonnet-4.5
+
+s37:
+  provider: default_openrouter
+  model: anthropic/claude-3.7-sonnet:thinking
+
+deepseek:
+  provider: hpc_ollama
+  model: deepseek-r1:70b
+
+kimi:
+  provider: default_openrouter
+  model: moonshotai/kimi-k2-thinking

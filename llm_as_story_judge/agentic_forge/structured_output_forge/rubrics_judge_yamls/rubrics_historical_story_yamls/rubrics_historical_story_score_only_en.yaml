@@ -1,0 +1,48 @@
+model_name: RubricHistoricalStoryScoreOnly
+fields:
+  - name: historical_events
+    label: Historical events
+    kind: enum
+    choices: [1, 2, 3]
+    description: >
+      Integer value [1–3] measuring the plausibility of the main events
+      in the story with respect to the material in <original_event>.
+      Roughly: 1 = low/poor plausibility, 2 = generally plausible with some
+      issues, 3 = high plausibility and overall coherence.
+      Detailed criteria are described in section #Historical_scale in the prompt.
+
+  - name: historical_characters
+    label: Historical characters
+    kind: enum
+    choices: [1, 2, 3]
+    description: >
+      Integer value [1–3] evaluating the historical plausibility of characters
+      (real or inspired by historical figures) and their behaviour with respect
+      to <original_event>.
+      Roughly: 1 = implausible or anachronistic behaviour, 2 = generally
+      plausible, 3 = coherent and well aligned with the context.
+      Operational criteria are given in #Historical_scale.
+
+  - name: historical_places_settings
+    label: Places and settings
+    kind: enum
+    choices: [1, 2, 3]
+    description: >
+      Integer value [1–3] evaluating the historical plausibility of places,
+      settings and material details given the context described in
+      <original_event>.
+      Roughly: 1 = many weak or generic elements, 2 = overall plausible with
+      some inaccuracies, 3 = coherent and compatible with the period and place.
+      See #Historical_scale in the prompt for details.
+
+  - name: adherence_original_event
+    label: Adherence to the original event
+    kind: enum
+    choices: [1, 2, 3]
+    description: >
+      Integer value [1–3] measuring how faithful the story is to the documented
+      historical event in <original_event>, while still being fiction.
+      Roughly: 1 = low adherence (strong or numerous deviations),
+      2 = moderate adherence (noticeable but acceptable deviations),
+      3 = high adherence (the story largely stays within the described frame).
+      Criteria for levels 1/2/3 are specified in #Historical_scale.

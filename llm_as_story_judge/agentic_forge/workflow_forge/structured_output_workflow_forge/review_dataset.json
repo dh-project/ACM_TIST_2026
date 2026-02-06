@@ -1,0 +1,15 @@
+{
+    "item1": {
+      "review": "Ottimo prodotto, funziona benissimo e consegna veloce.",
+      "product_info": "Electronics - Headphones"
+    },
+    "item2": {
+      "review": "La qualità è molto scarsa, si è rotto subito.",
+      "product_info": "Household - Blender"
+    },
+    "item3": {
+      "review": "Il prodotto è ok, ma il supporto clienti è stato lento.",
+      "product_info": "Services - Software subscription"
+    }
+  }
+  
