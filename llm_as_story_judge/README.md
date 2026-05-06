@@ -22,6 +22,19 @@ Evaluates LLM-generated narratives with structured prompts and schemas, producin
 3. Configure your providers and models in `configs/llm_manager_config.yaml`, and update `configs/model_key.yaml` accordingly.
 
 **How to run**
+You can run the pipeline either from the notebook or from the command line.
+
+**Quick notebook workflow**
+1. Open `workflow_launcher.ipynb` from the `llm_as_story_judge` folder.
+2. Edit the small set of variables at the top of the notebook: model key, dataset, experiment name, run name, batch size, prompts path, and schemas path.
+3. Run the cell that writes `configs/notebook_workflow.yaml`.
+4. Run the validation cell to check dataset, prompt, schema, and model configuration.
+5. In the launch cell, set `RUN_WORKFLOW = True` and execute it.
+6. Use the final cell to preview `experiments/<exp_name>/combined_panel.csv`.
+
+The notebook is intended for quick trials and small experiments. Edit prompt YAML files in `baseline_assets/prompts/` and schema YAML files in `baseline_assets/schemas/` directly in your editor, then rerun the notebook validation and launch cells.
+
+**Command-line workflow**
 1. Configure models in `configs/model_key.yaml`.
 2. Configure providers and available models in `configs/llm_manager_config.yaml`.
 3. Configure one or more workflows in `configs/*_workflow.yaml`.
