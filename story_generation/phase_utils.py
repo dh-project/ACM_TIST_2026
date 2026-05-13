@@ -46,18 +46,24 @@ def model_info(model):
     """)
 
 
-def select_percentage(source_folder):
+def select_percentage(source_folder, percentage = None):
     
-    choice = inquirer.prompt([inquirer.List('action', 
-                                                message = f'What percentage of data would you like to process?',
-                                                choices = [('20%', 20),
-                                                           ('40%', 40),
-                                                           ('60%', 60),
-                                                           ('80%', 80),
-                                                           ('100%', 100)])])
-                                
     total_files = len(os.listdir(source_folder))
-    return round((choice['action']/100) * total_files)
+    
+    if percentage is None:
+        choice = inquirer.prompt([inquirer.List('action', 
+                                                    message = f'What percentage of data would you like to process?',
+                                                    choices = [('20%', 20),
+                                                            ('40%', 40),
+                                                            ('60%', 60),
+                                                            ('80%', 80),
+                                                            ('100%', 100)])])
+                                
+    
+        return round((choice['action']/100) * total_files)
+    
+    else:
+        return round((percentage/100) * total_files)
                                                     
 
 def select_number(raw_folder, processed_folder):
@@ -71,16 +77,20 @@ def select_number(raw_folder, processed_folder):
         return (100 - total_files) + len(os.listdir(raw_folder))
         
 
-def phase_setup(source_folder, raw_folder, processed_folder, costs_file):
+def phase_setup(source_folder, raw_folder, processed_folder, costs_file, default_choices = False):
     
     # Pending analysis:
     if path.isdir(raw_folder) and (len(os.listdir(raw_folder)) < len(os.listdir(source_folder))):
         
-        choice = inquirer.prompt([inquirer.List('action', 
-                                                    message = 'An interrupted analysis was found. How to proceed?',
-                                                    choices = [('Resume previous analysis', 'RESUME'),
-                                                               ('Start new analysis from scratch', 'RESTART')]
-                                       )])['action']
+        if default_choices:
+            choice = 'RESUME'
+        
+        else:
+            choice = inquirer.prompt([inquirer.List('action', 
+                                                        message = 'An interrupted analysis was found. How to proceed?',
+                                                        choices = [('Resume previous analysis', 'RESUME'),
+                                                                ('Start new analysis from scratch', 'RESTART')]
+                                        )])['action']
 
         if os.path.exists(processed_folder):
             shutil.rmtree(processed_folder)
@@ -97,11 +107,15 @@ def phase_setup(source_folder, raw_folder, processed_folder, costs_file):
     # Results already processed:
     elif path.isdir(processed_folder):
         
-        choice = inquirer.prompt([inquirer.List('action', 
-                                                    message = 'Raw results have already been processed. How to proceed?',
-                                                    choices = [('Repeat the processing ', 'REPEAT'),
-                                                               ('Go to the next phase', 'SKIP')]
-                                    )])['action']
+        if default_choices:
+            choice = 'SKIP'
+        
+        else:
+            choice = inquirer.prompt([inquirer.List('action', 
+                                                        message = 'Raw results have already been processed. How to proceed?',
+                                                        choices = [('Repeat the processing ', 'REPEAT'),
+                                                                ('Go to the next phase', 'SKIP')]
+                                        )])['action']
 
         if choice == 'REPEAT':
             shutil.rmtree(processed_folder)

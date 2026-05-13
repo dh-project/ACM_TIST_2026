@@ -95,6 +95,17 @@ Removals:
     return dataframe
 
 
+def catalog_indexing(dataframe, filtered_folder):
+
+    # JSON Conversion:
+    dataframe = dataframe.replace('"', "'", regex=True) 
+    dataframe = dataframe.astype(object).where(pandas.notna(dataframe), None)
+    data = dataframe.set_index('catalog_id').T.to_dict() 
+    
+    with open(path.join(filtered_folder, 'filtered_catalog.json'), 'w', encoding='utf-8') as file:
+        json.dump(data, file, ensure_ascii=False, indent=4)
+
+
 def catalog_conversion(dataframe, processed_folder, max_tokens):
     
     # Folder Creation:
@@ -104,6 +115,7 @@ def catalog_conversion(dataframe, processed_folder, max_tokens):
     
     # JSON Conversion:
     dataframe = dataframe.replace('"', "'", regex=True) 
+    dataframe = dataframe.astype(object).where(pandas.notna(dataframe), None)
     data = dataframe.to_dict(orient='records') 
 
     current_count = 0
@@ -137,33 +149,23 @@ def catalog_conversion(dataframe, processed_folder, max_tokens):
             json.dump(current_chunk, file, ensure_ascii=False, indent=4)
       
 
-def catalog_ids(dataframe, filtered_folder):
-
-    # JSON Conversion:
-    dataframe = dataframe.replace('"', "'", regex=True) 
-    data = dataframe.set_index('catalog_id').T.to_dict() 
-    
-    with open(path.join(filtered_folder, 'filtered_catalog.json'), 'w', encoding='utf-8') as file:
-        json.dump(data, file, ensure_ascii=False, indent=4)
-
-
 def main():
     
     sheet_name = 'Estraz_ITA'
-    original_catalog = path.join('story_generation', 'resources', 'catalog', 'original', 'Catalogo Egizio.xlsx')
-    filtered_folder = path.join('story_generation', 'resources', 'catalog', 'filtered')
-    processed_folder = path.join('story_generation', 'resources', 'catalog', 'processed')
+    original_catalog = path.join('resources', 'catalog', 'original', 'Catalogo Egizio.xlsx')
+    filtered_folder = path.join('resources', 'catalog', 'filtered')
+    processed_folder = path.join('resources', 'catalog', 'processed')
     
     tokens_per_file = 5000    
     processed_name = f'Catalogo Egizio ITA - Max {tokens_per_file} Tokens'
 
     # Catalog ITA:
-    dataframe_ita = pandas.read_excel(original_catalog, sheet_name=sheet_name)
-    dataframe_ita_filtered = catalog_filtering(dataframe_ita, filtered_folder)
-    catalog_ids(dataframe_ita_filtered, filtered_folder)
-
-    # Conversion:
-    catalog_conversion(dataframe_ita_filtered, path.join(processed_folder,processed_name), tokens_per_file)
+    dataframe = pandas.read_excel(original_catalog, sheet_name=sheet_name)
+    dataframe_filtered = catalog_filtering(dataframe, filtered_folder)
+    
+    # Indexing and Conversion:
+    catalog_indexing(dataframe_filtered, filtered_folder)
+    catalog_conversion(dataframe_filtered, path.join(processed_folder,processed_name), tokens_per_file)
     
 
 if __name__ == "__main__":

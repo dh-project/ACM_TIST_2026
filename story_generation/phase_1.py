@@ -65,6 +65,7 @@ def processing_first_phase(raw_folder, processed_folder):
 
         for item in raw_results:
             if item['storytelling_potential'] > 0:
+                del item['has_narrative_event']
                 with open(path.join(processed_folder, f'processed_unordered_{file_counter:04d}.json'), 'w', encoding='utf-8') as output_file:
                     json.dump(item, output_file, ensure_ascii=False, indent=4)
                     file_counter += 1    
@@ -131,9 +132,9 @@ def validation_first_phase(response, input_size, catalog_ids):
         return None
 
 
-def first_phase(model, files_to_process, source_folder, raw_folder, processed_folder, prompt_file, costs_file, final_cost_file):
+def first_phase(model, files_to_process, source_folder, raw_folder, processed_folder, prompt_file, costs_file, final_cost_file, openrouter_api_key, default_choices):
     
-    action = phase_setup(source_folder, raw_folder, processed_folder, costs_file)
+    action = phase_setup(source_folder, raw_folder, processed_folder, costs_file, default_choices)
     
     # Raw results retrieval:
     if action == 'FIRST RUN' or action == 'RESUME/RESTART':
@@ -153,7 +154,7 @@ def first_phase(model, files_to_process, source_folder, raw_folder, processed_fo
 
                     while validated_response is None:
                         progress_bar.set_postfix_str(f'{filename}', refresh=True)
-                        response, cost = generation_openrouter(prompt, model['model_id'],  model['model_provider'],  model['model_reasoning'])
+                        response, cost = generation_openrouter(prompt, model['model_id'],  model['model_provider'],  model['model_reasoning'], openrouter_api_key)
                         if response:
                             validated_response = validation_first_phase(response, len(catalog_portion), [item['catalog_id'] for item in catalog_portion])
 
@@ -178,27 +179,26 @@ def first_phase(model, files_to_process, source_folder, raw_folder, processed_fo
 
 ###________________________ MAIN ________________________###
 
-def main():
+def main(data_source = 'Catalogo Egizio ITA - Max 5000 Tokens', model = None, percentage = None, openrouter_api_key = None, default_choices = False):
     
-    data_source = 'Catalogo Egizio ITA - Max 5000 Tokens'
-    
-    model = select_model()
-    model_info(model)
+    if model is None:
+        model = select_model()
+        model_info(model)
 
     print(f'{Y}PHASE 1{R}\nIdentification and extraction of events with narrative potential from the catalog\n')
 
     # Folders:
-    source_folder = path.join('story_generation', 'resources', 'catalog', 'processed', data_source)
-    raw_folder = path.join('story_generation', 'results', model['model_name'], 'phase_1', 'raw_results')
-    processed_folder = path.join('story_generation', 'results', model['model_name'], 'phase_1', 'processed_results')
+    source_folder = path.join('resources', 'catalog', 'processed', data_source)
+    raw_folder = path.join('results', model['model_name'], 'phase_1', 'raw_results')
+    processed_folder = path.join('results', model['model_name'], 'phase_1', 'processed_results')
 
     # Files:
-    prompt_file = path.join('story_generation', 'resources', 'prompts', 'prompt_phase_1.txt')
-    costs_file = path.join('story_generation', 'results', model['model_name'], 'phase_1', 'Phase 1 - API Costs Detail.txt')
-    final_cost_file = path.join('story_generation', 'results', model['model_name'], 'phase_1', 'Phase 1 - API Cost Final.txt')
+    prompt_file = path.join('resources', 'prompts', 'prompt_phase_1.txt')
+    costs_file = path.join('results', model['model_name'], 'phase_1', 'Phase 1 - API Costs Detail.txt')
+    final_cost_file = path.join('results', model['model_name'], 'phase_1', 'Phase 1 - API Cost Final.txt')
 
-    files_to_process = select_percentage(source_folder)
-    first_phase(model, files_to_process, source_folder, raw_folder, processed_folder, prompt_file, costs_file, final_cost_file)
+    files_to_process = select_percentage(source_folder, percentage)
+    first_phase(model, files_to_process, source_folder, raw_folder, processed_folder, prompt_file, costs_file, final_cost_file, openrouter_api_key, default_choices)
 
 if __name__ == "__main__":
     main()

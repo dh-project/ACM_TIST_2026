@@ -166,9 +166,9 @@ def validation_third_phase(response):
         return None
 
 
-def third_phase(model, source_folder, raw_folder, processed_folder, prompt_file, costs_file, final_cost_file, catalog_file):
+def third_phase(model, source_folder, raw_folder, processed_folder, prompt_file, costs_file, final_cost_file, catalog_file, openrouter_api_key, default_choices):
     
-    action = phase_setup(source_folder, raw_folder, processed_folder, costs_file)
+    action = phase_setup(source_folder, raw_folder, processed_folder, costs_file, default_choices)
     
     # Raw results retrieval:
     if action == 'FIRST RUN' or action == 'RESUME/RESTART':
@@ -191,7 +191,7 @@ def third_phase(model, source_folder, raw_folder, processed_folder, prompt_file,
 
                     while validated_response is None:
                         progress_bar.set_postfix_str(filename, refresh=True)
-                        response, cost = generation_openrouter(prompt, model['model_id'],  model['model_provider'],  model['model_reasoning'])
+                        response, cost = generation_openrouter(prompt, model['model_id'],  model['model_provider'],  model['model_reasoning'], openrouter_api_key)
                         if response:
                             validated_response = validation_third_phase(response)
 
@@ -216,25 +216,26 @@ def third_phase(model, source_folder, raw_folder, processed_folder, prompt_file,
 
 ###________________________ MAIN ________________________###
 
-def main():
+def main(model = None, openrouter_api_key = None, default_choices = False):
     
-    model = select_model()
-    model_info(model)
+    if model is None:
+        model = select_model()
+        model_info(model)
 
     print(f'{Y}PHASE 3{R}\nCreation of curatorial stories from the assessed narrative events, following the dramatic situation with the highest adherence\n')
 
     # Folders:
-    source_folder =  path.join('story_generation', 'results', model['model_name'], 'phase_2', 'processed_results')
-    raw_folder = path.join('story_generation', 'results', model['model_name'], 'phase_3', 'raw_results')
-    processed_folder = path.join('story_generation', 'results', model['model_name'], 'phase_3', 'processed_results')
+    source_folder =  path.join('results', model['model_name'], 'phase_2', 'processed_results')
+    raw_folder = path.join('results', model['model_name'], 'phase_3', 'raw_results')
+    processed_folder = path.join('results', model['model_name'], 'phase_3', 'processed_results')
     
     # Files:
-    prompt_file = path.join('story_generation', 'resources', 'prompts', 'prompt_phase_3.txt')
-    costs_file = path.join('story_generation', 'results', model['model_name'], 'phase_3', 'Phase 3 - API Costs Detail.txt')
-    final_cost_file = path.join('story_generation', 'results', model['model_name'], 'phase_3', 'Phase 3 - API Cost Final.txt')
-    catalog_file = path.join('story_generation', 'resources', 'catalog', 'filtered', 'filtered_catalog.json')
+    prompt_file = path.join('resources', 'prompts', 'prompt_phase_3.txt')
+    costs_file = path.join('results', model['model_name'], 'phase_3', 'Phase 3 - API Costs Detail.txt')
+    final_cost_file = path.join('results', model['model_name'], 'phase_3', 'Phase 3 - API Cost Final.txt')
+    catalog_file = path.join('resources', 'catalog', 'filtered', 'filtered_catalog.json')
 
-    third_phase(model, source_folder, raw_folder, processed_folder, prompt_file, costs_file, final_cost_file, catalog_file)
+    third_phase(model, source_folder, raw_folder, processed_folder, prompt_file, costs_file, final_cost_file, catalog_file, openrouter_api_key, default_choices)
 
 if __name__ == "__main__":
     main()

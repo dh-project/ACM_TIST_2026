@@ -11,11 +11,13 @@ TEMPERATURE = 0
 STREAM = False
 
 # API Keys:
-OPENROUTER_API_KEY = 'API KEY'
+OPENROUTER_API_KEY = None
 
 
 # OpenRouter:
-def generation_openrouter(prompt, model, provider, reasoning_parameter):
+def generation_openrouter(prompt, model, provider, reasoning_parameter, openrouter_api_key = None):
+    
+    OAK = OPENROUTER_API_KEY or openrouter_api_key
     
     reasoning_config = {
         "exclude": True
@@ -33,7 +35,7 @@ def generation_openrouter(prompt, model, provider, reasoning_parameter):
             url="https://openrouter.ai/api/v1/chat/completions",
 
             headers={
-                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                "Authorization": f"Bearer {OAK}",
                 "Content-Type": "application/json"
             },
 
