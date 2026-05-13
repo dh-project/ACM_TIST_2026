@@ -1,6 +1,5 @@
 # From a True Story: Leveraging Museum Catalogue Data for LLM-driven Narrative Generation
 
-![Teaser image](teaser_image.png)
 ![Teaser image](cover_image.png)
 
 This repository contains the code for the paper "From a True Story: Leveraging Museum Catalogue Data for LLM-driven Narrative Generation."
